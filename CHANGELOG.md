@@ -10,9 +10,11 @@
 ### Released
 - sysuthesis v1.0.0 发布
 
+### Added
+- 支持\makecover[1]插入扫描封面
+
 ### Changed
 - 改变研究生的titlepage和copyrightpage
-- 支持\makecover[1]插入扫描封面
 
 
 [Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.0.0...HEAD

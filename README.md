@@ -43,7 +43,7 @@ Scroll down for the English version of README.
 * [GitHub Issues](https://github.com/DapengFeng/sysuthesis/issues)
 
 ## 致谢
-感谢 [清华大学tuna团队](https://github.com/tuna/thuthesis) 开发的 **ThuThesis**
+感谢清华大学TUNA团队开发的[ThuThesis](https://github.com/tuna/thuthesis)
 
 ---
 
@@ -79,4 +79,4 @@ Please follow the procedure below:
 * [GitHub Issues](https://github.com/DapengFeng/sysuthesis/issues)
 
 ## Acknowledgement
-Thanks to the excellent **ThuThesis** developed by [Tsinghua University TUNA team](https://github.com/tuna/thuthesis)
+Thanks to the excellent [ThuThesis](https://github.com/tuna/thuthesis) developed by Tsinghua University TUNA team.

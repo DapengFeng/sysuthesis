@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Added
+- 增加LyX模板
 
 ## [v1.0.0] - 2021-06-16
 ### Released

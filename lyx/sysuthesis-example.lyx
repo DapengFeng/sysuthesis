@@ -1,0 +1,3929 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass sysuthesis
+\begin_preamble
+% !TeX program = xelatex
+% !TeX spellcheck = en_US
+
+\input{sysusetup}
+
+\sysusetup{
+    keywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5},
+	keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5},  
+}
+\end_preamble
+\options doctor
+\use_default_options true
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Cover
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+封面
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+使用授权的说明
+\end_layout
+
+\begin_layout Enumerate
+将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
+\end_layout
+
+\begin_layout Enumerate
+
+\backslash
+copyrightpage[file=scan-copyright.pdf]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+copyrightpage[file=scan/sysu-copyright.pdf]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FrontMatter
+
+\end_layout
+
+\begin_layout Abstract
+论文的摘要是对论文研究内容和成果的高度概括。 摘要应对论文所研究的问题及其研究目的进行描述，对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。
+ 摘要应具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。 使读者即使不阅读全文，通过摘要就能了解论文的的总体内容和主要成果。
+\end_layout
+
+\begin_layout Abstract
+论文摘要的书写应力求精确、简明。 切忌写成对论文书写内容进行提要的形式，尤其要避免“第 1 章……；第 2 章……；……”这种或类似的陈述方式。
+\end_layout
+
+\begin_layout Abstract
+关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。 关键词不超过 5 个，每个关键词中间用分号分隔。
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+关键字在导言区设置
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract*
+An abstract of a dissertation is a summary and extraction of research work
+ and contributions.
+ Included in an abstract should be description of research topic and research
+ objective, brief introduction to methodology and research process, and
+ summary of conclusion and contributions of the research.
+ An abstract should be characterized by independence and clarity and carry
+ identical information with the dissertation.
+ It should be such that the general idea and major contributions of the
+ dissertation are conveyed without reading the dissertation.
+\end_layout
+
+\begin_layout Abstract*
+An abstract should be concise and to the point.
+ It is a misunderstanding to make an abstract an outline of the dissertation
+ and words “the first chapter”, “the second chapter” and the like should
+ be avoided in the abstract.
+\end_layout
+
+\begin_layout Abstract*
+Keywords are terms used in a dissertation for indexing, reflecting core
+ information of the dissertation.
+ An abstract may contain a maximum of 5 keywords, with semi-colons used
+ in between to separate one another.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+使用Abstract*
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+符号表
+\end_layout
+
+\begin_layout Enumerate
+在这里输出符号说明 
+\end_layout
+
+\begin_layout Enumerate
+
+\backslash
+printnomenclature[3cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MainMatter
+
+\end_layout
+
+\begin_layout Chapter
+论文主要部分的写法
+\end_layout
+
+\begin_layout Standard
+研究生学位论文撰写，除表达形式上需要符合一定的格式要求外，内容方面上也要遵循一些共性原则。
+\end_layout
+
+\begin_layout Standard
+通常研究生学位论文只能有一个主题（不能是几块工作拼凑在一起），该主题应针对某学科领域中的一个具体问题展开深入、系统的研究，并得出有价值的研究结论。
+ 学位论文的研究主题切忌过大，例如，“中国国有企业改制问题研究”这样的研究主题过大，因为“国企改制”涉及的问题范围太广，很难在一本研究生学位论文中完全研究透彻。
+\end_layout
+
+\begin_layout Section
+论文的语言及表述
+\end_layout
+
+\begin_layout Standard
+除国际研究生外，学位论文一律须用汉语书写。 学位论文应当用规范汉字进行撰写，除古汉语研究中涉及的古文字和参考文献中引用的外文文献之外，均采用简体汉字撰写。
+\end_layout
+
+\begin_layout Standard
+国际研究生一般应以中文或英文书写学位论文，格式要求同上。 论文须用中文封面。
+\end_layout
+
+\begin_layout Standard
+研究生学位论文是学术作品，因此其表述要严谨简明，重点突出，专业常识应简写或不写，做到立论正确、数据可靠、说明透彻、推理严谨、文字凝练、层次分明，避免使用文学性质
+的或带感情色彩的非学术性语言。
+\end_layout
+
+\begin_layout Standard
+论文中如出现一个非通用性的新名词、新术语或新概念，需随即解释清楚。
+\end_layout
+
+\begin_layout Section
+论文题目的写法
+\end_layout
+
+\begin_layout Standard
+论文题目应简明扼要地反映论文工作的主要内容，力求精炼、准确，切忌笼统。 论文题目是对研究对象的准确、具体描述，一般要在一定程度上体现研究结论，因此，论文题目不仅
+应告诉读者这本论文研究了什么问题，更要告诉读者这个研究得出的结论。 例如：“在事实与虚构之间：梅乐、卡彭特、沃尔夫的新闻观”就比“三个美国作家的新闻观研究”更专
+业、更准确。
+\end_layout
+
+\begin_layout Section
+摘要的写法
+\end_layout
+
+\begin_layout Standard
+论文摘要是对论文研究内容的高度概括，应具有独立性和自含性，即应是 一篇简短但意义完整的文章。 通过阅读论文摘要，读者应该能够对论文的研究 方法及结论有一个整体性
+的了解，因此摘要的写法应力求精确简明。 论文摘要 应包括对问题及研究目的的描述、对使用的方法和研究过程进行的简要介绍、 对研究结论的高度凝练等，重点是结果和结论
+。
+\end_layout
+
+\begin_layout Standard
+论文摘要切忌写成全文的提纲，尤其要避免“第 1 章……；第 2 章……；……”这样的陈述方式。
+\end_layout
+
+\begin_layout Section
+引言的写法
+\end_layout
+
+\begin_layout Standard
+一篇学位论文的引言大致包含如下几个部分： 1、问题的提出； 2、选题背 景及意义； 3、文献综述； 4、研究方法； 5、论文结构安排。
+\end_layout
+
+\begin_layout Itemize
+问题的提出：要清晰地阐述所要研究的问题“是什么”。
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+选题时切记要有“问题意识”，不要选不是问题的问题来研究。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+选题背景及意义：论述清楚为什么选择这个题目来研究，即阐述该研究对学科发展的贡献、对国计民生的理论与现实意义等。
+\end_layout
+
+\begin_layout Itemize
+文献综述：对本研究主题范围内的文献进行详尽的综合述评，“述”的同时一定要有“评”，指出现有研究状态，仍存在哪些尚待解决的问题，讲出自己的研究有哪些探索性内容。
+\end_layout
+
+\begin_layout Itemize
+研究方法：讲清论文所使用的学术研究方法。
+\end_layout
+
+\begin_layout Itemize
+论文结构安排：介绍本论文的写作结构安排。
+\end_layout
+
+\begin_layout Section
+正文的写法
+\end_layout
+
+\begin_layout Standard
+本部分是论文作者的研究内容，不能将他人研究成果不加区分地掺和进来。 已经在引言的文献综述部分讲过的内容，这里不需要再重复。 各章之间要存在有机联系，符合逻辑顺序
+。
+\end_layout
+
+\begin_layout Section
+结论的写法
+\end_layout
+
+\begin_layout Standard
+结论是对论文主要研究结果、论点的提炼与概括，应精炼、准确、完整，使读者看后能全面了解论文的意义、目的和工作内容。 结论是最终的、总体的结论，不是正文各章小结的简
+单重复。 结论应包括论文的核心观点，主要阐述作者的创造性工作及所取得的研究成果在本领域中的地位、作用和意义，交代研究工作的局限，提出未来工作的意见或建议。
+ 同时，要严格区分自己取得的成果与指导教师及他人的学术成果。
+\end_layout
+
+\begin_layout Standard
+在评价自己的研究工作成果时，要实事求是，除非有足够的证据表明自己的研究是“首次”、“领先”、“填补空白”的，否则应避免使用这些或类似词语。
+\end_layout
+
+\begin_layout Chapter
+图表示例
+\end_layout
+
+\begin_layout Section
+插图
+\end_layout
+
+\begin_layout Standard
+图片通常在 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{figure}
+\end_layout
+
+\end_inset
+
+ 环境中使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cs{includegraphics}
+\end_layout
+
+\end_inset
+
+ 插入，如图~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 的源代码。 建议矢量图片使用 PDF
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PDF"
+description "可携带文档格式（Portable Document Format）"
+literal "false"
+
+\end_inset
+
+ 格式，比如数据可视化的绘图； 照片应使用 JPG 格式； 其他的栅格图应使用无损的 PNG
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PNG"
+description "便携式网络图形（Portable Network Graphics）"
+literal "false"
+
+\end_inset
+
+ 格式。注意，
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX 
+\end_layout
+
+\end_inset
+
+不支持 TIFF 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "TIFF "
+description "标签图像文件格式（Tag Image File Format）"
+literal "false"
+
+\end_inset
+
+格式；EPS 格式已经过时。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/example-image-a.pdf
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:example"
+
+\end_inset
+
+示例图片标题
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+若图或表中有附注，采用英文小写字母顺序编号，附注写在图或表的下方。 国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注
+释方式写在图表下方，或者写在正文中。
+\end_layout
+
+\begin_layout Standard
+如果一个图由两个或两个以上分图组成时，各分图分别以 (a)、(b)、(c)......
+ 作为图序，并须有分图题。推荐使用
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{subcaption}
+\end_layout
+
+\end_inset
+
+宏包来处理， 比如图~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:subfig-a"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+和图~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:subfig-b"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/example-image-a.pdf
+	width 35line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:subfig-a"
+
+\end_inset
+
+分图 A
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/example-image-b.pdf
+	width 35line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:subfig-b"
+
+\end_inset
+
+分图 B
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:multi-image"
+
+\end_inset
+
+多个分图的示例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subcaptionbox{分图 A
+\backslash
+label{fig:subfig-a}}{
+\backslash
+includegraphics[width=0.35
+\backslash
+linewidth]{example-image-a.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subcaptionbox{分图 B
+\backslash
+label{fig:subfig-b}}{
+\backslash
+includegraphics[width=0.35
+\backslash
+linewidth]{example-image-b.pdf}}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{多个分图的示例}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{fig:multi-image}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+表格
+\end_layout
+
+\begin_layout Standard
+表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:three-line"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+。 三条线可以使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{booktabs}
+\end_layout
+
+\end_inset
+
+宏包提供的命令生成。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:three-line"
+
+\end_inset
+
+三线表示例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+文件名
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+描述
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.dtx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板的源文件，包括文档和注释
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.cls
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis-*.bst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BibTeX 参考文献表样式文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+表格如果有附注，尤其是需要在表格中进行标注时，可以使用
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{threeparttable}
+\end_layout
+
+\end_inset
+
+宏包。研究生要求使用英文小写字母 a、b、c……顺序编号，本科生使用圈码①、②、③……编号。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+带附注的表格示例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+文件名
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+描述
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.dtx
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tnote{a}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板的源文件，包括文档和注释
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.cls
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tnote{b}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis-*.bst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BibTeX 参考文献表样式文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tablenotes}       
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item [a] 可以通过 xelatex 编译生成模板的使用说明文档；使用 xetex 编译 
+\backslash
+file{thuthesis.ins} 时则会从 
+\backslash
+file{.dtx} 中去除掉文档和注释，得到精简的
+\backslash
+file{.cls} 文件。       
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item [b] 更新模板时，一定要记得编译生成 
+\backslash
+file{.cls} 文件，否则编译论文时载入的依然是旧版的模板。     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tablenotes}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{threeparttable}[c]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+caption{带附注的表格示例}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+label{tab:three-part-table}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{tabular}{ll}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+toprule       
+\end_layout
+
+\begin_layout Plain Layout
+
+			文件名                   & 描述                         
+\backslash
+
+\backslash
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+midrule       
+\end_layout
+
+\begin_layout Plain Layout
+
+			thuthesis.dtx
+\backslash
+tnote{a}  & 模板的源文件，包括文档和注释 
+\backslash
+
+\backslash
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+			thuthesis.cls
+\backslash
+tnote{b}  & 模板文件                     
+\backslash
+
+\backslash
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+			thuthesis-*.bst        & BibTeX 参考文献表样式文件    
+\backslash
+
+\backslash
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+bottomrule     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{tabular}     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{tablenotes}       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+item [a] 可以通过 xelatex 编译生成模板的使用说明文档；使用 xetex 编译 
+\backslash
+file{thuthesis.ins} 时则会从 
+\backslash
+file{.dtx} 中去除掉文档和注释，得到精简的
+\backslash
+file{.cls} 文件。       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+item [b] 更新模板时，一定要记得编译生成 
+\backslash
+file{.cls} 文件，否则编译论文时载入的依然是旧版的模板。     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{tablenotes}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{threeparttable} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{table}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+如某个表需要转页接排，可以使用
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{longtable}
+\end_layout
+
+\end_inset
+
+宏包，需要在随后的各页上重复表的编号。编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{longtable}{cccc}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{跨页长表格的表题} 
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+toprule     
+\end_layout
+
+\begin_layout Plain Layout
+
+	表头 1 & 表头 2 & 表头 3 & 表头 4 
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+midrule   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+endfirsthead     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+caption[]{跨页长表格的表题（续）} 
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+toprule     
+\end_layout
+
+\begin_layout Plain Layout
+
+		表头 1 & 表头 2 & 表头 3 & 表头 4 
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+midrule   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+endhead     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+bottomrule   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+endfoot   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 1  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 2  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 3  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 4  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 5  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 6  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 7  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 8  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 9  & & & 
+\backslash
+
+\backslash
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Row 10 & & & 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{longtable}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+算法
+\end_layout
+
+\begin_layout Standard
+算法环境可以使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{algorithms}
+\end_layout
+
+\end_inset
+
+ 或者 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{algorithm2e}
+\end_layout
+
+\end_inset
+
+ 宏包。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+algorithmicrequire}{
+\backslash
+textbf{输入：}
+\backslash
+unskip}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+algorithmicensure}{
+\backslash
+textbf{输出：}
+\backslash
+unskip}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithm}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Calculate $y = x^n$}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{alg1}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+small   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{algorithmic}     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+REQUIRE $n 
+\backslash
+geq 0$     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+ENSURE $y = x^n$
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	    
+\backslash
+STATE $y 
+\backslash
+leftarrow 1$     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+STATE $X 
+\backslash
+leftarrow x$     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+STATE $N 
+\backslash
+leftarrow n$
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	    
+\backslash
+WHILE{$N 
+\backslash
+neq 0$}       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+IF{$N$ is even}         
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
+STATE $X 
+\backslash
+leftarrow X 
+\backslash
+times X$         
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
+STATE $N 
+\backslash
+leftarrow N / 2$       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+ELSE[$N$ is odd]         
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
+STATE $y 
+\backslash
+leftarrow y 
+\backslash
+times X$         
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
+STATE $N 
+\backslash
+leftarrow N - 1$       
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+ENDIF     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+ENDWHILE   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{algorithmic} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+数学符号和公式
+\end_layout
+
+\begin_layout Section
+数学符号
+\end_layout
+
+\begin_layout Standard
+中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。
+\end_layout
+
+\end_inset
+
+。 该标准参照采纳 ISO 31-11:1992 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+目前已更新为 ISO 80000-2:2019。
+\end_layout
+
+\end_inset
+
+， 但是与 
+\backslash
+TeX{} 默认的美国数学学会（AMS）的符号习惯有所区别。 具体地来说主要有以下差异：
+\end_layout
+
+\begin_layout Enumerate
+大写希腊字母默认为斜体，如
+\begin_inset Formula 
+\[
+\Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
+\]
+
+\end_inset
+
+注意有限增量符号 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+increment$
+\end_layout
+
+\end_inset
+
+ 固定使用正体，模板提供了 
+\backslash
+cs{increment} 命令。
+\end_layout
+
+\begin_layout Enumerate
+小于等于号和大于等于号使用倾斜的字形
+\begin_inset Formula $\le$
+\end_inset
+
+、
+\begin_inset Formula $\ge$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Enumerate
+积分号使用正体，比如 
+\begin_inset Formula $\int$
+\end_inset
+
+、
+\begin_inset Formula $\oint$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Enumerate
+行间公式积分号的上下限位于积分号的上下两端，比如
+\begin_inset Formula 
+\[
+\int_{a}^{b}f(x)\dif x.
+\]
+
+\end_inset
+
+行内公式为了版面的美观，统一居右侧，如 
+\begin_inset Formula $\int_{a}^{b}f(x)\dif x$
+\end_inset
+
+ 。
+\end_layout
+
+\begin_layout Enumerate
+偏微分符号 
+\begin_inset Formula $\partial$
+\end_inset
+
+ 使用正体。
+\end_layout
+
+\begin_layout Enumerate
+省略号 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cs{dots}
+\end_layout
+
+\end_inset
+
+ 按照中文的习惯固定居中，比如
+\begin_inset Formula 
+\[
+1,2,\dots,n\quad1+2+\dots+n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+实部 
+\begin_inset Formula $\Re$
+\end_inset
+
+ 和虚部 
+\begin_inset Formula $\Im$
+\end_inset
+
+ 的字体使用罗马体。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LyX下使用List环境后需要
+\backslash
+par换行。
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+par
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+以上数学符号样式的差异可以在模板中统一设置。 另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
+\end_layout
+
+\begin_layout Enumerate
+数学常数和特殊函数名用正体，如
+\begin_inset Formula 
+\[
+\uppi=3.14\dots;\quad\symup{i}^{2}=-1;\quad\symup{e}=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+微分号使用正体，比如 
+\begin_inset Formula $\dif y/\dif x$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Enumerate
+向量、矩阵和张量用粗斜体（
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cs{symbf}
+\end_layout
+
+\end_inset
+
+），如
+\begin_inset Formula $\symbf{x}$
+\end_inset
+
+、
+\begin_inset Formula $\symbf{\Sigma}$
+\end_inset
+
+、
+\begin_inset Formula $\symbfsf{T}$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Enumerate
+自然对数用 
+\begin_inset Formula $\ln x$
+\end_inset
+
+ 不用 
+\begin_inset Formula $\log x$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+par
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+英文论文的数学符号使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX{}
+\end_layout
+
+\end_inset
+
+ 默认的样式。 如果有必要，也可以通过设置 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb|math-style|
+\end_layout
+
+\end_inset
+
+ 选择数学符号样式。
+\end_layout
+
+\begin_layout Standard
+关于量和单位推荐使用 
+\begin_inset CommandInset href
+LatexCommand href
+name "siunitx"
+target "http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf"
+literal "false"
+
+\end_inset
+
+ 宏包， 可以方便地处理希腊字母以及数字与单位之间的空白， 比如：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+SI{6.4e6}{m}， 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SI{9}{
+\backslash
+micro
+\backslash
+meter}， 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+si{kg.m.s^{-1}}， 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SIrange{10}{20}{
+\backslash
+degreeCelsius}。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+数学公式
+\end_layout
+
+\begin_layout Standard
+数学公式可以使用
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{equation}
+\end_layout
+
+\end_inset
+
+ 和 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{equation*}
+\end_layout
+
+\end_inset
+
+ 环境。 注意数学公式的引用应前后带括号，建议使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cs{eqref}
+\end_layout
+
+\end_inset
+
+ 命令，比如式
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+。
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{2\uppi\symup{i}}\int_{\gamma}f=\sum_{k=1}^{m}n(\gamma;a_{k})\mathscr{R}(f;a_{k})\label{eq:example}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+注意公式编号的引用应含有圆括号，可以使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cs{eqref}
+\end_layout
+
+\end_inset
+
+ 命令。
+\end_layout
+
+\begin_layout Standard
+多行公式尽可能在“=”处对齐，推荐使用
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{align}
+\end_layout
+
+\end_inset
+
+ 环境。
+\begin_inset Formula 
+\begin{align}
+a & =b+c+d+e\label{eq:}\\
+ & =f+g\label{eq:-1}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+数学定理
+\end_layout
+
+\begin_layout Standard
+定理环境的格式可以使用 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{amsthm}
+\end_layout
+
+\end_inset
+
+ 或者 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{ntheorem}
+\end_layout
+
+\end_inset
+
+ 宏包配置。 用户在导言区载入这两者之一后，模板会自动配置 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{thoerem}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{proof}
+\end_layout
+
+\end_inset
+
+ 等环境。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{theorem}[Lindeberg--Lévy 中心极限定理]   
+\end_layout
+
+\begin_layout Plain Layout
+
+	设随机变量 $X_1, X_2, 
+\backslash
+dots, X_n$ 独立同分布， 且具有期望 $
+\backslash
+mu$ 和有限的方差 $
+\backslash
+sigma^2 
+\backslash
+ne 0$，   
+\end_layout
+
+\begin_layout Plain Layout
+
+	记 $
+\backslash
+bar{X}_n = 
+\backslash
+frac{1}{n} 
+\backslash
+sum_{i+1}^n X_i$，则   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{equation}     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+lim_{n 
+\backslash
+to 
+\backslash
+infty} P 
+\backslash
+left(
+\backslash
+frac{
+\backslash
+sqrt{n} 
+\backslash
+left( 
+\backslash
+bar{X}_n - 
+\backslash
+mu 
+\backslash
+right)}{
+\backslash
+sigma} 
+\backslash
+le z 
+\backslash
+right) = 
+\backslash
+Phi(z),   	
+\backslash
+end{equation}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	其中 $
+\backslash
+Phi(z)$ 是标准正态分布的分布函数。 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{theorem} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	Trivial.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+同时模板还提供了
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{assumption}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{definition}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{proposition}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{lemma}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{theorem}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{axiom}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{corollary}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{exercise}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{example}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{remar}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{problem}
+\end_layout
+
+\end_inset
+
+、
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+env{conjecture}
+\end_layout
+
+\end_inset
+
+ 这些相关的环境。
+\end_layout
+
+\begin_layout Chapter
+引用文献的标注
+\end_layout
+
+\begin_layout Standard
+模板支持 BibTeX 和 BibLaTeX 两种方式处理参考文献。 下文主要介绍 BibTeX 配合 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pkg{natbib}
+\end_layout
+
+\end_inset
+
+ 宏包的主要使用方法。
+\end_layout
+
+\begin_layout Section
+顺序编码制
+\end_layout
+
+\begin_layout Standard
+在顺序编码制下，默认的
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+cs{cite} 
+\end_layout
+
+\end_inset
+
+命令同
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+cs{citep}
+\end_layout
+
+\end_inset
+
+ 一样，序号置于方括号中， 引文页码会放在括号外。 统一处引用的连续序号会自动用短横线连接。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+利用
+\backslash
+sysusetup设置引用格式super、inline、author-year
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sysusetup{   cite-style = super, }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994,zhukezhen1973}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994,zhukezhen1973"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+也可以取消上标格式，将数字序号作为文字的一部分。 建议全文统一使用相同的格式。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sysusetup{   cite-style = inline, }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994,zhukezhen1973}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994,zhukezhen1973"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+著者-出版年制
+\end_layout
+
+\begin_layout Standard
+著者-出版年制下的 
+\backslash
+cs{cite} 跟 
+\backslash
+cs{citet} 一样。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sysusetup{   cite-style = author-year, }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citet{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+citep{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\backslash
+cite[42]{zhangkun1994}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cite{zhangkun1994,zhukezhen1973}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad$
+\backslash
+Rightarrow$
+\backslash
+quad}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhangkun1994,zhukezhen1973"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 2ex
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sysusetup{   cite-style = super, }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+注意，引文参考文献的每条都要在正文中标注
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aaas1883science,abrahams99tex,atkinson1982experimental,baishunong1998zhiwu,biaozhunhua2002tushu,bixon1996dynamics,carlson1981two,chubanzhuanye2004,dizhi1936dizhi,dupont1974bone,fugang2000fengsha,guangxi1993,hanjiren1985lun,huosini1989guwu,jianduju1994,jiangxizhou1980,kusch1975perturbations,mahui1995,mellinger1996laser,merkt1995rotational,oclc2000about,peebles2001probability,salomon1995advanced,scitor2000project,shimizu1983laser,taylor1981study,taylor1983scanning,tushuguan1957tushuguanxue,wangfuzhi1865songlun,weinstein1974pathogenic,who1970factors,xiaoyu2001chubanye,zhangkun1994,zhaoyaodong1998xinshidai,zhengkaiqing1987,zhukezhen1973"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BackMatter
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref/refs,ref/appendix"
+options "sysuthesis-numeric"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Appendix
+
+\end_layout
+
+\begin_layout Chapter
+补充内容
+\end_layout
+
+\begin_layout Standard
+附录是与论文内容密切相关、但编入正文又影响整篇论文编排的条理和逻辑性的资料，例如某些重要的数据表格、计算程序、统计表等，是论文主体的补充内容，可根据需要设置。
+\end_layout
+
+\begin_layout Section
+图表示例
+\end_layout
+
+\begin_layout Subsection
+图
+\end_layout
+
+\begin_layout Standard
+附录中的图片示例（图~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:appendix-figure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+）。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/example-image-a.pdf
+	width 60line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:appendix-figure"
+
+\end_inset
+
+附录中的图片示例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+表格
+\end_layout
+
+\begin_layout Standard
+附录中的表格示例（表~
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:appendix-table"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+）。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:appendix-table"
+
+\end_inset
+
+附录中的表格示例 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+文件名
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+描述
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.dtx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板的源文件，包括文档和注释
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis.cls
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+模板文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis-*.bst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BibTeX 参考文献表样式文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis-*.bbx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BibLaTeX 参考文献表样式文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thuthesis-*.cbx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BibLaTeX 引用样式文件
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+数学公式
+\end_layout
+
+\begin_layout Standard
+附录中的数学公式示例（公式
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:appendix-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+）。
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{2\uppi\symup\{i\}}\int_{\gamma}f=\sum_{k=1}^{m}n\left(\text{\ensuremath{\gamma}};a_{k}\right)\mathsrc{R}\left(f;a_{k}\right)\label{eq:appendix-equation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgements
+衷心感谢导师×××教授和物理系××副教授对本人的精心指导。他们的言传身教将使我终生受益。
+\end_layout
+
+\begin_layout Acknowledgements
+在美国麻省理工学院化学系进行九个月的合作研究期间，承蒙 Robert Field 教授热心指导与帮助，不胜感激。
+\end_layout
+
+\begin_layout Acknowledgements
+感谢×××××实验室主任×××教授，以及实验室全体老师和同窗们学的热情帮助和支持！
+\end_layout
+
+\begin_layout Acknowledgements
+本课题承蒙国家自然科学基金资助，特此致谢。
+\end_layout
+
+\begin_layout Resume
+
+\series bold
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+section*{个人简历}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Resume
+197× 年 ×× 月 ×× 日出生于四川××县。
+\end_layout
+
+\begin_layout Resume
+1992 年 9 月考入××大学化学系××化学专业，1996 年 7 月本科毕业并获得理学学士学位。
+\end_layout
+
+\begin_layout Resume
+1996 年 9 月免试进入xx大学化学系攻读××化学博士至今。 
+\end_layout
+
+\begin_layout Resume
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+section*{在学期间完成的相关学术成果}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsection*{学术论文}   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nobibliography*
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{achievements}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 
+\backslash
+bibentry{zhangkun1994}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Yang Y, Ren T L, Zhang L T, et al.
+ Miniature microphone with silicon-based ferroelectric thin films[J].
+ Integrated Ferroelectrics, 2003, 52:229-235.
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 杨轶, 张宁欣, 任天令, 等.
+ 硅基铁电微声学器件中薄膜残余应力的研究[J].
+ 中国机械工程, 2005, 16(14):1289-1291.
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 杨轶, 张宁欣, 任天令, 等.
+ 集成铁电器件中的关键工艺研究[J].
+ 仪器仪表学报, 2003, 24(S4):192-193.
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Yang Y, Ren T L, Zhu Y P, et al.
+ PMUTs for handwriting recognition.
+ In press[J].
+ (已被Integrated Ferroelectrics录用)   
+\backslash
+end{achievements}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsection*{专利}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{achievements}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 任天令, 杨轶, 朱一平, 等.
+ 硅基铁电微声学传感器畴极化区域控制和电极连接的方法: 中国, CN1602118A[P].
+ 2005-03-30.
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Ren T L, Yang Y, Zhu Y P, et al.
+ Piezoelectric micro acoustic sensor based on ferroelectric materials: USA,
+ No.11/215, 102[P].
+ (美国发明专利申请号.)   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{achievements}   
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Resolution
+论文提出了……
+\end_layout
+
+\begin_layout Resolution
+论文取得的主要创新性成果包括：
+\end_layout
+
+\begin_layout Resolution
+1.
+ ……
+\end_layout
+
+\begin_layout Resolution
+2.
+ ……
+\end_layout
+
+\begin_layout Resolution
+3.
+ ……
+\end_layout
+
+\begin_layout Resolution
+论文工作表明作者在×××××具有×××××知识，具有××××能力，论文××××，答辩××××。
+\end_layout
+
+\begin_layout Resolution
+答辩委员会表决，（×票/一致）同意通过论文答辩，并建议授予×××（姓名）×××（门类）学博士/硕士学位。 
+\end_layout
+
+\end_body
+\end_document

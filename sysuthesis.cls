@@ -21,10 +21,10 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
-\newcommand\sysuthesisversion{1.0.0}
+\newcommand\sysuthesisversion{1.0.1}
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2021/06/16 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+[2021/10/09 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -130,6 +130,7 @@
     choices = {
       thesis,
       proposal,
+      report,
     },
     default = thesis,
   },
@@ -2167,6 +2168,10 @@
     \else
       \ifsysu@thesis@type@proposal
         \sysu@titlepage@proposal
+      \else
+        \ifsysu@thesis@type@report
+          \sysu@titlepage@report
+        \fi
       \fi
     \fi
   \else
@@ -2285,11 +2290,40 @@
   \clearpage
   \restoregeometry
 }
+\newcommand\sysu@titlepage@report{%
+  \newgeometry{
+    top     = 5cm,
+    bottom  = 3.25cm,
+    hmargin = 3.17cm,
+  }%
+  \thispagestyle{empty}%
+  \begingroup
+  % \vspace*{0.1cm}%
+  \centering
+  \includegraphics[scale=0.6]{scan/sysu-log.jpg}
+  % {\sysu@titlepage@title}%
+  \parbox[t][3cm]{\textwidth}{%
+    \vskip 0.1cm%
+    \centering
+    \sffamily\fontsize{26bp}{46.8bp}\selectfont
+    \sysu@title\par
+  }%
+  \vskip 0.85cm%
+  \sysu@titlepage@degree
+  \vfill
+  \parbox[t][8.5cm][t]{\textwidth}{%
+    \centering\CJKfamily+{}%
+    \centering\fangsong\sanhao[1.95]%
+    \sysu@titlepage@report@info
+  }\par
+  \parbox[t][2.5cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
 \newcommand\sysu@set@student@id{%
-  \ifsysu@thesis@type@proposal
-    \ifx\sysu@student@id\@empty
-      \sysusetup{student-id=2000310000}%
-    \fi
+  \ifx\sysu@student@id\@empty
+    \sysusetup{student-id=2000310000}%
   \fi
 }
 \sysu@set@student@id
@@ -2323,6 +2357,10 @@
           \fi
         \fi
         学位论文选题报告）%
+      \else
+        \ifsysu@thesis@type@report
+          （中山大学研究生课程实验报告）%
+        \fi
       \fi
     \fi
     \par
@@ -2424,6 +2462,17 @@
   }\par
 }
 \newcommand\sysu@titlepage@proposal@info{%
+  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+    \sysu@info@item{培养单位}{}{\sysu@department}%
+    \sysu@info@item{学科}{}{\sysu@discipline}%
+    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
+    \sysu@info@item{学号}{}{\sysu@student@id}%
+    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@co@supervisor}%
+  }\par
+}
+\newcommand\sysu@titlepage@report@info{%
   \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
     \sysu@info@item{培养单位}{}{\sysu@department}%
     \sysu@info@item{学科}{}{\sysu@discipline}%

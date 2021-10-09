@@ -5,8 +5,12 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v1.0.1] - 2021-10-09
 ### Added
-- 增加LyX模板
+- 增加SYSU Logo
+- 增加课程实验报告模板
+- 增加Lyx模板
 
 ## [v1.0.0] - 2021-06-16
 ### Released
@@ -20,4 +24,5 @@
 
 
 [Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.0.0...HEAD
+[v1.0.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.0.1
 [v1.0.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.0.0

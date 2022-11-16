@@ -114,6 +114,35 @@ status open
 
 
 \backslash
+frontcoverpage[file=scan/scan-frontcover.pdf]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+扉页
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
 maketitle
 \end_layout
 
@@ -153,7 +182,7 @@ status open
 
 
 \backslash
-copyrightpage[file=scan/sysu-copyright.pdf]
+copyrightpage[file=scan/scan-copyright.pdf]
 \end_layout
 
 \end_inset
@@ -3894,6 +3923,147 @@ end{achievements}
 
 \end_layout
 
+\begin_layout Committee
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcolumntype{C}[1]{@{}>{
+\backslash
+centering
+\backslash
+arraybackslash}p{#1}}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+section*{指导小组名单}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}     
+\backslash
+begin{tabular}{C{3cm}C{3cm}C{9cm}@{}}       李XX & 教授     & 清华大学 
+\backslash
+
+\backslash
+       王XX & 副教授   & 清华大学 
+\backslash
+
+\backslash
+       张XX & 助理教授 & 清华大学 
+\backslash
+
+\backslash
+     
+\backslash
+end{tabular}   
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+section*{公开评阅人名单}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}     
+\backslash
+begin{tabular}{C{3cm}C{3cm}C{9cm}@{}}       刘XX & 教授   & 清华大学          
+          
+\backslash
+
+\backslash
+       陈XX & 副教授 & XXXX大学                    
+\backslash
+
+\backslash
+       杨XX & 研究员 & 中国XXXX科学院XXXXXXX研究所 
+\backslash
+
+\backslash
+     
+\backslash
+end{tabular}   
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+section*{答辩委员会名单}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{center}     
+\backslash
+begin{tabular}{C{2.75cm}C{2.98cm}C{4.63cm}C{4.63cm}@{}}       主席 & 赵XX     
+             & 教授                    & 清华大学       
+\backslash
+
+\backslash
+       委员 & 刘XX                  & 教授                    & 清华大学       
+\backslash
+
+\backslash
+           & 
+\backslash
+multirow{2}{*}{杨XX} & 
+\backslash
+multirow{2}{*}{研究员} & 中国XXXX科学院 
+\backslash
+
+\backslash
+           &                       &                         & XXXXXXX研究所
+  
+\backslash
+
+\backslash
+           & 黄XX                  & 教授                    & XXXX大学     
+  
+\backslash
+
+\backslash
+           & 周XX                  & 副教授                  & XXXX大学      
+ 
+\backslash
+
+\backslash
+       秘书 & 吴XX                  & 助理研究员              & 清华大学       
+\backslash
+
+\backslash
+     
+\backslash
+end{tabular}   
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Resolution
 论文提出了……
 \end_layout
@@ -3923,6 +4093,35 @@ end{achievements}
 
 \begin_layout Resolution
 答辩委员会表决，（×票/一致）同意通过论文答辩，并建议授予×××（姓名）×××（门类）学博士/硕士学位。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+封底
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backcoverpage[scan/scan-backcover.pdf]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

@@ -2213,24 +2213,44 @@
   \expandafter\comma@parse\expandafter{#1}{\sysu@name@title@process}%
   \sysu@name@title@format{\sysu@@name}{\sysu@@title}%
 }
-\newcommand\makecover[1]{%
-  \cleardoublepage
+\newif\ifsysufrontcoverpage\sysufrontcoverpagefalse
+\newcommand\frontcoverpage[1][]{%
   \thispagestyle{empty}%
+  \sysu@phantomsection
   \sysu@pdfbookmark{-1}{\sysu@title}%
-  \kv@define@key{sysu@coverpage}{file}{\includepdf{\kv@value}}%
-  \kv@set@family@handler{sysu@coverpage}{%
+  \kv@define@key{sysu@frontcoverpage}{file}{\includepdf{\kv@value}}%
+  \kv@set@family@handler{sysu@frontcoverpage}{%
     \ifx\kv@value\relax
       \includepdf{\kv@key}%
     \else
       \kv@handled@false
     \fi
   }%
-  \kvsetkeys{sysu@coverpage}{#1}%
+  \kvsetkeys{sysu@frontcoverpage}{#1}%
+  \sysufrontcoverpagetrue
+}
+\newcommand\backcoverpage[1][]{%
+  \thispagestyle{empty}%
+  \sysu@phantomsection
+  \sysu@pdfbookmark{-1}{封底}%
+  \kv@define@key{sysu@backcoverpage}{file}{\includepdf{\kv@value}}%
+  \kv@set@family@handler{sysu@backcoverpage}{%
+    \ifx\kv@value\relax
+      \includepdf{\kv@key}%
+    \else
+      \kv@handled@false
+    \fi
+  }%
+  \kvsetkeys{sysu@backcoverpage}{#1}%
 }
 \renewcommand\maketitle{%
   \cleardoublepage
   \pagenumbering{Alph}%
-  \sysu@pdfbookmark{0}{扉页}%
+  \ifsysufrontcoverpage
+    \sysu@pdfbookmark{0}{扉页}%
+  \else
+    \sysu@pdfbookmark{-1}{\sysu@title}%
+  \fi
   \sysu@titlepage
   \ifsysu@include@spine@true
     \sysu@spine

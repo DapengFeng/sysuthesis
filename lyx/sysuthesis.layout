@@ -86,8 +86,16 @@ LatexName             resume
 LabelString           "个人简历"
 End
 
+Style Committee
+CopyStyle             Acknowledgements
+LatexName             committee
+LabelString           "答辩委员会名单"
+End
+
 Style Resolution
 CopyStyle             Acknowledgements
 LatexName             resolution
 LabelString           "答辩委员会决议书"
 End
+
+

@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+## [v1.1.0] - 2022-11-16
+### Merge
+- 合并Thu-Thesis v7.3.1
+
 ## [v1.0.1] - 2021-10-09
 ### Added
 - 增加SYSU Logo
@@ -23,6 +27,7 @@
 - 改变研究生的titlepage和copyrightpage
 
 
-[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.1.0...HEAD
+[v1.1.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.1.0
 [v1.0.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.0.1
 [v1.0.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.0.0

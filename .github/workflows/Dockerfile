@@ -1,5 +1,5 @@
-FROM debian:buster
-MAINTAINER Shengqi Chen <shengqi.chen@tuna.tsinghua.edu.cn>
+FROM debian:bullseye
+MAINTAINER Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive

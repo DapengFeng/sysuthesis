@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2021 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
+% Copyright (C) 2021-2022 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -14,8 +14,8 @@
 %
 % \iffalse
 %<*driver>
-\newcommand\sysuthesisversion{1.0.1}
-\ProvidesFile{sysuthesis.dtx}[2021/10/09 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+\newcommand\sysuthesisversion{1.1.0}
+\ProvidesFile{sysuthesis.dtx}[2022/11/16 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -56,14 +56,14 @@
 %
 % \definecolor{sysugreen}{cmyk}{1.0, 0.0, 1.0, 0.6}
 % \title{\bfseries\color{sysugreen}\sysuthesis：中山大学学位论文模板}
-% \author{{\fangsong 冯大鹏}\\[5pt]\texttt{fengdp5@mail.sysu.edu.cn}}
+% \author{{\fangsong 冯大鹏}\\[5pt]\texttt{fengdp5@mail2.sysu.edu.cn}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
 %
 % \begin{abstract}\noindent
 %   此宏包旨在建立一个简单易用的中山大学学位论文模板，包括本科综合论文训练、硕士
-%   论文、博士论文、课程实验报告以及博士后出站报告。
+%   论文、博士论文、课程报告以及博士后出站报告。
 % \end{abstract}
 %
 % \vskip2cm
@@ -157,8 +157,7 @@
 % sysuthesis.cls & 模板类文件\\
 % sysuthesis-*.bst & \hologo{BibTeX} 参考文献表样式文件\\
 % sysuthesis-*.bbx & BibLaTeX 参考文献表样式文件\\
-% sysuthesis-*.cbx & BibLaTeX 参考文献引用样式文件\\
-% sysu-name-bachelor.pdf & 校名 logo，本科生封面使用 \\\midrule
+% sysuthesis-*.cbx & BibLaTeX 参考文献引用样式文件\\\midrule
 % sysuthesis-example.tex & 示例文档主文件\\
 % spine.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
@@ -251,7 +250,7 @@
 % \end{shell}
 %
 % 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
-% 则需要在文件名前加上 \texttt{-shell-scape} 的命令行选项。
+% 则需要在文件名前加上 \texttt{-shell-escape} 的命令行选项。
 %
 % 下面的命令用来生成用户手册：
 % \begin{shell}
@@ -264,7 +263,7 @@
 % \subsection{升级}
 % \label{sec:upgrade}
 % 如果需要升级 \sysuthesis{}，应当从 GitHub 下载最新的版本，
-% 将 \file{sysuthesis.dtx}，\file{sysuthesis.ins}，\file{sysu-name-bachelor.pdf} 和
+% 将 \file{sysuthesis.dtx}，\file{sysuthesis.ins} 和
 % \file{sysuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，然后按照
 % 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
@@ -279,8 +278,7 @@
 % \subsection{示例文件}
 % \label{sec:userguide}
 %
-% 模板核心文件有：\file{sysuthesis.cls}，\file{sysu-name-bachelor.pdf},
-% \file{sysuthesis-*.bst}（\hologo{BibTeX}），
+% 模板核心文件有：\file{sysuthesis.cls}，\file{sysuthesis-*.bst}（\hologo{BibTeX}），
 % \file{sysuthesis-*.bbx} 和 \file{sysuthesis-*.cbx}（BibLaTeX），
 % 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手。其中包括了论文
 % 写作用到的所有命令及其使用方法，只需用自己的内容进行相应替换就可以。对于不清
@@ -370,8 +368,8 @@
 % \subsubsection{输出格式}
 % \DescribeOption{output}
 % 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
-% 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
-% 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
+% 打印版 \option{print} 自动在单面打印的部分插入空白页（比如封面），并且保证正文第 1 页在右侧。
+% 电子版 \option{electronic} 选项会去掉空白页，这是因为一些院系要求提交的电子版不含空白页。
 % 注意在不同选项下，生成的声明页码很可能不同。为了避免页码错误，
 % \sysuthesis{}将会在插入扫描的 PDF 文件时自动生成页码，因此\textbf{扫描声明页时请移除底部的页码}，以防重叠。
 %
@@ -406,7 +404,7 @@
 %
 % \subsubsection{开题报告}
 % \DescribeOption{thesis-type}
-% 模板还支持研究生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
+% 模板还支持博士生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
 %
 % 开题报告与学位论文有两点不同：
 % \begin{enumerate}
@@ -420,8 +418,8 @@
 %   }
 % \end{latex}
 %
-% \subsubsection{课程实验报告}
-% 模板支持课程实验报告的格式，可以通过设置 \option{thesis-type=report} 得到。课程实验报告与开题报告类
+% \subsubsection{课程报告}
+% 模板支持课程实验报告的格式，可以通过设置 \option{thesis-type=report} 得到。课程报告与开题报告类
 % 似。
 %
 % \subsection{封面信息}
@@ -507,7 +505,7 @@
 % \end{latex}
 %
 % \subsubsection{学号}
-% 学号，用于研究生论文开题报告和课程实验报告。
+% 学号。
 % \begin{latex}
 %   \sysusetup{
 %     student-id  = {20000310000},
@@ -539,6 +537,15 @@
 %   \sysusetup{
 %     co-supervisor  = {联合导师姓名, 教授},
 %     co-supervisor* = {Professor Join-Supervisor Name},
+%   }
+% \end{latex}
+%
+% \myentry{答辩委员会}
+% 论文答辩委员会。
+% \begin{latex}
+%   \sysusetup{
+%     committee  = {~,（主席）},
+%     committee* = {~,(Chairman)},
 %   }
 % \end{latex}
 %
@@ -665,6 +672,7 @@
 % \DescribeOption{toc-chapter-style}
 % 本科生《写作指南》关于目录章标题要求“目录从第 1 章开始，每章标题用黑体小四号字”，
 % 所以其中的西文和数字默认使用 Arial 字体，跟正文的章标题一致。
+% 但是论文样例\footnote{此前发布在法学院网站，目前已经无公开可获得的链接。}的目录章标题的西文和数字却使用了 Times。
 % 如果审查老师这样要求，需要在生成目录前设置
 % \begin{latex}
 %   \sysusetup{
@@ -814,7 +822,7 @@
 %     uppercase-greek    = italic,
 %     less-than-or-equal = slanted,
 %     integral           = upright,
-%     integral-limits    = true,
+%     integral-limits    = false,
 %     partial            = upright,
 %     math-ellipsis      = centered,
 %     real-part          = roman,
@@ -844,10 +852,10 @@
 % 可能会造成正文和公式中的数字字体不一致，需要谨慎使用。
 %
 % 以上字体都是 OpenType 格式的字体，需要配合
-% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+% \href{http://mirrors.ctan.org/macros/unicodetex/latex/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
 % 宏包使用。
 % 全部数学符号的命令参考
-% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+% \href{http://mirrors.ctan.org/macros/unicodetex/latex/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
 % 注意，\pkg{unicode-math} 宏包与 \pkg{amsfonts}、\pkg{amssymb}、\pkg{bm}、
 % \pkg{mathrsfs}、\pkg{upgreek} 等宏包\emph{不}兼容。
 % 模板作了处理，用户可以直接使用这些宏包的命令，如 \cs{bm}、\cs{mathscr}、
@@ -1001,7 +1009,7 @@
 % \end{latex}
 % 另一种方式是使用 biblatex，应在导言区设置
 % \begin{latex}
-%   \usepackage[backend=biber,style=sysuthesis-author-year]{biblatex}
+%   \usepackage[style=sysuthesis-author-year]{biblatex}
 %   \addbibresource{ref/refs.bib}
 % \end{latex}
 % 这里的样式由 \href{https://ctan.org/pkg/biblatex-gb7714-2015}{biblatex-gb7714-2015} 进行了少量改编，
@@ -1079,7 +1087,7 @@
 % \begin{latex}
 %   \statement[page-style=empty]
 % \end{latex}
-% 插入扫面版声明补上页眉页脚：
+% 插入扫描版声明补上页眉页脚：
 % \begin{latex}
 %   \statement[file=scan-statement.pdf, page-style=plain]
 % \end{latex}
@@ -1158,10 +1166,9 @@
 %     ……
 %
 %     \section*{在学期间完成的相关学术成果}
-%     \nobibliography*
+%
 %     \subsection*{学术论文}
 %     \begin{achievements}
-%       \item \bibentry{}
 %       \item ……
 %       \item ……
 %     \end{achievements}
@@ -1171,7 +1178,6 @@
 %       \item ……
 %       \item ……
 %     \end{achievements}
-%     \bibliography*
 %   \end{resume}
 % \end{latex}
 %
@@ -1242,10 +1248,10 @@
 %
 % \subsection{基本信息}
 %    \begin{macrocode}
-%<cls>\newcommand\sysuthesisversion{1.0.1}
+%<cls>\newcommand\sysuthesisversion{1.1.0}
 %<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{sysuthesis}
-%<cls>[2021/10/09 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+%<cls>[2022/11/16 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
 %    \end{macrocode}
 %
 % 报错
@@ -1283,7 +1289,9 @@
 %    \begin{macrocode}
 \RequirePackage{iftex}
 \ifXeTeX\else
-  \sysu@error{XeLaTeX is required to compile this document}
+  \ifLuaTeX\else
+    \sysu@error{XeLaTeX or LuaLaTeX is required to compile this document}
+  \fi
 \fi
 %    \end{macrocode}
 %
@@ -1537,6 +1545,7 @@
       auto,
       windows,
       mac,
+      mac-word,
       noto,
       fandol,
       none,
@@ -1727,9 +1736,20 @@
 %    \end{macrocode}
 %
 % \pkg{pdfpages} 宏包便于我们插入扫描后的授权说明和声明页 PDF 文档。
+%
+% 由于 \pkg{pdfpages} 跟 \pkg{TikZ} 的 \pkg{external} 库冲突，
+% 需要在导言区的结尾进行处理，见
+% \href{https://github.com/tuna/thuthesis/issues/693}{\#693}。
 %    \begin{macrocode}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
+\AtEndPreamble{
+  \ifx\tikzifexternalizing\@undefined\else
+    \tikzifexternalizing{
+      \renewcommand*\includepdf[2][]{}
+    }{}
+  \fi
+}
 %    \end{macrocode}
 %
 % 更好的列表环境。
@@ -1752,8 +1772,11 @@
 % 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
-\RequirePackage{xeCJKfntef}
-\RequirePackage{soul}
+\ifXeTeX
+  \RequirePackage{xeCJKfntef}
+\else
+  \RequirePackage{ulem}
+\fi
 %    \end{macrocode}
 %
 % 表格控制
@@ -1770,11 +1793,6 @@
 \RequirePackage{url}
 %    \end{macrocode}
 %
-% 使用 \pkg{bibentry}，直接导入文献
-%    \begin{macrocode}
-\RequirePackage{bibentry}
-%    \end{macrocode}
-%
 % 如果用户在导言区未调用 \pkg{biblatex}，则自动调用 \pkg{natbib}。
 %    \begin{macrocode}
 \AtEndPreamble{
@@ -1785,9 +1803,11 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \@ifpackageloaded{apacite}{}{
-    \RequirePackage{bibunits}
-  }
+  \ifsysu@degree@bachelor
+    \@ifpackageloaded{apacite}{}{
+      \RequirePackage{bibunits}
+    }
+  \fi
 }
 %    \end{macrocode}
 %
@@ -1830,16 +1850,6 @@
 \sysu@package@conflict{newtxmath}{upgreek}
 %    \end{macrocode}
 %
-% \pkg{mathtools} 需要在 \pkg{unicode-math} 前载入，
-% 参考 \url{https://tex.stackexchange.com/q/521394/82731}。
-%    \begin{macrocode}
-\AtBeginOfPackageFile*{mathtools}{
-  \@ifpackageloaded{unicode-math}{
-    \sysu@error{The "mathtools" package should be loaded before setting "math-font"}
-  }{}
-}%
-%    \end{macrocode}
-%
 % \pkg{amsthm} 需要在 \pkg{newtx} 前载入，参考 \pkg{newtx} 的文档。
 %    \begin{macrocode}
 \AtBeginOfPackageFile*{amsthm}{
@@ -1859,7 +1869,12 @@
 % 本科生《写作指南》：
 % 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
 % 本科生 Word 模板：
-% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
+% 无页眉，页脚距边界：1.75 厘米。
+%
+% \pkg{fancyhdr} 的页眉是沿底部对齐的，所以只需设置 \cs{headsep}，
+% \cs{headheight} 可以适当增加高度允许多行页眉。
+% 研究生：\cs{headsep} = $\SI{3}{cm} - \SI{2.2}{cm} - \SI{10.5}{bp} \times 1.3
+% \approx \SI{0.3}{cm}$。
 %
 %    \begin{macrocode}
 \geometry{
@@ -1874,8 +1889,8 @@
       bottom     = 3.2cm,
       left       = 3.2cm,
       right      = 3cm,
-      headheight = 0.5cm,
-      headsep    = 1.8cm,
+      headheight = 1.9cm,
+      headsep    = 1.9cm,
       footskip   = 1.45cm,
     }%
     \ifsysu@output@print
@@ -1891,7 +1906,7 @@
   \else
     \geometry{
       margin     = 3cm,
-      headheight = 0.5cm,
+      headheight = 2.7cm,
       headsep    = 0.3cm,
       footskip   = 0.8cm,
     }%
@@ -1928,7 +1943,7 @@
 %    \begin{macrocode}
 \newcommand\sysu@set@chapter@names{%
   \ifsysu@main@language@chinese
-    \def\sysu@comments@name{指导教师学术评语}%
+    \def\sysu@comments@name{指导教师评语}%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
     \def\indexname{索引}%
@@ -2054,8 +2069,20 @@
 %
 % 带圈数字和星号使用中文字体。
 %    \begin{macrocode}
-\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
-\xeCJKDeclareCharClass{CJK}{"2605}
+\ifLuaTeX
+  % ctex 将带圈数字 U+2460–U+24FF 归入字符范围 3（ALchar），这里改回范围 6（JAchar）
+  \ltjdefcharrange{3}{%
+    "2000-"243F, "2500-"27BF, "2900-"29FF, "2B00-"2BFF}
+  \ltjdefcharrange{6}{%
+    "2460-"24FF, "2E80-"2EFF, "3000-"30FF, "3190-"319F, "31F0-"4DBF,
+    "4E00-"9FFF, "F900-"FAFF, "FE10-"FE1F, "FE30-"FE6F, "FF00-"FFEF,
+    "1B000-"1B16F, "1F100-"1F2FF, "20000-"3FFFF, "E0100-"E01EF}
+\else
+  \ifXeTeX
+    \xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+    \xeCJKDeclareCharClass{CJK}{"2605}
+  \fi
+\fi
 %    \end{macrocode}
 %
 % \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
@@ -2076,16 +2103,28 @@
 %    \begin{macrocode}
 \newcommand\sysu@set@punctuations{%
   \ifsysu@language@chinese
-    \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
-    \xeCJKDeclareCharClass{FullRight}{
-      "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-    }%
+    \ifLuaTeX
+      \ltjsetparameter{jacharrange={+9}}
+    \else
+      \ifXeTeX
+        \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
+        \xeCJKDeclareCharClass{FullRight}{
+          "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+        }%
+      \fi
+    \fi
   \else
     \ifsysu@language@english
-      \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
-      \xeCJKDeclareCharClass{HalfRight}{
-        "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-      }%
+      \ifLuaTeX
+        \ltjsetparameter{jacharrange={-9}}
+      \else
+        \ifXeTeX
+          \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+          \xeCJKDeclareCharClass{HalfRight}{
+            "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+          }%
+        \fi
+      \fi
     \fi
   \fi
 }
@@ -2201,6 +2240,9 @@
 %
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
+\newcommand\sysu@mac@word@font@path{%
+  /Applications/Microsoft Word.app/Contents/Resources/DFonts/%
+}
 \ifsysu@fontset@auto
   \ifsysu@system@windows
     \sysusetup{fontset = windows}
@@ -2208,15 +2250,19 @@
     \IfFontExistsTF{SimSun}{
       \sysusetup{fontset = windows}
     }{
-      \ifsysu@system@mac
-        \sysusetup{fontset = mac}
-      \else
-        \IfFontExistsTF{Noto Serif CJK SC}{
-          \sysusetup{fontset = ubuntu}
-        }{
-          \sysusetup{fontset = fandol}
-        }
-      \fi
+      \IfFileExists{\sysu@mac@word@font@path/SimSun.ttf}{
+        \sysusetup{fontset = windows}
+      }{
+        \ifsysu@system@mac
+          \sysusetup{fontset = mac}
+        \else
+          \IfFontExistsTF{Noto Serif CJK SC}{
+            \sysusetup{fontset = ubuntu}
+          }{
+            \sysusetup{fontset = fandol}
+          }
+        \fi
+      }
     }
   \fi
 \fi
@@ -2480,13 +2526,30 @@
 %
 % \subsubsection{中文字体}
 %
+% 去掉“no requested script”警告。
+%    \begin{macrocode}
+\ExplSyntaxOn
+\@ifpackageloaded { xeCJK }
+  { \msg_redirect_name:nnn { fontspec } { no-script } { info } }
+  { }
+\ExplSyntaxOff
+%    \end{macrocode}
+%
 %    \begin{macrocode}
 \ifsysu@cjk@font@auto
   \ifsysu@fontset@mac
     \sysusetup{cjk-font = mac}
   \else
     \ifsysu@fontset@windows
-      \sysusetup{cjk-font = windows}
+      \IfFontExistsTF{SimSun}{
+        \sysusetup{cjk-font = windows}
+      }{
+        \IfFileExists{\sysu@mac@word@font@path/SimSun.ttf}{
+          \sysusetup{cjk-font = mac-word}
+        }{
+          \sysu@error{Cannot find "SimSun" font}
+        }
+      }
     \else
       \ifsysu@fontset@ubuntu
         \sysusetup{cjk-font = noto}
@@ -2501,24 +2564,48 @@
 % Windows 的中易字体。
 %    \begin{macrocode}
 \newcommand\sysu@set@cjk@font@windows{%
-  \xeCJKsetup{EmboldenFactor=3}%
   \setCJKmainfont{SimSun}[
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
     ItalicFont   = KaiTi,
   ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold]%
+  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
   \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
+}
+%    \end{macrocode}
+%
+% macOS 的 Microsoft Word 字体。
+%    \begin{macrocode}
+\@namedef{sysu@set@cjk@font@mac-word}{%
+  \setCJKmainfont{SimSun}[%
+    Path         = \sysu@mac@word@font@path,
+    AutoFakeBold = 3,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[%
+    Path         = \sysu@mac@word@font@path,
+    AutoFakeBold = 3,
+  ]%
+  \setCJKmonofont{FangSong}[Path=\sysu@mac@word@font@path]%
+  \setCJKfamilyfont{zhsong}{SimSun}[%
+    Path         = \sysu@mac@word@font@path,
+    AutoFakeBold = 3,
+  ]%
+  \setCJKfamilyfont{zhhei}{SimHei}[%
+    Path         = \sysu@mac@word@font@path,
+    AutoFakeBold = 3,
+  ]%
+  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \sysu@mac@word@font@path]%
+  \setCJKfamilyfont{zhfs}{FangSong}[Path = \sysu@mac@word@font@path]%
 }
 %    \end{macrocode}
 %
 % macOS 的华文字体。
 %    \begin{macrocode}
 \newcommand\sysu@set@cjk@font@mac{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2555,30 +2642,19 @@
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
 \newcommand\sysu@set@cjk@font@noto{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
     ItalicFont     = FandolKai-Regular,
     ItalicFeatures = {Extension = .otf},
-    Script         = CJK,
   ]%
-  \setCJKsansfont{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}[
-    Script         = CJK,
-  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[BoldFont = * Medium]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
     UprightFont    = * Light,
     UprightFont    = * Bold,
-    Script         = CJK,
   ]%
-  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[BoldFont = * Medium]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -2593,7 +2669,6 @@
 % Fandol 字体。
 %    \begin{macrocode}
 \newcommand\sysu@set@cjk@font@fandol{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
@@ -2661,19 +2736,20 @@
     \sysusetup{
       uppercase-greek = italic,
       integral        = upright,
-      integral-limits = true,
       partial         = upright,
       real-part       = roman,
     }%
     \ifsysu@math@style@ISO
       \sysusetup{
         less-than-or-equal = horizontal,
+        integral-limits    = true,
         math-ellipsis      = lower,
       }%
     \else
       \ifsysu@math@style@GB
         \sysusetup{
           less-than-or-equal = slanted,
+          integral-limits    = false,
           math-ellipsis      = centered,
         }%
       \fi
@@ -2838,10 +2914,12 @@
   \sysu@set@stix@names
   \setmathfont{\sysu@font@name@stix@math}[
     Extension    = .otf,
+    Scale        = MatchLowercase,
     StylisticSet = \sysu@xits@integral@stylistic@set,
   ]%
   \setmathfont{\sysu@font@name@stix@math}[
     Extension    = .otf,
+    Scale        = MatchLowercase,
     StylisticSet = 1,
     range        = {scr,bfscr},
   ]%
@@ -3080,6 +3158,7 @@
   \@mainmattertrue
   \pagenumbering{arabic}%
 }
+\newif\ifsysu@backmatter
 \renewcommand\backmatter{%
   \if@openright
     \cleardoublepage
@@ -3087,6 +3166,7 @@
     \clearpage
   \fi
   \@mainmatterfalse
+  \sysu@backmattertrue
   \sysusetup{toc-depth = 0}%
 }
 %    \end{macrocode}
@@ -3176,7 +3256,6 @@
 %    \begin{macrocode}
 \ctexset{%
   punct=quanjiao,
-  space=auto,
 }
 \newcommand\sysu@set@indent{%
   \ifsysu@main@language@chinese
@@ -3243,6 +3322,13 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
+%
+% 严格禁止脚注跨页，参考 \href{https://github.com/tuna/thuthesis/issues/778}{\#778}
+% 和 \url{https://texfaq.org/FAQ-splitfoot}。
+%    \begin{macrocode}
+\interfootnotelinepenalty=10000
+%    \end{macrocode}
+%
 % 脚注内容采用小五号字，中文用宋体，英文和数字用 Times New Roman 体按两端对齐格式书写，
 % 单倍行距，段前段后均空 0 磅。
 % 脚注的序号按页编排，不同页的脚注序号不需要连续。
@@ -3257,7 +3343,7 @@
 %    \begin{macrocode}
 \newcommand\sysu@circled[1]{%
   \ifnum#1 >10\relax
-    \sysu@error{%
+    \sysu@warning{%
       Too many footnotes in this page.
       Keep footnote less than 10%
     }%
@@ -3367,8 +3453,8 @@
 %
 % 图表浮动体的默认位置设为 |h|。
 %    \begin{macrocode}
-\def\fps@figure{h}
-\def\fps@table{h}
+\def\fps@figure{htbp}
+\def\fps@table{htbp}
 %    \end{macrocode}
 %
 % 设置浮动对象和文字之间的距离
@@ -3383,8 +3469,8 @@
 %
 % 由于 LaTeX2e kernel 的问题，图表等浮动体与文字前后的距离不一致，需要进行 patch。
 % 参考 \href{https://github.com/tuna/thuthesis/issues/614}{tuna/thuthesis/issues\#614}、
-% \href{https://www.zhihu.com/question/46618031}{zhihu/question/46618031} 和
-% \href{https://tex.stackexchange.com/a/40363/82731}{stackexchange/a/40363/82731}。
+% \url{https://www.zhihu.com/question/46618031} 和
+% \url{https://tex.stackexchange.com/a/40363/82731}。
 %    \begin{macrocode}
 \patchcmd{\@addtocurcol}%
   {\vskip \intextsep}%
@@ -3582,21 +3668,17 @@
     numberformat = {},
     titleformat  = {},
     fixskip      = true,
-    aftername    = \quad,
     afterindent  = true,
     lofskip      = 0pt,
     lotskip      = 0pt,
   },
   section = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsubsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   paragraph/afterindent = true,
@@ -3625,21 +3707,25 @@
     \ctexset{%
       chapter = {
         format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 30bp,
         afterskip  = 20bp,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 25bp,
         afterskip  = 12bp,
       },
       subsection = {
         format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
         format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
@@ -3689,43 +3775,6 @@
 % 由于 Word 的行距算法不同，这里进行了一些调整使得视觉上更接近。
 %    \begin{macrocode}
   \else
-    \ifsysu@main@language@chinese
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\sanhao,
-          nameformat  = {},
-          titleformat = {},
-          name        = {第,章},
-        },
-        section = {
-          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-        },
-        subsection = {
-          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
-        },
-        subsubsection = {
-          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
-        },
-      }%
-    \else
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = \MakeUppercase,
-          titleformat = \MakeUppercase,
-          name        = \chaptername\space,
-        },
-        section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-        },
-        subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-        },
-        subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-        },
-      }%
-    \fi
     \ctexset{%
       chapter = {
         beforeskip = 27bp,
@@ -3745,6 +3794,51 @@
         afterskip  = 6bp,
       },
     }%
+    \ifsysu@main@language@chinese
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\sanhao,
+          nameformat  = {},
+          titleformat = {},
+          name        = {第,章},
+          aftername   = \quad,
+        },
+        section = {
+          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsection = {
+          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsubsection = {
+          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+      }%
+    \else
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+          nameformat  = \MakeUppercase,
+          titleformat = \MakeUppercase,
+          name        = \chaptername\space,
+          aftername   = \space,
+        },
+        section = {
+          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsection = {
+          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsubsection = {
+          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+      }%
+    \fi
   \fi
 }
 \sysu@set@section@format
@@ -3942,7 +4036,7 @@
     \else
       \titlecontents{chapter}
         [\z@]{\addvspace{6bp}\heiti}
-        {\contentspush{\MakeUppercase{\thecontentslabel}\quad}\MakeUppercase}{\MakeUppercase}
+        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\sysu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
@@ -4128,17 +4222,22 @@
 \newcommand\sysu@date@en@short[3]{\sysu@date@month{#2}, #1}
 %    \end{macrocode}
 %
-% 下划线命令
+% 下划线命令。
+% \pkg{ulem} 的下划线 \cs{uline} 可以控制粗细和深度。
 %    \begin{macrocode}
 \newcommand\sysu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-\newcommand\sysu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
+\newcommand\sysu@uline[2][6em]{\uline{\hb@xt@ #1{\hss#2\hss}}}
 %    \end{macrocode}
 %
 % 将内容拉伸或压缩到固定宽度。
 %    \begin{macrocode}
 \newcommand\sysu@fixed@box[2]{%
   \begingroup
-    \def\CJKglue{\hskip 0pt plus 2filll minus 1filll}%
+    \ifLuaTeX
+      \ltjsetparameter{kanjiskip = {0pt plus 2filll minus 1filll}}%
+    \else
+      \renewcommand\CJKglue{\hspace{0pt plus 2filll minus 1filll}}%
+    \fi
     \makebox[#1][l]{#2}%
   \endgroup
 }
@@ -4151,7 +4250,11 @@
   \sbox\sysu@stretch@box{#2}%
   \ifdim \wd\sysu@stretch@box < #1\relax
     \begingroup
-      \def\CJKglue{\hskip 0pt plus 2filll}%
+      \ifLuaTeX
+        \ltjsetparameter{kanjiskip = {0pt plus 2filll}}%
+      \else
+        \renewcommand\CJKglue{\hspace{0pt plus 2filll}}%
+      \fi
       \makebox[#1][l]{#2}%
     \endgroup
   \else
@@ -4227,6 +4330,15 @@
   \pagenumbering{Alph}%
   \sysu@pdfbookmark{0}{扉页}%
   \sysu@titlepage
+  \ifsysu@include@spine@true
+    \sysu@spine
+  \fi
+  \ifsysu@degree@graduate
+    \ifsysu@thesis@type@thesis
+      \cleardoublepage
+      \sysu@titlepage@en
+    \fi
+  \fi
   \clearpage
 }
 %    \end{macrocode}
@@ -4256,7 +4368,7 @@
         \sysu@titlepage@proposal
       \else
         \ifsysu@thesis@type@report
-          \sysu@titlepage@report
+          \sysu@titlepage@proposal
         \fi
       \fi
     \fi
@@ -4285,7 +4397,7 @@
 \newcommand\sysu@titlepage@graduate@academic{%
   \newgeometry{
     top     = 2cm,
-    bottom  = 3.5cm,
+    bottom  = 3.25cm,
     hmargin = 3.5cm,
   }%
   \thispagestyle{empty}%
@@ -4296,7 +4408,6 @@
       \hskip -21.5pt%
       \sysu@titlepage@secret
     }\par
-    \sysu@titlepage@degree
     \vskip 40.5pt%
     \begingroup
       \sffamily\fontsize{26bp}{46.8bp}\selectfont
@@ -4307,7 +4418,10 @@
       \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
       \sysu@title@en\par
     \endgroup
-    \vskip 14.9pt%
+    \vskip -9.2pt%
+    \vskip 24.1pt%
+    \sysu@titlepage@degree
+    \vfill
     \parbox[t][7.25cm][t]{\textwidth}{%
       \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
       \sysu@titlepage@info
@@ -4325,7 +4439,7 @@
 \newcommand\sysu@titlepage@graduate@professional{%
   \newgeometry{
     top     = 2cm,
-    bottom  = 3.5cm,
+    bottom  = 3.25cm,
     hmargin = 3.5cm,
   }%
   \thispagestyle{empty}%
@@ -4336,7 +4450,6 @@
       \hskip -0.69cm%
       \sysu@titlepage@secret
     }\par
-    \sysu@titlepage@degree
     \vskip 1.5cm%
     \begingroup
       % 1.21 倍行距，无网格
@@ -4348,7 +4461,10 @@
       \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
       \sysu@title@en\par
     \endgroup
-    \vskip 16.3pt%
+    \vskip -9.2pt%
+    \vskip 25.5pt%
+    \sysu@titlepage@degree
+    \vfill
     \parbox[t][5.24cm][t]{\textwidth}{%
       \centering\fangsong\fontsize{16bp}{1cm}\selectfont
       \sysu@titlepage@info
@@ -4384,56 +4500,26 @@
     \sysu@titlepage@degree
     \vfill
     \parbox[t][8.5cm][t]{\textwidth}{%
-      \centering\CJKfamily+{}%
-      \centering\fangsong\sanhao[1.95]%
-      \sysu@titlepage@proposal@info
+      \centering
+      \fangsong
+      \ifLuaTeX
+        \fontspec{\CJK@family}%
+      \else
+        \CJKfamily+{}%
+      \fi
+      \sanhao[1.95]%
+      \sysu@titlepage@info
     }\par
     \parbox[t][2.5cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
 }
-%    \end{macrocode}
-%
-% 课程实验报告封面
-%    \begin{macrocode}
-\newcommand\sysu@titlepage@report{%
-  \newgeometry{
-    top     = 5cm,
-    bottom  = 3.25cm,
-    hmargin = 3.17cm,
-  }%
-  \thispagestyle{empty}%
-  \begingroup
-  % \vspace*{0.1cm}%
-  \centering
-  \includegraphics[scale=0.6]{logo/校徽.pdf}
-  % {\sysu@titlepage@title}%
-  \parbox[t][3cm]{\textwidth}{%
-    \vskip 0.1cm%
-    \centering
-    \sffamily\fontsize{26bp}{46.8bp}\selectfont
-    \sysu@title\par
-  }%
-  \vskip 0.85cm%
-  \sysu@titlepage@degree
-  \vfill
-  \parbox[t][8.5cm][t]{\textwidth}{%
-    \centering\CJKfamily+{}%
-    \centering\fangsong\sanhao[1.95]%
-    \sysu@titlepage@report@info
-  }\par
-  \parbox[t][2.5cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-%    \end{macrocode}
-% 学号
-%    \begin{macrocode}
 \newcommand\sysu@set@student@id{%
-  \ifx\sysu@student@id\@empty
-    \sysusetup{student-id=2000310000}%
+  \ifsysu@thesis@type@proposal
+    \ifx\sysu@student@id\@empty
+      \sysusetup{student-id=2000310000}%
+    \fi
   \fi
 }
 \sysu@set@student@id
@@ -4456,17 +4542,23 @@
 %    \begin{macrocode}
 \newcommand\sysu@titlepage@degree{%
   \begingroup
-    \CJKfamily+{}\xiaoer
-    \def\CJKglue{\hskip 1bp}%
+    \xiaoer
+    \ifLuaTeX
+      \fontspec{\CJK@family}%
+      \ltjsetparameter{kanjiskip = {1bp}}%
+    \else
+      \CJKfamily+{}%
+      \renewcommand\CJKglue{\hspace{1bp}}%
+    \fi
     \ifsysu@thesis@type@thesis
-      （申请中山大学\sysu@degree@name
+      (申请中山大学\sysu@degree@name
       \ifsysu@degree@type@professional
         专业%
       \fi
-      学位论文）%
+      学位论文)%
     \else
       \ifsysu@thesis@type@proposal
-        （中山大学%
+        (中山大学%
         \ifsysu@degree@doctor
           博士%
         \else
@@ -4474,10 +4566,10 @@
             硕士%
           \fi
         \fi
-        学位论文选题报告）%
-      \else
         \ifsysu@thesis@type@report
-          （中山大学研究生课程实验报告）%
+          课程报告
+        \else
+          学位论文选题报告)%
         \fi
       \fi
     \fi
@@ -4513,15 +4605,10 @@
 %    \begin{macrocode}
 \newcommand\sysu@titlepage@info@tabular[4]{%
   \def\sysu@info@item##1##2##3{%
-    \ifx##2\@empty
+    \ifx##3\@empty\else
       \sysu@pad{#1}{\sysu@fixed@box{#2}{##1}}%
-      \sysu@pad{#3}{：}\\
-    \else
-      \ifx##3\@empty\else
-        \sysu@pad{#1}{\sysu@fixed@box{#2}{##1}}%
-        \sysu@pad{#3}{：}%
-        ##2{##3}\\
-      \fi
+      \sysu@pad{#3}{：}%
+      ##2{##3}\\
     \fi
   }%
   \begin{tabular}{l}%
@@ -4587,28 +4674,6 @@
     \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
   }\par
 }
-\newcommand\sysu@titlepage@proposal@info{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@co@supervisor}%
-  }\par
-}
-\newcommand\sysu@titlepage@report@info{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@co@supervisor}%
-  }\par
-}
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，字距延伸 0.5bp，
@@ -4617,7 +4682,11 @@
 \newcommand\sysu@titlepage@date{%
   \begingroup
     \sanhao
-    \def\CJKglue{\hskip 1bp}%
+    \ifLuaTeX
+      \ltjsetparameter{kanjiskip = {1bp}}%
+    \else
+      \renewcommand\CJKglue{\hspace{1bp}}%
+    \fi
     \sysu@format@date{\sysu@date@zh@short}{\sysu@date}\par
   \endgroup
 }
@@ -4709,7 +4778,7 @@
   \fi
 }
 \newcommand\sysu@titlepage@en@degree{%
-  \sysu@thesis@name@en{} Submitted to\par
+  \sysu@thesis@name@en{} submitted to\par
   {\bfseries Sun Yat-sen University\par}%
   in partial fulfillment of the requirement\par
   for the
@@ -4777,22 +4846,23 @@
   \vskip 1.8cm%
   \begingroup
     \heiti
-    \ifsysu@main@language@chinese
-      \yihao[1.56]%
-    \else
-      \fontsize{26bp}{32bp}\selectfont
-    \fi
-    \parindent=18bp%
-    \hangindent=72bp%
-    \makebox[54bp]{\xiaoer[1.2]题目：}%
-    \CJKunderline*[skip=false, thickness=0.05em, depth=0.12em]{\sysu@title}%
-    \ifsysu@main@language@english
-      \\
-      \sysusetup{language=english}%
-      \ul\sysu@title@en
-      \sysusetup{language=chinese}%
-    \fi
-    \par
+    % 21.0cm - 0.2cm - 3cm * 2 - 18bp * 4 = 347bp
+    \noindent\hspace{1em}\makebox[54bp]{\xiaoer[1.2]题目：}%
+    \parbox[t]{347bp}{%
+      \ifsysu@main@language@chinese
+        \yihao[1.56]%
+      \else
+        \fontsize{26bp}{32bp}\selectfont
+      \fi
+      \renewcommand\ULthickness{0.05em}%
+      \renewcommand\ULdepth{0.17em}%
+      \expandafter\uline\expandafter{\sysu@title}\par
+      \ifsysu@main@language@english
+        \sysusetup{language=english}%
+        \expandafter\uline\expandafter{\sysu@title@en}\par
+        \sysusetup{language=chinese}%
+      \fi
+    }\par
   \endgroup
   \vskip 1.9cm%
   \begingroup
@@ -4821,11 +4891,17 @@
     \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
     \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
   \endgroup
-  \vfill
+  \vskip 1.4cm%
   \begingroup
     \centering
-    {\CJKfamily+{}\xiaosi\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}\par}%
+    \ifLuaTeX
+      \fontspec{\CJK@family}%
+    \else
+      \CJKfamily+{}%
+    \fi
+    \xiaosi\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}\par
   \endgroup
+  \vfill
   \clearpage
   \restoregeometry
 }
@@ -4851,20 +4927,23 @@
     }%
     \vskip 0.2cm%
     \parbox[t][4.0cm][c]{\textwidth}{%
-      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\sysu@title}\par
+      \centering\sihao[3.46]%
+      \renewcommand\ULdepth{1em}%
+      \expandafter\uline\expandafter{\sysu@title}\par
     }\par
     \vskip 0.4cm%
     {\xiaosi\sysu@author\par}%
     \vskip 1.4cm%
-    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
+    {\xiaosi[1.58]%
+      \renewcommand\ULdepth{0.9em}%
       工作完成日期\quad
-      \sysu@CJKunderline[5.9cm]{%
+      \sysu@uline[5.9cm]{%
         \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@start@date}—%
         \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@end@date}
       }\par
       \vskip 0.55cm%
       报告提交日期\quad
-      \sysu@CJKunderline[5.9cm]{\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}}\par
+      \sysu@uline[5.9cm]{\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}}\par
     }%
     \vskip 0.45cm%
     {\xiaosi[2]{\ziju{1}中山大学}\quad （广州）\par}%
@@ -4915,48 +4994,53 @@
 % 学位论文指导小组、公开评阅人和答辩委员会名单。
 %    \begin{macrocode}
 \def\sysu@committee@name{学位论文指导小组、公开评阅人和答辩委员会名单}
-\newenvironment{committee}[1][]{%
-  \cleardoublepage
-  \let\sysu@committee@file\@empty
-  \kv@define@key{sysu@committee}{name}{\let\sysu@committee@name\kv@value}%
-  \kv@define@key{sysu@committee}{file}{\let\sysu@committee@file\kv@value}%
-  \kv@set@family@handler{sysu@committee}{%
-    \ifx\kv@value\relax
-      \let\sysu@committee@file\kv@key
-    \else
-      \kv@handled@false
-    \fi
-  }%
-  \kvsetkeys{sysu@committee}{#1}%
-  \ifx\sysu@committee@file\@empty
-    \begingroup
-      \ifsysu@main@language@english
-        \ctexset{chapter/format=\centering\sffamily\fontsize{16bp}{20bp}\selectfont}
+\NewEnviron{committee}[1][]{%
+  \ifsysu@degree@graduate
+    \cleardoublepage
+    \let\sysu@committee@file\@empty
+    \kv@define@key{sysu@committee}{name}{\let\sysu@committee@name\kv@value}%
+    \kv@define@key{sysu@committee}{file}{\let\sysu@committee@file\kv@value}%
+    \kv@set@family@handler{sysu@committee}{%
+      \ifx\kv@value\relax
+        \let\sysu@committee@file\kv@key
+      \else
+        \kv@handled@false
       \fi
-      \sysu@chapter*[]{\sysu@committee@name}%
-    \endgroup
-  \else
-    \sysu@pdfbookmark{0}{\sysu@committee@name}%
-    \includepdf{\sysu@committee@file}%
+    }%
+    \kvsetkeys{sysu@committee}{#1}%
+    \ifx\sysu@committee@file\@empty
+      \begingroup
+        \ctexset{
+          chapter = {
+            format    = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+            afterskip = 49bp,
+          },
+          section = {
+            beforeskip  =  26bp,
+            afterskip   =  9.5bp,
+            format      += \centering,
+            numbering   =  false,
+            afterindent =  false,
+          },
+        }%
+        \sysu@chapter*[]{\sysu@committee@name}%
+        \thispagestyle{empty}%
+        \sysusetup{language=chinese}%
+        \BODY\clearpage
+        \sysu@reset@main@language
+      \endgroup
+    \else
+      \sysu@pdfbookmark{0}{\sysu@committee@name}%
+      \includepdf{\sysu@committee@file}%
+    \fi
   \fi
-  \thispagestyle{empty}%
-  \ctexset{
-    section = {
-      format    += {\centering},
-      numbering = false,
-      afterindent = false,
-    },
-  }%
-  \sysusetup{language=chinese}
-}{%
-  \sysu@reset@main@language
 }
 %    \end{macrocode}
 % \end{environment}
 %
-% \subsubsection{授权说明}
+% \subsubsection{原创性及使用授权声明}
 % \begin{macro}{\copyrightpage}
-% 授权说明
+% 原创性及使用授权声明
 %    \begin{macrocode}
 \newcommand\copyrightpage[1][]{%
   \cleardoublepage
@@ -5264,8 +5348,10 @@
     Use "page-style" option of \protect\statement command instead%
   }%
 }
+\newif\ifsysu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \sysu@statement@existstrue
   \ifsysu@degree@bachelor
     \cleardoublepage
     \def\sysu@statement@name{声\hspace{2em}明}%
@@ -5358,6 +5444,11 @@
 % 插图清单。
 %    \begin{macrocode}
 \renewcommand\listoffigures{%
+  \ifsysu@degree@bachelor
+    \ifsysu@backmatter\else
+      \sysu@warning{The list of figures should be placed in back matter}%
+    \fi
+  \fi
   \sysu@listof{figure}%
 }
 \titlecontents{figure}
@@ -5373,6 +5464,11 @@
 % 附表清单。
 %    \begin{macrocode}
 \renewcommand\listoftables{%
+  \ifsysu@degree@bachelor
+    \ifsysu@backmatter\else
+      \sysu@warning{The list of tables should be placed in back matter}%
+    \fi
+  \fi
   \sysu@listof{table}%
 }
 \titlecontents{table}
@@ -5387,11 +5483,17 @@
 % 将插图和附表合在一起列出“插图和附表清单”。
 %    \begin{macrocode}
 \newcommand\listoffiguresandtables{%
-  \sysu@chapter*{\sysu@list@figure@table@name}%
-  \@starttoc{lof}%
-  \par
-  \null\par
-  \@starttoc{lot}%
+  \ifsysu@degree@bachelor
+    \sysu@warning{The list of figures and tables are for graduates only}%
+    \listoffigures
+    \listoftables
+  \else
+    \sysu@chapter*{\sysu@list@figure@table@name}%
+    \@starttoc{lof}%
+    \par
+    \null\par
+    \@starttoc{lot}%
+  \fi
 }
 %    \end{macrocode}
 % \end{macro}
@@ -5883,12 +5985,19 @@
 %    \begin{macrocode}
 \g@addto@macro\appendix{%
   \@mainmattertrue
+  \ifsysu@degree@bachelor
+    \ifsysu@statement@exists\else
+      \sysu@warning{The appendices should be placed after statement}%
+    \fi
+  \fi
 }
 %    \end{macrocode}
 %
 % 研究生和本科生的写作指南均未规定附录的节标题是否加入目录，
 % 但是从示例来看，目录中只出现附录的 chapter 标题，
 % 不出现附录中的 section 及 subsection 的标题。
+% 部分院系（例如自动化系）的格式审查的老师甚至一致口头如此要求。
+% （\href{https://github.com/tuna/thuthesis/pull/425}{\#425}）
 %    \begin{macrocode}
 \sysu@define@key{
   toc-depth = {
@@ -5902,18 +6011,49 @@
 % 造成 \env{survey} 的子目录中 |tocdepth| 为 0。
 %    \begin{macrocode}
 \sysu@option@hook{toc-depth}{%
-  \protected@write\@auxout{}{%
-    \string\ttl@writefile{toc}{%
-      \protect\setcounter{tocdepth}{\sysu@toc@depth}%
+  \ifx\@begindocumenthook\@undefined
+    \protected@write\@auxout{}{%
+      \string\ttl@writefile{toc}{%
+        \protect\setcounter{tocdepth}{\sysu@toc@depth}%
+      }%
     }%
-  }%
-  \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}
-  \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}
-  \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}
+  \else
+    \setcounter{tocdepth}{\sysu@toc@depth}%
+  \fi
 }
 \g@addto@macro\appendix{%
   \sysusetup{
     toc-depth = 0,
+  }%
+}
+%    \end{macrocode}
+%
+% 附录中的图、表不列入插图清单/附表清单。
+%    \begin{macrocode}
+\sysu@define@key{
+  appendix-figure-in-lof = {
+    name = appendix@figure@in@lof,
+    choices = {
+      true,
+      false,
+    },
+    default = false,
+  },
+}
+\sysu@option@hook{appendix-figure-in-lof}{%
+  \ifsysu@appendix@figure@in@lof@true
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@contentsline}%
+  \else
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+  \fi
+}
+\g@addto@macro\appendix{%
+  \sysusetup{
+    appendix-figure-in-lof = false,
   }%
 }
 %    \end{macrocode}
@@ -5952,6 +6092,7 @@
     \sysu@print@contents{survey}{l}{1}{2}{}%
     \vskip 20bp%
   }%
+  \let\appendix\sysu@appendix@appendix
   \renewcommand\bibname{参考文献}%
   \let\bibsection\sysu@appendix@bibsection
   \renewcommand\@bibunitname{\jobname-survey}%
@@ -5994,6 +6135,7 @@
     \sysu@print@contents{translation}{l}{1}{2}{}%
     \vskip 20bp%
   }%
+  \let\appendix\sysu@appendix@appendix
   \def\bibsection{%
     \begingroup
       \ctexset{section/numbering=false}%
@@ -6056,6 +6198,16 @@
 }
 %    \end{macrocode}
 %
+% 书面翻译的附录。
+%    \begin{macrocode}
+\newcommand\sysu@appendix@appendix{%
+  \def\theHsection{\Hy@AlphNoErr{section}}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \renewcommand\thesection{\thechapter.\@Alph\c@section}%
+}%
+%    \end{macrocode}
+%
 % 调研阅读报告的参考文献（或书面翻译对应的外文资料的原文索引）标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
 %    \begin{macrocode}
 \newcommand\sysu@appendix@bibsection{%
@@ -6085,16 +6237,49 @@
       format    += \centering,
       numbering = false,
     },
-    subsection = {
-      format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-      numbering  = false,
-      aftertitle = \ifsysu@language@chinese ：\else :\fi,
-    },
   }%
-  \ifsysu@degree@bachelor
-    \ifsysu@language@english
-      \sffamily\fontsize{15bp}{20bp}\selectfont,
+  \ifsysu@language@chinese
+    \ctexset{
+      subsection = {
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        numbering  = false,
+        aftertitle = ：,
+      },
+    }%
+    \ifsysu@degree@graduate
+      \fontsize{12bp}{16bp}\selectfont
     \fi
+    \setlist[achievements]{
+      topsep      = 6bp,
+      itemsep     = 6bp,
+      leftmargin  = 1cm,
+      labelwidth  = 1cm,
+      labelsep    = 0pt,
+      align       = left,
+      label       = [\arabic*],
+    }%
+  \else
+    \ctexset{
+      subsection = {
+        beforeskip = 0pt,
+        afterskip  = 0pt,
+        format     = \bfseries\normalsize,
+        indent     = \parindent,
+        numbering  = false,
+      },
+    }%
+    \ifsysu@degree@bachelor
+      % 内容部分用Arial字体，字号15pt，行距采用固定值20pt， 段前后 0pt。
+      \sffamily\fontsize{15bp}{20bp}\selectfont
+    \fi
+    \setlist[achievements]{
+      topsep      = 0bp,
+      itemsep     = 0bp,
+      leftmargin  = 1.75cm,
+      labelsep    = 0.5cm,
+      align       = right,
+      label       = [\arabic*],
+    }%
   \fi
 }{}
 %    \end{macrocode}
@@ -6115,19 +6300,14 @@
 %    \begin{macrocode}
 \newlist{achievements}{enumerate}{1}
 \setlist[achievements]{
-  label      = [\arabic*],
-  align      = left,
-  leftmargin = 10mm,
   topsep     = 6bp,
-  parsep     = 0bp,
   partopsep  = 0bp,
   itemsep    = 6bp,
-  labelsep   = !,
-  before     = {
-    \ifsysu@degree@graduate
-      \fontsize{12bp}{16bp}\selectfont
-    \fi
-  },
+  parsep     = 0bp,
+  leftmargin = 10mm,
+  itemindent = 0pt,
+  align      = left,
+  label      = [\arabic*],
   resume     = achievements,
 }
 %    \end{macrocode}
@@ -6148,19 +6328,21 @@
 % \subsection{指导教师/小组学术评语}
 % \begin{environment}{comments}
 %    \begin{macrocode}
-\newenvironment{comments}[1][]{%
-  \@mainmatterfalse
-  \kv@define@key{sysu@comments}{name}{\let\sysu@comments@name\kv@value}%
-  \kv@set@family@handler{sysu@comments}{%
-    \ifx\kv@value\relax
-      \let\sysu@comments@name\kv@key
-    \else
-      \kv@handled@false
-    \fi
-  }%
-  \kvsetkeys{sysu@comments}{#1}%
-  \chapter{\sysu@comments@name}%
-}{%
+\NewEnviron{comments}[1][]{%
+  \ifsysu@degree@graduate
+    \@mainmatterfalse
+    \kv@define@key{sysu@comments}{name}{\let\sysu@comments@name\kv@value}%
+    \kv@set@family@handler{sysu@comments}{%
+      \ifx\kv@value\relax
+        \let\sysu@comments@name\kv@key
+      \else
+        \kv@handled@false
+      \fi
+    }%
+    \kvsetkeys{sysu@comments}{#1}%
+    \chapter{\sysu@comments@name}%
+    \BODY\clearpage
+  \fi
 }
 %    \end{macrocode}
 % \end{environment}
@@ -6168,10 +6350,13 @@
 % \subsection{答辩委员会决议书}
 % \begin{environment}{resolution}
 %    \begin{macrocode}
-\newenvironment{resolution}{%
-  \@mainmatterfalse
-  \chapter{\sysu@resolution@name}%
-}{}
+\NewEnviron{resolution}{%
+  \ifsysu@degree@graduate
+    \@mainmatterfalse
+    \chapter{\sysu@resolution@name}%
+    \BODY\clearpage
+  \fi
+}
 %    \end{macrocode}
 % \end{environment}
 %
@@ -6237,6 +6422,7 @@
   \pdfstringdefDisableCommands{
     \let\\\relax
     \let\quad\relax
+    \let\qquad\relax
     \let\hspace\@gobble
   }%
 %    \end{macrocode}
@@ -6282,6 +6468,20 @@
 }
 %    \end{macrocode}
 %
+% \subsubsection{\pkg{mathtools} 宏包}
+%
+% \pkg{mathtools} 会修改 \pkg{unicode-math} 的 \cs{underbrace} 和 \cs{overbrace}，
+% 需要还原为 \cs{LaTeXunderbrace} 和 \cs{LaTeXoverbrace}，
+% 参考 \url{https://tex.stackexchange.com/q/521394/82731}。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{mathtools}{
+  \@ifpackageloaded{unicode-math}{
+    \let\underbrace\LaTeXunderbrace
+    \let\overbrace\LaTeXoverbrace
+  }{}
+}
+%    \end{macrocode}
+%
 % \subsubsection{\pkg{nomencl} 宏包}
 %
 %    \begin{macrocode}
@@ -6296,11 +6496,6 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{siunitx}{%
-  \sisetup{
-    group-minimum-digits = 4,
-    separate-uncertainty = true,
-    inter-unit-product   = \ensuremath{{}\cdot{}},
-  }
   \newcommand\sysu@set@siunitx@language{%
     \ifsysu@language@chinese
       \sisetup{
@@ -6355,7 +6550,7 @@
       %     \itshape
       % #1\@addpunct{.}]\ignorespaces
       \sffamily
-      #1\@addpunct{\sysu@theorem@separator}]\ignorespaces
+      #1]\ignorespaces
   }{%
     \popQED\endtrivlist\@endpefalse
   }
@@ -6613,7 +6808,12 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
+
+% Pretending the `amssymb` has been loaded.
+% This should be removed after `markdown` v2.13.0.
+\expandafter\def\csname ver@amssymb.sty\endcsname{0000/00/00}
 \RequirePackage[tightLists=false]{markdown}
+\expandafter\let\csname ver@amssymb.sty\endcsname\relax
 
 \markdownSetup{
   renderers = {

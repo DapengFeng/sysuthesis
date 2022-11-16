@@ -13,7 +13,7 @@
   % 输出格式
   %   选择打印版（print）或用于提交的电子版（electronic），前者会插入空白页以便直接双面打印
   %
-  output = print,
+  output = electronic,
   %
   % 标题
   %   可使用“\\”命令手动控制换行
@@ -39,8 +39,8 @@
   %      Doctor of Education, Master of Engineering
   %   3. 本科生不需要填写
   %
-  degree-name  = {工学博士},
-  degree-name* = {Doctor of Philosophy},
+  degree-name  = {工学硕士},
+  degree-name* = {Master of Science},
   %
   % 培养单位
   %   填写所属院系的全名
@@ -67,13 +67,13 @@
   % 指导教师
   %   中文姓名和职称之间以英文逗号“,”分开，下同
   %
-  supervisor  = {[导师姓名], [职称]},
-  supervisor* = {[Title] [Name]},
+  supervisor  = {[姓名], 教授},
+  supervisor* = {Professor [Name]},
   %
   % 副指导教师
   %
-  % associate-supervisor  = {陈文光, 教授},
-  % associate-supervisor* = {Professor Chen Wenguang},
+  associate-supervisor  = {[姓名], 教授},
+  associate-supervisor* = {Professor [Name]},
   %
   % 联合指导教师
   %
@@ -107,7 +107,7 @@
   % 答辩委员会
   %
   committee = {~,（主席）},
-  committee* = {~,(chair)},
+  committee* = {~,(Chairman)},
 }
 
 % 载入所需的宏包
@@ -121,7 +121,7 @@
   %
   % 数学字体
   % math-style = GB,  % GB | ISO | TeX
-  math-font  = xits,  % sitx | xits | libertinus
+  math-font  = xits,  % stix | xits | libertinus
 }
 
 % 可以使用 nomencl 生成符号和缩略语说明
@@ -161,10 +161,10 @@
 % \bibliographystyle{sysuthesis-bachelor}
 
 % 参考文献使用 BibLaTeX 宏包
-% \usepackage[backend=biber,style=sysuthesis-numeric]{biblatex}
-% \usepackage[backend=biber,style=sysuthesis-author-year]{biblatex}
-% \usepackage[backend=biber,style=apa]{biblatex}
-% \usepackage[backend=biber,style=mla-new]{biblatex}
+% \usepackage[style=sysuthesis-numeric]{biblatex}
+% \usepackage[style=sysuthesis-author-year]{biblatex}
+% \usepackage[style=apa]{biblatex}
+% \usepackage[style=mla-new]{biblatex}
 % 声明 BibLaTeX 的数据库
 % \addbibresource{ref/refs.bib}
 

@@ -1,4 +1,3 @@
-[![Actions Status](https://github.com/DapengFeng/sysuthesis/workflows/Test/badge.svg)](https://github.com/DapengFeng/sysuthesis/actions)
 [![GitHub downloads](https://img.shields.io/github/downloads/DapengFeng/sysuthesis/total)](https://github.com/DapengFeng/sysuthesis/releases)
 [![GitHub commits](https://img.shields.io/github/commits-since/DapengFeng/sysuthesis/latest)](https://github.com/DapengFeng/sysuthesis/commits/master)
 [![GitHub release](https://img.shields.io/github/v/release/DapengFeng/sysuthesis)](https://github.com/DapengFeng/sysuthesis/releases/latest)

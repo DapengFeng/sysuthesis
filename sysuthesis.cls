@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2022 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
+%% Copyright (C) 2023 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -21,10 +21,10 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
-\newcommand\sysuthesisversion{1.1.0}
+\newcommand\sysuthesisversion{1.1.1}
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2022/11/16 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+[2023/10/18 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -360,11 +360,9 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \ifsysu@degree@bachelor
-    \@ifpackageloaded{apacite}{}{
-      \RequirePackage{bibunits}
-    }
-  \fi
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
 }
 \newcommand\sysu@package@conflict[2]{%
   \AtEndOfPackageFile*{#1}{%
@@ -712,7 +710,7 @@
 \newcommand\sysu@set@font@times{%
   \setmainfont{Times New Roman}%
   \setsansfont{Arial}%
-  \ifsysu@system@mac
+  \ifsysu@fontset@mac
     \setmonofont{Menlo}[Scale = MatchLowercase]%
   \else
     \setmonofont{Courier New}[Scale = MatchLowercase]%
@@ -1218,7 +1216,7 @@
     \newcommand\square{\mdlgwhtsquare}%
     \newcommand\blacksquare{\mdlgblksquare}%
     \AtBeginDocument{%
-      \renewcommand\checkmark{\ensuremath{✓}}%
+      \renewcommand\checkmark{\ensuremath{\symbol{"2713}}}%
     }%
     \renewcommand\sysu@qed{\ensuremath{\QED}}%
   }%
@@ -2090,14 +2088,29 @@
   committee* = {
     name = committee@en,
   },
-  degree-name = {
+  degree-category = {
     default = {工学博士},
-    name    = degree@name,
+    name    = degree@category,
+  },
+  degree-category* = {
+    default = {Doctor of Philosophy},
+    name    = degree@category@en,
+  },
+  % 为了向后兼容
+  degree-name = {
+    name    = degree@category,
   },
   degree-name* = {
-    default = {Doctor of Philosophy},
-    name    = degree@name@en,
+    name    = degree@category@en,
   },
+}
+\sysu@option@hook{degree-name}{%
+  \sysu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
+}
+\sysu@option@hook{degree-name*}{%
+  \sysu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
+\sysu@define@key{
   department = {
     default = {计算机科学与技术系},
   },
@@ -2107,6 +2120,34 @@
   discipline* = {
     % default = {Computer Science and Technology},
     name    = discipline@en,
+  },
+}
+\sysu@option@hook{discipline}{%
+  \ifsysu@degree@type@professional
+    \sysu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \let\sysu@professional@field\sysu@discipline
+    \let\sysu@discipline\@empty
+  \fi
+}
+\sysu@option@hook{discipline*}{%
+  \ifsysu@degree@type@professional
+    \sysu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \let\sysu@professional@field@en\sysu@discipline@en
+    \let\sysu@discipline@en\@empty
+  \fi
+}
+\sysu@define@key{
+  professional-field = {
+    name    = professional@field,
+  },
+  professional-field* = {
+    name    = professional@field@en,
+  },
+  engineering-field = {
+    name    = engineering@field,
+  },
+  engineering-field* = {
+    name    = engineering@field@en,
   },
   date = {
     default = {\the\year-\two@digits{\month}-\two@digits{\day}},
@@ -2203,8 +2244,19 @@
   \stepcounter{sysu@csl@count}%
 }
 \newcommand\sysu@name@title@format[2]{%
-  \sysu@pad{3cm}{\sysu@stretch{4em}{#1}}%
-  \sysu@stretch{3em}{#2}%
+  \ifsysu@degree@type@professional
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \sysu@stretch{67.6bp}{#1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{9.8bp}}%
+      #2%
+    \endgroup
+  \else
+    \sysu@pad{3cm}{\sysu@stretch{4em}{#1}}%
+    \sysu@stretch{3em}{#2}%
+  \fi
 }
 \newcommand\sysu@name@title[1]{%
   \setcounter{sysu@csl@count}{0}%
@@ -2268,12 +2320,24 @@
   \ifsysu@degree@graduate
     \ifsysu@thesis@type@thesis
       \ifsysu@degree@type@academic
-        \sysu@titlepage@graduate@academic
-      \else
-        \ifx\sysu@discipline\@empty
-          \sysu@titlepage@graduate@professional
+        \ifsysu@degree@doctor
+          \sysu@titlepage@doctor@academic
         \else
-          \sysu@titlepage@graduate@academic
+          \sysu@titlepage@master@academic
+        \fi
+      \else
+        \ifsysu@degree@doctor
+          \sysu@titlepage@doctor@professional
+        \else
+          \ifx\sysu@professional@field\@empty
+            \ifx\sysu@engineering@field\@empty
+              \sysu@titlepage@master@professional@without@field
+            \else
+              \sysu@titlepage@master@professional@with@field
+            \fi
+          \else
+            \sysu@titlepage@master@professional@with@field
+          \fi
         \fi
       \fi
     \else
@@ -2298,7 +2362,7 @@
   \fi
   \sysu@reset@main@language
 }
-\newcommand\sysu@titlepage@graduate@academic{%
+\newcommand\sysu@titlepage@doctor@academic{%
   \newgeometry{
     top     = 2cm,
     bottom  = 3.25cm,
@@ -2324,10 +2388,10 @@
     \endgroup
     \vskip -9.2pt%
     \vskip 24.1pt%
-    \sysu@titlepage@degree
+    \sysu@titlepage@degree\par
     \vfill
     \parbox[t][7.25cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
+      \fangsong\fontsize{16bp}{31.2bp}\selectfont
       \sysu@titlepage@info
     }\par
     \vfill
@@ -2336,7 +2400,7 @@
   \clearpage
   \restoregeometry
 }
-\newcommand\sysu@titlepage@graduate@professional{%
+\newcommand\sysu@titlepage@doctor@professional{%
   \newgeometry{
     top     = 2cm,
     bottom  = 3.25cm,
@@ -2365,12 +2429,160 @@
     \vskip 25.5pt%
     \sysu@titlepage@degree
     \vfill
-    \parbox[t][5.24cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{1cm}\selectfont
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
       \sysu@titlepage@info
     }\par
+    \vskip 2.22cm%
+    \parbox[t][1.0cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\sysu@titlepage@master@academic{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][55bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \sysu@titlepage@secret
+    }\par
+    \vskip 34pt%
+    \begingroup
+      % 1.21 倍行距
+      \sffamily\fontsize{26bp}{40.898bp}\selectfont
+      \sysu@title\par
+    \endgroup
+    \ifsysu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \sysu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 18pt%
+    \sysu@titlepage@degree\par
     \vfill
-    \parbox[t][1.25cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+    \parbox[t][7.05cm][t]{\textwidth}{%
+      % 表格行高 1cm = 28.35bp
+      \fangsong\fontsize{16bp}{28.35bp}\selectfont
+      \sysu@titlepage@info
+    }\par
+    \parbox[t][37bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\sysu@titlepage@master@professional@without@field{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 15bp%
+  \begingroup
+    \centering
+    \parbox[t][41bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \sysu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \sysu@title\par
+    \endgroup
+    \ifsysu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \sysu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \sysu@titlepage@degree
+    \vfill
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
+      \sysu@titlepage@info
+    }\par
+    \vskip 2.22cm%
+    \parbox[t][35.5bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\sysu@titlepage@master@professional@with@field{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][46bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \sysu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \sysu@title\par
+    \endgroup
+    \ifsysu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \sysu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \sysu@titlepage@degree
+    \vskip 119bp%
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{31bp}\selectfont
+      \renewcommand\sysu@info@item@format[2]{%
+        \begingroup
+          \renewcommand\CJKglue{\hspace{##1}}%
+          ##2%
+        \endgroup
+      }%
+      \renewcommand\sysu@name@title@format[2]{%
+        % 字距 9bp，共 16bp * 3 + 9bp * 2 = 66bp
+        \sysu@stretch{66bp}{##1}%
+        \hspace{22bp}%
+        % 字距 6bp
+        \begingroup
+          \renewcommand\CJKglue{\hspace{16bp}}%
+          ##2%
+        \endgroup
+      }%
+      \sysu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
+        \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
+        \sysu@info@item{专业领域}{\sysu@info@item@format{2bp}}{\sysu@professional@field}%
+        \sysu@info@item{工程领域}{\sysu@info@item@format{2bp}}{\sysu@engineering@field}%
+        \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
+        \sysu@info@item{学号}{}{\sysu@student@id}%
+        \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+        \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+        \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
+      }\par
+    }\par
+    \vfill
+    \parbox[t][33.5bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -2425,7 +2637,7 @@
   \ifx\sysu@secret@level\@empty
     \phantom{秘密}%
   \else
-    \sysu@secret@level★\makebox[3em][c]{\sysu@secret@year}年%
+    \sysu@secret@level\symbol{"2605}\makebox[3em][c]{\sysu@secret@year}年%
   \fi\par
 }
 \newcommand\sysu@titlepage@degree{%
@@ -2439,7 +2651,7 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifsysu@thesis@type@thesis
-      (申请中山大学\sysu@degree@name
+      (申请中山大学\sysu@degree@category
       \ifsysu@degree@type@professional
         专业%
       \fi
@@ -2475,29 +2687,35 @@
     \ifsysu@degree@type@academic
       \sysu@titlepage@info@master@academic
     \else
-      \ifx\sysu@discipline\@empty
-        \sysu@titlepage@info@master@other
+      \ifx\sysu@professional@field\@empty
+        \ifx\sysu@engineering@field\@empty
+          \sysu@titlepage@info@master@professional@without@field
+        \else
+          \sysu@titlepage@info@master@professional@with@field
+        \fi
       \else
-        \sysu@titlepage@info@master@engineer
+        \sysu@titlepage@info@master@professional@with@field
       \fi
     \fi
   \fi
 }
-\newcommand\sysu@titlepage@info@tabular[4]{%
+\newcommand\sysu@titlepage@info@tabular[5]{%
   \def\sysu@info@item##1##2##3{%
     \ifx##3\@empty\else
-      \sysu@pad{#1}{\sysu@fixed@box{#2}{##1}}%
-      \sysu@pad{#3}{：}%
+      \sysu@pad{#2}{\sysu@fixed@box{#3}{##1}}%
+      \sysu@pad{#4}{：}%
       ##2{##3}\\
     \fi
   }%
+  \hspace{#1}%
   \begin{tabular}{l}%
     \renewcommand\arraystretch{1}%
-    #4%
+    #5%
   \end{tabular}%
 }
+\newcommand\sysu@info@item@format[1]{#1}
 \newcommand\sysu@titlepage@info@doctor@academic{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+  \sysu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
     \sysu@info@item{培养单位}{}{\sysu@department}%
     \sysu@info@item{学科}{}{\sysu@discipline}%
     \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
@@ -2509,20 +2727,36 @@
   }\par
 }
 \newcommand\sysu@titlepage@info@doctor@professional{%
-  \sysu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
+  \sysu@titlepage@info@tabular{2.3cm}{3.1cm}{5em}{1.42cm}{%
+    \sysu@info@item{培养单位}{}{{\sysu@department}}%
     \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
     \sysu@info@item{学号}{}{\sysu@student@id}%
     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@co@supervisor}%
+    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
     \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
   }\par
 }
 \newcommand\sysu@titlepage@info@master@academic{%
-  \sysu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
+  \renewcommand\sysu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\sysu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \sysu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \sysu@titlepage@info@tabular{58bp}{3.59cm}{5.5em}{0.82cm}{%
+    \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
+    \sysu@info@item{学科}{\sysu@info@item@format{2bp}}{\sysu@discipline}%
     \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
     \sysu@info@item{学号}{}{\sysu@student@id}%
     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
@@ -2531,10 +2765,25 @@
     \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
   }\par
 }
-\newcommand\sysu@titlepage@info@master@engineer{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{工程领域}{}{\sysu@discipline}%
+\newcommand\sysu@titlepage@info@master@professional@without@field{%
+  \renewcommand\sysu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\sysu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \sysu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \sysu@titlepage@info@tabular{58bp}{3.28cm}{5em}{1.52cm}{%
+    \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
     \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
     \sysu@info@item{学号}{}{\sysu@student@id}%
     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
@@ -2543,16 +2792,7 @@
     \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
   }\par
 }
-\newcommand\sysu@titlepage@info@master@other{%
-  \sysu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
-  }\par
+\newcommand\sysu@titlepage@info@master@professional@with@field{%
 }
 \newcommand\sysu@titlepage@date{%
   \begingroup
@@ -2569,7 +2809,7 @@
   \newgeometry{
     top     = 5.5cm,
     bottom  = 5cm,
-    hmargin = 3.6cm,
+    hmargin = 3.4cm,
   }%
   \thispagestyle{empty}%
   \sysusetup{language = english}%
@@ -2585,49 +2825,51 @@
 \newcommand\sysu@titlepage@en@graduate@academic{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \sysu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\sysu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \sysu@titlepage@en@degree
-    \vskip 0.13cm%
+    \vskip 3bp%
     in\par
-    \vskip 0.1cm%
+    \vskip 3.5bp%
     {\bfseries\sffamily\sysu@discipline@en\par}
-    \vskip 0.7cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\sysu@author@en\par}%
-    \vskip 0.14cm%
-    \parbox[t][3.07cm][t]{\textwidth}{%
-      \centering\xiaosan[2.1]%
+    \vskip 0.18cm%
+    \parbox[t][3.0cm][t]{\textwidth}{%
+      \xiaosan[2.1]%
       \sysu@titlepage@en@supervisor
     }\par
     \sysu@titlepage@en@date
-    \vskip 0.65cm%
+    \vskip 0.7cm%
   \endgroup
 }
 \newcommand\sysu@titlepage@en@graduate@professional{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \sysu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\sysu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \sysu@titlepage@en@degree
-    \vskip 1.1cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\sysu@author@en\par}%
-    \ifx\sysu@discipline@en\empty
+    \ifx\sysu@professional@field@en\empty
       \vskip 1.95cm%
     \else
       \vskip -0.1cm%
-      {\sffamily\bfseries(\sysu@discipline@en)\par}%
+     {\sffamily\bfseries(\sysu@professional@field@en)\par}%
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%
-      \centering\xiaosan[1.82]%
+      \xiaosan[1.82]%
       \sysu@titlepage@en@supervisor
     }\par
     \sysu@titlepage@en@date
@@ -2636,7 +2878,8 @@
 }
 \newcommand\sysu@titlepage@en@title{%
   \begingroup
-    \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
+    % 对齐到网格，每行 15.6bp
+    \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
     \sysu@title@en\par
   \endgroup
 }
@@ -2656,10 +2899,11 @@
     professional
   \fi
   degree of\par
-  {\sffamily\bfseries\sysu@degree@name@en\par}%
+  {\sffamily\bfseries\sysu@degree@category@en\par}%
 }
 \newcommand\sysu@titlepage@en@supervisor{%
-  \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+  \hspace{1.27cm}%
+  \begin{tabular}{r@{\makebox[20.5bp][l]{\hspace{2bp}:}}l}%
     \renewcommand\arraystretch{1}%
     \sysu@thesis@name@en{} Supervisor & \sysu@supervisor@en \\
     \ifx\sysu@associate@supervisor@en\@empty\else
@@ -3019,6 +3263,7 @@
     \textbf{关键词：}%
   \fi
   \sysu@clist@use{\sysu@keywords}{；}%
+  \gdef\sysu@keywords{}%
   \ifsysu@degree@bachelor
     \cleardoublepage
   \fi
@@ -3082,6 +3327,7 @@
 \newcommand{\sysu@backdate}{日\hspace{1em}期：}
 \newenvironment{acknowledgements}{%
   \@mainmatterfalse
+  \sysu@end@appendix@ref@section
   \ifsysu@degree@bachelor
     \cleardoublepage
   \fi
@@ -3124,6 +3370,7 @@
 \newif\ifsysu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \sysu@end@appendix@ref@section
   \sysu@statement@existstrue
   \ifsysu@degree@bachelor
     \cleardoublepage
@@ -3246,16 +3493,33 @@
   {\sysu@equation@name~\thecontentslabel}{}
   {\nobreak\sysu@leaders\nobreak\thecontentspage}
 \contentsuse{equation}{loe}
-  \sysu@define@key{
-    cite-style = {
-      name = cite@style,
-      choices = {
-        super,
-        inline,
-        author-year,
-      }
+\sysu@define@key{
+  cite-style = {
+    name = cite@style,
+    choices = {
+      super,
+      inline,
+      author-year,
     }
   }
+}
+\def\bibliographystyle#1{%
+  \gdef\bu@bibstyle{#1}%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+       \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+     \fi}%
+}
+\def\bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+    \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+  \fi
+  \gdef\bu@bibdata{#1}%
+  \@input@{\jobname.bbl}}
 \PassOptionsToPackage{compress}{natbib}
 \AtEndOfPackageFile*{natbib}{
   \DeclareRobustCommand\inlinecite{\@inlinecite}
@@ -3643,6 +3907,56 @@
     appendix-figure-in-lof = false,
   }%
 }
+\newcommand\sysu@end@appendix@ref@section{}
+\AtEndOfPackageFile*{bibunits}{
+  \ifsysu@degree@graduate
+    \newcommand\sysu@appendix@bib@num@format[1]{[\@Alph\c@chapter.#1]\hfill}
+    \g@addto@macro\appendix{%
+      \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+      \bibliographyunit[\chapter]%
+      \renewcommand\citenumfont{\@Alph\c@chapter.}%
+      \renewcommand\bibsection{%
+        \ctexset{section/numbering = false}%
+        \section{\bibname}%
+        \ctexset{section/numbering = true}%
+      }%
+      \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
+      \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
+      \let\bibnumfmt\sysu@appendix@bib@num@format
+      \let\bibliographystyle\defaultbibliographystyle
+      \let\bibliography\sysu@appendix@bibliography
+    }
+    \renewcommand\sysu@end@appendix@ref@section{%
+      \bibliographyunit\relax
+    }
+    \providecommand\printbibliography{\putbib\relax}%
+    \AtEndDocument{\sysu@end@appendix@ref@section}
+    % \let\@xtestdef\@gobbletwo  % This doesn't work
+    \def\bibunits@rerun@warning{\relax}
+  \fi
+}
+\PassOptionsToPackage{defernumbers = true}{biblatex}
+\AtEndOfPackageFile*{biblatex}{
+  \ifsysu@degree@graduate
+    \DeclareRefcontext{appendix}{}
+    \g@addto@macro\appendix{%
+      \pretocmd\chapter{%
+        \newrefsection
+        \@tempcnta=\c@chapter
+        \advance\@tempcnta\@ne
+        \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
+      }{}{\sysu@patch@error{\chapter}}%
+      \defbibheading{bibliography}[\bibname]{%
+        \ctexset{section/numbering = false}%
+        \section{#1}%
+        \ctexset{section/numbering = true}%
+      }%
+    }
+    % \renewcommand\sysu@end@appendix@ref@section{%
+    %   \endrefsection
+    % }
+  \fi
+}
 \@ifpackagelater{titletoc}{2019/07/14}{
   \newcommand\sysu@print@contents[5]{%
     \printcontents[#1]{#2}{#3}[#4]{}%
@@ -3690,9 +4004,10 @@
       },
     }%
     \section{摘要}%
-    \quotation
-  }{%
-    \endquotation
+    \par
+    \ifx\sysu@keywords\@empty\else
+      \textbf{关键词：}\sysu@clist@use{\sysu@keywords}{；}\par
+    \fi
   }%
   \sysu@set@partial@toc@format
   \renewcommand\tableofcontents{%
@@ -3767,6 +4082,7 @@
 \newcommand\sysu@appendix@bibliography[1]{\putbib[#1]}
 \newenvironment{resume}{%
   \@mainmatterfalse
+  \sysu@end@appendix@ref@section
   \sysu@chapter*{\sysu@resume@name}%
   \ctexset{
     section = {
@@ -3782,17 +4098,20 @@
         aftertitle = ：,
       },
     }%
-    \ifsysu@degree@graduate
-      \fontsize{12bp}{16bp}\selectfont
-    \fi
     \setlist[achievements]{
-      topsep      = 6bp,
-      itemsep     = 6bp,
-      leftmargin  = 1cm,
-      labelwidth  = 1cm,
-      labelsep    = 0pt,
-      align       = left,
-      label       = [\arabic*],
+      topsep     = 6bp,
+      itemsep    = 6bp,
+      leftmargin = 1cm,
+      labelwidth = 1cm,
+      labelsep   = 0pt,
+      first      = {
+        \ifsysu@degree@graduate
+          \fontsize{12bp}{16bp}\selectfont
+        \fi
+      },
+      align      = left,
+      label      = [\arabic*],
+      resume     = achievements,
     }%
   \else
     \ctexset{
@@ -3809,12 +4128,13 @@
       \sffamily\fontsize{15bp}{20bp}\selectfont
     \fi
     \setlist[achievements]{
-      topsep      = 0bp,
-      itemsep     = 0bp,
-      leftmargin  = 1.75cm,
-      labelsep    = 0.5cm,
-      align       = right,
-      label       = [\arabic*],
+      topsep     = 0bp,
+      itemsep    = 0bp,
+      leftmargin = 1.75cm,
+      labelsep   = 0.5cm,
+      align      = right,
+      label      = [\arabic*],
+      resume     = achievements,
     }%
   \fi
 }{}
@@ -3846,6 +4166,7 @@
   \sysu@error{The "\protect\publicationskip" is obsolete. Do not use it}%
 }
 \NewEnviron{comments}[1][]{%
+  \sysu@end@appendix@ref@section
   \ifsysu@degree@graduate
     \@mainmatterfalse
     \kv@define@key{sysu@comments}{name}{\let\sysu@comments@name\kv@value}%
@@ -3862,6 +4183,7 @@
   \fi
 }
 \NewEnviron{resolution}{%
+  \sysu@end@appendix@ref@section
   \ifsysu@degree@graduate
     \@mainmatterfalse
     \chapter{\sysu@resolution@name}%
@@ -3886,21 +4208,21 @@
   \sysu@pdfbookmark{0}{综合论文训练记录表}%
   \includepdf[pages=-]{\sysu@record@file}%
 }
+\PassOptionsToPackage{
+  linktoc            = all,
+  bookmarksdepth     = 2,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  bookmarksdepth     = 3,
+  unicode            = true,
+  psdextra           = true,
+  breaklinks         = true,
+  plainpages         = false,
+  pdfdisplaydoctitle = true,
+  hidelinks,
+}{hyperref}
 \AtEndOfPackageFile*{hyperref}{
-  \hypersetup{
-    linktoc            = all,
-    bookmarksdepth     = 2,
-    bookmarksnumbered  = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 1,
-    bookmarksdepth     = 3,
-    unicode            = true,
-    psdextra           = true,
-    breaklinks         = true,
-    plainpages         = false,
-    pdfdisplaydoctitle = true,
-    hidelinks,
-  }%
   \newcounter{sysu@bookmark}
   \renewcommand\sysu@pdfbookmark[2]{%
     \phantomsection
@@ -3933,14 +4255,14 @@
       \hypersetup{
         pdftitle    = \sysu@title,
         pdfauthor   = \sysu@author,
-        pdfsubject  = \sysu@degree@name,
+        pdfsubject  = \sysu@degree@category,
         pdfkeywords = \sysu@keywords,
       }%
     \else
       \hypersetup{
         pdftitle    = \sysu@title@en,
         pdfauthor   = \sysu@author@en,
-        pdfsubject  = \sysu@degree@name@en,
+        pdfsubject  = \sysu@degree@category@en,
         pdfkeywords = \sysu@keywords@en,
       }%
     \fi

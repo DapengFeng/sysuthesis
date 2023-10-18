@@ -4,6 +4,7 @@
 
 Format                35
 Sides                 2
+provides mathrsfs 1
 
 Input article.layout
 Input stdclass.inc

@@ -1,0 +1,533 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[doctor]{sysuthesis}
+\usepackage[T1]{fontenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+\usepackage[unicode=true]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% !TeX program = xelatex
+% !TeX spellcheck = en_US
+
+\input{sysusetup}
+
+\sysusetup{
+    keywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5},
+	keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5},  
+}
+
+\makeatother
+
+\def\eqdeclaration#1{, see equation\nobreakspace(#1)}
+\def\pagedeclaration#1{, page\nobreakspace#1}
+\def\nomname{术语}
+
+\begin{document}
+\frontcoverpage[file=scan/scan-frontcover.pdf]
+
+\maketitle
+
+\copyrightpage[file=scan/scan-copyright.pdf]
+
+\frontmatter{}
+\begin{abstract}
+论文的摘要是对论文研究内容和成果的高度概括。 摘要应对论文所研究的问题及其研究目的进行描述，对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。
+摘要应具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。 使读者即使不阅读全文，通过摘要就能了解论文的的总体内容和主要成果。
+
+论文摘要的书写应力求精确、简明。 切忌写成对论文书写内容进行提要的形式，尤其要避免“第 1 章……；第 2 章……；……”这种或类似的陈述方式。
+
+关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。 关键词不超过 5 个，每个关键词中间用分号分隔。
+\end{abstract}
+\begin{abstract*}
+An abstract of a dissertation is a summary and extraction of research
+work and contributions. Included in an abstract should be description
+of research topic and research objective, brief introduction to methodology
+and research process, and summary of conclusion and contributions
+of the research. An abstract should be characterized by independence
+and clarity and carry identical information with the dissertation.
+It should be such that the general idea and major contributions of
+the dissertation are conveyed without reading the dissertation.
+
+An abstract should be concise and to the point. It is a misunderstanding
+to make an abstract an outline of the dissertation and words “the
+first chapter”, “the second chapter” and the like should be avoided
+in the abstract.
+
+Keywords are terms used in a dissertation for indexing, reflecting
+core information of the dissertation. An abstract may contain a maximum
+of 5 keywords, with semi-colons used in between to separate one another.
+\end{abstract*}
+\tableofcontents{}
+
+\listoffigures
+
+\listoftables
+
+\settowidth{\nomlabelwidth}{TIFF }
+\printnomenclature{}
+
+\mainmatter{}
+
+\chapter{论文主要部分的写法}
+
+研究生学位论文撰写，除表达形式上需要符合一定的格式要求外，内容方面上也要遵循一些共性原则。
+
+通常研究生学位论文只能有一个主题（不能是几块工作拼凑在一起），该主题应针对某学科领域中的一个具体问题展开深入、系统的研究，并得出有价值的研究结论。
+学位论文的研究主题切忌过大，例如，“中国国有企业改制问题研究”这样的研究主题过大，因为“国企改制”涉及的问题范围太广，很难在一本研究生学位论文中完全研究透彻。
+
+\section{论文的语言及表述}
+
+除国际研究生外，学位论文一律须用汉语书写。 学位论文应当用规范汉字进行撰写，除古汉语研究中涉及的古文字和参考文献中引用的外文文献之外，均采用简体汉字撰写。
+
+国际研究生一般应以中文或英文书写学位论文，格式要求同上。 论文须用中文封面。
+
+研究生学位论文是学术作品，因此其表述要严谨简明，重点突出，专业常识应简写或不写，做到立论正确、数据可靠、说明透彻、推理严谨、文字凝练、层次分明，避免使用文学性质的或带感情色彩的非学术性语言。
+
+论文中如出现一个非通用性的新名词、新术语或新概念，需随即解释清楚。
+
+\section{论文题目的写法}
+
+论文题目应简明扼要地反映论文工作的主要内容，力求精炼、准确，切忌笼统。 论文题目是对研究对象的准确、具体描述，一般要在一定程度上体现研究结论，因此，论文题目不仅应告诉读者这本论文研究了什么问题，更要告诉读者这个研究得出的结论。
+例如：“在事实与虚构之间：梅乐、卡彭特、沃尔夫的新闻观”就比“三个美国作家的新闻观研究”更专业、更准确。
+
+\section{摘要的写法}
+
+论文摘要是对论文研究内容的高度概括，应具有独立性和自含性，即应是 一篇简短但意义完整的文章。 通过阅读论文摘要，读者应该能够对论文的研究
+方法及结论有一个整体性的了解，因此摘要的写法应力求精确简明。 论文摘要 应包括对问题及研究目的的描述、对使用的方法和研究过程进行的简要介绍、
+对研究结论的高度凝练等，重点是结果和结论。
+
+论文摘要切忌写成全文的提纲，尤其要避免“第 1 章……；第 2 章……；……”这样的陈述方式。
+
+\section{引言的写法}
+
+一篇学位论文的引言大致包含如下几个部分： 1、问题的提出； 2、选题背 景及意义； 3、文献综述； 4、研究方法； 5、论文结构安排。
+\begin{itemize}
+\item 问题的提出：要清晰地阐述所要研究的问题“是什么”。\footnote{选题时切记要有“问题意识”，不要选不是问题的问题来研究。}
+\item 选题背景及意义：论述清楚为什么选择这个题目来研究，即阐述该研究对学科发展的贡献、对国计民生的理论与现实意义等。
+\item 文献综述：对本研究主题范围内的文献进行详尽的综合述评，“述”的同时一定要有“评”，指出现有研究状态，仍存在哪些尚待解决的问题，讲出自己的研究有哪些探索性内容。
+\item 研究方法：讲清论文所使用的学术研究方法。
+\item 论文结构安排：介绍本论文的写作结构安排。
+\end{itemize}
+
+\section{正文的写法}
+
+本部分是论文作者的研究内容，不能将他人研究成果不加区分地掺和进来。 已经在引言的文献综述部分讲过的内容，这里不需要再重复。 各章之间要存在有机联系，符合逻辑顺序。
+
+\section{结论的写法}
+
+结论是对论文主要研究结果、论点的提炼与概括，应精炼、准确、完整，使读者看后能全面了解论文的意义、目的和工作内容。 结论是最终的、总体的结论，不是正文各章小结的简单重复。
+结论应包括论文的核心观点，主要阐述作者的创造性工作及所取得的研究成果在本领域中的地位、作用和意义，交代研究工作的局限，提出未来工作的意见或建议。
+同时，要严格区分自己取得的成果与指导教师及他人的学术成果。
+
+在评价自己的研究工作成果时，要实事求是，除非有足够的证据表明自己的研究是“首次”、“领先”、“填补空白”的，否则应避免使用这些或类似词语。
+
+\chapter{图表示例}
+
+\section{插图}
+
+图片通常在 \env{figure} 环境中使用 \cs{includegraphics} 插入，如图\textasciitilde\ref{fig:example}
+的源代码。 建议矢量图片使用 PDF\nomenclature{PDF}{可携带文档格式（Portable Document Format）}
+格式，比如数据可视化的绘图； 照片应使用 JPG 格式； 其他的栅格图应使用无损的 PNG\nomenclature{PNG}{便携式网络图形（Portable Network Graphics）}
+格式。注意，\LaTeX 不支持 TIFF \nomenclature{TIFF }{标签图像文件格式（Tag Image File Format）}格式；EPS
+格式已经过时。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.5\linewidth]{figures/example-image-a}
+\par\end{centering}
+国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。
+
+\caption{\label{fig:example}示例图片标题}
+
+\end{figure}
+
+若图或表中有附注，采用英文小写字母顺序编号，附注写在图或表的下方。 国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。
+
+如果一个图由两个或两个以上分图组成时，各分图分别以 (a)、(b)、(c)...... 作为图序，并须有分图题。推荐使用\pkg{subcaption}宏包来处理，
+比如图\textasciitilde\ref{fig:subfig-a}和图\textasciitilde\ref{fig:subfig-b}。
+
+\begin{figure}
+	\centering
+	\subcaptionbox{分图 A\label{fig:subfig-a}}{\includegraphics[width=0.35\linewidth]{example-image-a.pdf}}
+	\subcaptionbox{分图 B\label{fig:subfig-b}}{\includegraphics[width=0.35\linewidth]{example-image-b.pdf}}   
+	\caption{多个分图的示例}
+	\label{fig:multi-image}
+\end{figure} 
+
+\section{表格}
+
+表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表\textasciitilde\ref{tab:three-line}。
+三条线可以使用 \pkg{booktabs}宏包提供的命令生成。
+
+\begin{table}
+
+\caption{\label{tab:three-line}三线表示例}
+
+\centering{}%
+\begin{tabular}{ll}
+\hline 
+文件名 & 描述\tabularnewline
+\hline 
+thuthesis.dtx & 模板的源文件，包括文档和注释\tabularnewline
+thuthesis.cls & 模板文件\tabularnewline
+thuthesis-{*}.bst & BibTeX 参考文献表样式文件\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+
+表格如果有附注，尤其是需要在表格中进行标注时，可以使用\pkg{threeparttable}宏包。研究生要求使用英文小写字母 a、b、c……顺序编号，本科生使用圈码①、②、③……编号。
+
+\begin{table}
+	\centering
+	\begin{threeparttable}[c]
+		\caption{带附注的表格示例}
+		\label{tab:three-part-table}
+		\begin{tabular}{ll}
+			\toprule       
+			文件名                   & 描述                         \\       
+			\midrule       
+			thuthesis.dtx\tnote{a}  & 模板的源文件，包括文档和注释 \\       
+			thuthesis.cls\tnote{b}  & 模板文件                     \\       
+			thuthesis-*.bst        & BibTeX 参考文献表样式文件    \\       
+			\bottomrule     
+		\end{tabular}     
+		\begin{tablenotes}       
+			\item [a] 可以通过 xelatex 编译生成模板的使用说明文档；使用 xetex 编译 \file{thuthesis.ins} 时则会从 \file{.dtx} 中去除掉文档和注释，得到精简的\file{.cls} 文件。       
+			\item [b] 更新模板时，一定要记得编译生成 \file{.cls} 文件，否则编译论文时载入的依然是旧版的模板。     
+		\end{tablenotes}   
+	\end{threeparttable} 
+\end{table}
+
+如某个表需要转页接排，可以使用\pkg{longtable}宏包，需要在随后的各页上重复表的编号。编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+
+\begin{longtable}{cccc}     
+	\caption{跨页长表格的表题} \\     
+	\toprule     
+	表头 1 & 表头 2 & 表头 3 & 表头 4 \\     
+	\midrule   
+	\endfirsthead     
+		\caption[]{跨页长表格的表题（续）} \\     
+		\toprule     
+		表头 1 & 表头 2 & 表头 3 & 表头 4 \\     
+		\midrule   
+	\endhead     
+		\bottomrule   
+	\endfoot   
+	Row 1  & & & \\   
+	Row 2  & & & \\   
+	Row 3  & & & \\   
+	Row 4  & & & \\   
+	Row 5  & & & \\   
+	Row 6  & & & \\   
+	Row 7  & & & \\   
+	Row 8  & & & \\   
+	Row 9  & & & \\   
+	Row 10 & & & \\ 
+\end{longtable}
+
+\section{算法}
+
+算法环境可以使用 \pkg{algorithms} 或者 \pkg{algorithm2e} 宏包。
+
+\renewcommand{\algorithmicrequire}{\textbf{输入：}\unskip}
+\renewcommand{\algorithmicensure}{\textbf{输出：}\unskip}
+\begin{algorithm}   
+	\caption{Calculate $y = x^n$}   
+	\label{alg1}   
+	\small   
+	\begin{algorithmic}     
+		\REQUIRE $n \geq 0$     
+		\ENSURE $y = x^n$
+	
+	    \STATE $y \leftarrow 1$     
+		\STATE $X \leftarrow x$     
+		\STATE $N \leftarrow n$
+	
+	    \WHILE{$N \neq 0$}       
+			\IF{$N$ is even}         
+				\STATE $X \leftarrow X \times X$         
+				\STATE $N \leftarrow N / 2$       
+			\ELSE[$N$ is odd]         
+				\STATE $y \leftarrow y \times X$         
+				\STATE $N \leftarrow N - 1$       
+			\ENDIF     
+		\ENDWHILE   
+	\end{algorithmic} 
+\end{algorithm}
+
+\chapter{数学符号和公式}
+
+\section{数学符号}
+
+中文论文的数学符号默认遵循 GB/T 3102.11---1993《物理科学和技术中使用的数学符号》\footnote{原 GB 3102.11---1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
+该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
+但是与 \textbackslash TeX\{\} 默认的美国数学学会（AMS）的符号习惯有所区别。 具体地来说主要有以下差异：
+\begin{enumerate}
+\item 大写希腊字母默认为斜体，如
+\[
+\Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
+\]
+注意有限增量符号 $\increment$ 固定使用正体，模板提供了 \textbackslash cs\{increment\}
+命令。
+\item 小于等于号和大于等于号使用倾斜的字形$\le$、$\ge$。
+\item 积分号使用正体，比如 $\int$、$\oint$。
+\item 行间公式积分号的上下限位于积分号的上下两端，比如
+\[
+\int_{a}^{b}f(x)\dif x.
+\]
+行内公式为了版面的美观，统一居右侧，如 $\int_{a}^{b}f(x)\dif x$ 。
+\item 偏微分符号 $\partial$ 使用正体。
+\item 省略号 \cs{dots} 按照中文的习惯固定居中，比如
+\[
+1,2,\dots,n\quad1+2+\dots+n.
+\]
+\item 实部 $\Re$ 和虚部 $\Im$ 的字体使用罗马体。
+\end{enumerate}
+\par
+
+以上数学符号样式的差异可以在模板中统一设置。 另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
+\begin{enumerate}
+\item 数学常数和特殊函数名用正体，如
+\[
+\uppi=3.14\dots;\quad\symup{i}^{2}=-1;\quad\symup{e}=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}.
+\]
+\item 微分号使用正体，比如 $\dif y/\dif x$。
+\item 向量、矩阵和张量用粗斜体（\cs{symbf}），如$\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
+\item 自然对数用 $\ln x$ 不用 $\log x$。
+\end{enumerate}
+\par
+
+英文论文的数学符号使用 \TeX{} 默认的样式。 如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
+
+关于量和单位推荐使用 \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx}
+宏包， 可以方便地处理希腊字母以及数字与单位之间的空白， 比如：
+
+\SI{6.4e6}{m}， 
+\SI{9}{\micro\meter}， 
+\si{kg.m.s^{-1}}， 
+\SIrange{10}{20}{\degreeCelsius}。
+
+\section{数学公式}
+
+数学公式可以使用\env{equation} 和 \env{equation*} 环境。 注意数学公式的引用应前后带括号，建议使用
+\cs{eqref} 命令，比如式\ref{eq:example}。
+\begin{equation}
+\frac{1}{2\uppi\symup{i}}\int_{\gamma}f=\sum_{k=1}^{m}n(\gamma;a_{k})\mathscr{R}(f;a_{k})\label{eq:example}
+\end{equation}
+
+注意公式编号的引用应含有圆括号，可以使用 \cs{eqref} 命令。
+
+多行公式尽可能在“=”处对齐，推荐使用\env{align} 环境。
+\begin{align}
+a & =b+c+d+e\label{eq:}\\
+ & =f+g\label{eq:-1}
+\end{align}
+
+
+\section{数学定理}
+
+定理环境的格式可以使用 \pkg{amsthm} 或者 \pkg{ntheorem} 宏包配置。 用户在导言区载入这两者之一后，模板会自动配置
+\env{thoerem}、\env{proof} 等环境。
+
+\begin{theorem}[Lindeberg--Lévy 中心极限定理]   
+	设随机变量 $X_1, X_2, \dots, X_n$ 独立同分布， 且具有期望 $\mu$ 和有限的方差 $\sigma^2 \ne 0$，   
+	记 $\bar{X}_n = \frac{1}{n} \sum_{i+1}^n X_i$，则   
+	\begin{equation}     
+		\lim_{n \to \infty} P \left(\frac{\sqrt{n} \left( \bar{X}_n - \mu \right)}{\sigma} \le z \right) = \Phi(z),   	\end{equation}   
+	其中 $\Phi(z)$ 是标准正态分布的分布函数。 
+\end{theorem} 
+\begin{proof}   
+	Trivial. 
+\end{proof}
+
+同时模板还提供了\env{assumption}、\env{definition}、\env{proposition}、\env{lemma}、\env{theorem}、\env{axiom}、\env{corollary}、\env{exercise}、\env{example}、\env{remar}、\env{problem}、\env{conjecture}
+这些相关的环境。
+
+\chapter{引用文献的标注}
+
+模板支持 BibTeX 和 BibLaTeX 两种方式处理参考文献。 下文主要介绍 BibTeX 配合 \pkg{natbib}
+宏包的主要使用方法。
+
+\section{顺序编码制}
+
+在顺序编码制下，默认的 \cs{cite} 命令同 \cs{citep} 一样，序号置于方括号中， 引文页码会放在括号外。 统一处引用的连续序号会自动用短横线连接。
+
+\sysusetup{   cite-style = super, }
+\begin{center}
+\begin{tabular}{ll}
+\textbackslash cite\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite{zhangkun1994}\tabularnewline
+\textbackslash citet\{zhangkun1994\} & \quad$\Rightarrow$\quad\citet{zhangkun1994}\tabularnewline
+\textbackslash citep\{zhangkun1994\} & \quad$\Rightarrow$\quad\citep{zhangkun1994}\tabularnewline
+\textbackslash cite{[}42{]}\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite[42]{zhangkun1994}\tabularnewline
+\textbackslash cite\{zhangkun1994,zhukezhen1973\} & \quad$\Rightarrow$\quad\cite{zhangkun1994,zhukezhen1973}\tabularnewline
+\end{tabular}
+\par\end{center}
+
+也可以取消上标格式，将数字序号作为文字的一部分。 建议全文统一使用相同的格式。
+
+\sysusetup{   cite-style = inline, }
+\begin{center}
+\begin{tabular}{ll}
+\textbackslash cite\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite{zhangkun1994}\tabularnewline
+\textbackslash citet\{zhangkun1994\} & \quad$\Rightarrow$\quad\citet{zhangkun1994}\tabularnewline
+\textbackslash citep\{zhangkun1994\} & \quad$\Rightarrow$\quad\citep{zhangkun1994}\tabularnewline
+\textbackslash cite{[}42{]}\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite[42]{zhangkun1994}\tabularnewline
+\textbackslash cite\{zhangkun1994,zhukezhen1973\} & \quad$\Rightarrow$\quad\cite{zhangkun1994,zhukezhen1973}\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\section{著者-出版年制}
+
+著者-出版年制下的 \textbackslash cs\{cite\} 跟 \textbackslash cs\{citet\}
+一样。
+
+\sysusetup{   cite-style = author-year, }
+\begin{center}
+\begin{tabular}{ll}
+\textbackslash cite\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite{zhangkun1994}\tabularnewline
+\textbackslash citet\{zhangkun1994\} & \quad$\Rightarrow$\quad\citet{zhangkun1994}\tabularnewline
+\textbackslash citep\{zhangkun1994\} & \quad$\Rightarrow$\quad\citep{zhangkun1994}\tabularnewline
+\textbackslash cite{[}42{]}\{zhangkun1994\} & \quad$\Rightarrow$\quad\cite[42]{zhangkun1994}\tabularnewline
+\textbackslash cite\{zhangkun1994,zhukezhen1973\} & \quad$\Rightarrow$\quad\cite{zhangkun1994,zhukezhen1973}\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\vspace{2ex}
+
+\sysusetup{   cite-style = super, }
+
+注意，引文参考文献的每条都要在正文中标注\cite{aaas1883science,abrahams99tex,atkinson1982experimental,baishunong1998zhiwu,biaozhunhua2002tushu,bixon1996dynamics,carlson1981two,chubanzhuanye2004,dizhi1936dizhi,dupont1974bone,fugang2000fengsha,guangxi1993,hanjiren1985lun,huosini1989guwu,jianduju1994,jiangxizhou1980,kusch1975perturbations,mahui1995,mellinger1996laser,merkt1995rotational,oclc2000about,peebles2001probability,salomon1995advanced,scitor2000project,shimizu1983laser,taylor1981study,taylor1983scanning,tushuguan1957tushuguanxue,wangfuzhi1865songlun,weinstein1974pathogenic,who1970factors,xiaoyu2001chubanye,zhangkun1994,zhaoyaodong1998xinshidai,zhengkaiqing1987,zhukezhen1973}
+
+\backmatter{}
+
+\bibliographystyle{sysuthesis-numeric}
+\bibliography{ref/refs,ref/appendix}
+
+
+\appendix{}
+
+\chapter{补充内容}
+
+附录是与论文内容密切相关、但编入正文又影响整篇论文编排的条理和逻辑性的资料，例如某些重要的数据表格、计算程序、统计表等，是论文主体的补充内容，可根据需要设置。
+
+\section{图表示例}
+
+\subsection{图}
+
+附录中的图片示例（图\textasciitilde\ref{fig:appendix-figure}）。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.6\linewidth]{figures/example-image-a}
+\par\end{centering}
+\caption{\label{fig:appendix-figure}附录中的图片示例}
+
+\end{figure}
+
+
+\subsection{表格}
+
+附录中的表格示例（表\textasciitilde\ref{tab:appendix-table}）。 
+
+\begin{table}
+\caption{\label{tab:appendix-table}附录中的表格示例 }
+
+\begin{centering}
+\begin{tabular}{ll}
+\hline 
+文件名 & 描述\tabularnewline
+\hline 
+thuthesis.dtx & 模板的源文件，包括文档和注释\tabularnewline
+thuthesis.cls & 模板文件\tabularnewline
+thuthesis-{*}.bst & BibTeX 参考文献表样式文件\tabularnewline
+thuthesis-{*}.bbx & BibLaTeX 参考文献表样式文件\tabularnewline
+thuthesis-{*}.cbx & BibLaTeX 引用样式文件\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+\end{table}
+
+
+\section{数学公式}
+
+附录中的数学公式示例（公式\ref{eq:appendix-equation}）。
+\begin{equation}
+\frac{1}{2\pi i}\int_{\gamma}f=\sum_{k=1}^{m}n\left(\text{\ensuremath{\gamma}};a_{k}\right)\mathscr{R}\left(f;a_{k}\right)\label{eq:appendix-equation}
+\end{equation}
+
+\begin{acknowledgements}
+衷心感谢导师×××教授和物理系××副教授对本人的精心指导。他们的言传身教将使我终生受益。
+
+在美国麻省理工学院化学系进行九个月的合作研究期间，承蒙 Robert Field 教授热心指导与帮助，不胜感激。
+
+感谢×××××实验室主任×××教授，以及实验室全体老师和同窗们学的热情帮助和支持！
+
+本课题承蒙国家自然科学基金资助，特此致谢。
+\end{acknowledgements}
+\begin{resume}
+\textbf{\section*{个人简历}}
+
+197× 年 ×× 月 ×× 日出生于四川××县。
+
+1992 年 9 月考入××大学化学系××化学专业，1996 年 7 月本科毕业并获得理学学士学位。
+
+1996 年 9 月免试进入xx大学化学系攻读××化学博士至今。 
+
+\section*{在学期间完成的相关学术成果}
+\subsection*{学术论文}   
+\nobibliography*
+\begin{achievements}     
+	\item \bibentry{zhangkun1994}
+	\item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with silicon-based ferroelectric thin films[J]. Integrated Ferroelectrics, 2003, 52:229-235.     
+	\item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究[J]. 中国机械工程, 2005, 16(14):1289-1291.     
+	\item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究[J]. 仪器仪表学报, 2003, 24(S4):192-193.     
+	\item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recognition. In press[J]. (已被Integrated Ferroelectrics录用)   \end{achievements}
+\subsection*{专利}
+\begin{achievements}     
+	\item 任天令, 杨轶, 朱一平, 等. 硅基铁电微声学传感器畴极化区域控制和电极连接的方法: 中国, CN1602118A[P]. 2005-03-30.     
+	\item Ren T L, Yang Y, Zhu Y P, et al. Piezoelectric micro acoustic sensor based on ferroelectric materials: USA, No.11/215, 102[P]. (美国发明专利申请号.)   
+\end{achievements}   
+\end{resume}
+\begin{committee}
+\newcolumntype{C}[1]{@{}>{\centering\arraybackslash}p{#1}}
+  \section*{指导小组名单}
+  \begin{center}     \begin{tabular}{C{3cm}C{3cm}C{9cm}@{}}       李XX & 教授     & 清华大学 \\       王XX & 副教授   & 清华大学 \\       张XX & 助理教授 & 清华大学 \\     \end{tabular}   \end{center}
+  \section*{公开评阅人名单}
+  \begin{center}     \begin{tabular}{C{3cm}C{3cm}C{9cm}@{}}       刘XX & 教授   & 清华大学                    \\       陈XX & 副教授 & XXXX大学                    \\       杨XX & 研究员 & 中国XXXX科学院XXXXXXX研究所 \\     \end{tabular}   \end{center}
+  \section*{答辩委员会名单}
+  \begin{center}     \begin{tabular}{C{2.75cm}C{2.98cm}C{4.63cm}C{4.63cm}@{}}       主席 & 赵XX                  & 教授                    & 清华大学       \\       委员 & 刘XX                  & 教授                    & 清华大学       \\           & \multirow{2}{*}{杨XX} & \multirow{2}{*}{研究员} & 中国XXXX科学院 \\           &                       &                         & XXXXXXX研究所  \\           & 黄XX                  & 教授                    & XXXX大学       \\           & 周XX                  & 副教授                  & XXXX大学       \\       秘书 & 吴XX                  & 助理研究员              & 清华大学       \\     \end{tabular}   \end{center}
+\end{committee}
+\begin{resolution}
+论文提出了……
+
+论文取得的主要创新性成果包括：
+
+1. ……
+
+2. ……
+
+3. ……
+
+论文工作表明作者在×××××具有×××××知识，具有××××能力，论文××××，答辩××××。
+
+答辩委员会表决，（×票/一致）同意通过论文答辩，并建议授予×××（姓名）×××（门类）学博士/硕士学位。 
+\end{resolution}
+
+\backcoverpage[scan/scan-backcover.pdf]
+\end{document}

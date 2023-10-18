@@ -19,6 +19,10 @@
 \options doctor
 \use_default_options true
 \maintain_unincluded_children false
+\begin_local_layout
+Format 66
+provides mathrsfs 1
+\end_local_layout
 \language chinese-simplified
 \language_package default
 \inputencoding utf8-plain
@@ -2716,7 +2720,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -2762,7 +2766,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citet{zhangkun1994}
 \end_layout
@@ -2802,7 +2806,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citep{zhangkun1994}
 \end_layout
@@ -2842,7 +2846,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 cite[42]{zhangkun1994}
 \end_layout
@@ -2882,7 +2886,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -2962,7 +2966,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -3008,7 +3012,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citet{zhangkun1994}
 \end_layout
@@ -3048,7 +3052,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citep{zhangkun1994}
 \end_layout
@@ -3088,7 +3092,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 cite[42]{zhangkun1994}
 \end_layout
@@ -3128,7 +3132,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -3216,7 +3220,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -3262,7 +3266,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citet{zhangkun1994}
 \end_layout
@@ -3302,7 +3306,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 citep{zhangkun1994}
 \end_layout
@@ -3342,7 +3346,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \backslash
 cite[42]{zhangkun1994}
 \end_layout
@@ -3382,7 +3386,7 @@ quad$
 \backslash
 Rightarrow$
 \backslash
-quad}
+quad
 \end_layout
 
 \end_inset
@@ -3740,7 +3744,7 @@ noprefix "false"
 ）。
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{2\uppi\symup\{i\}}\int_{\gamma}f=\sum_{k=1}^{m}n\left(\text{\ensuremath{\gamma}};a_{k}\right)\mathsrc{R}\left(f;a_{k}\right)\label{eq:appendix-equation}
+\frac{1}{2\pi i}\int_{\gamma}f=\sum_{k=1}^{m}n\left(\text{\ensuremath{\gamma}};a_{k}\right)\mathscr{R}\left(f;a_{k}\right)\label{eq:appendix-equation}
 \end{equation}
 
 \end_inset
@@ -3809,14 +3813,7 @@ section*{在学期间完成的相关学术成果}
 
 
 \backslash
-subsection*{学术论文}   
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nobibliography*
+subsection*{学术论文}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3824,15 +3821,6 @@ nobibliography*
 
 \backslash
 begin{achievements}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item 
-\backslash
-bibentry{zhangkun1994}     
 \end_layout
 
 \begin_layout Plain Layout

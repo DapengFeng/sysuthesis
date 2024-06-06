@@ -14,6 +14,9 @@
   %   选择打印版（print）或用于提交的电子版（electronic），前者会插入空白页以便直接双面打印
   %
   output = electronic,
+  % 格式类型
+  %   默认为论文（thesis），也可以设置为开题报告（proposal）
+  % thesis-type = proposal,
   %
   % 标题
   %   可使用“\\”命令手动控制换行
@@ -66,6 +69,10 @@
   %
   author  = {[姓名]},
   author* = {[Name]},
+  % 学号
+  % 仅当书写开题报告时需要（同时设置 `thesis-type = proposal'）
+  %
+  % student-id = {2000310000},
   %
   % 指导教师
   %   中文姓名和职称之间以英文逗号“,”分开，下同
@@ -159,6 +166,11 @@
 % \usepackage{natbib}
 % \bibliographystyle{sysuthesis-author-year}
 
+
+% 生命科学学院要求使用 Cell 参考文献格式（2023 年以前使用 author-date 格式）
+% \usepackage{natbib}
+% \bibliographystyle{cell}
+
 % 本科生参考文献的著录格式
 % \usepackage[sort]{natbib}
 % \bibliographystyle{sysuthesis-bachelor}
@@ -166,6 +178,7 @@
 % 参考文献使用 BibLaTeX 宏包
 % \usepackage[style=sysuthesis-numeric]{biblatex}
 % \usepackage[style=sysuthesis-author-year]{biblatex}
+% \usepackage[style=gb7714-2015]{biblatex}
 % \usepackage[style=apa]{biblatex}
 % \usepackage[style=mla-new]{biblatex}
 % 声明 BibLaTeX 的数据库

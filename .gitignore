@@ -11,7 +11,7 @@ dtx-style.sty
 # sysuthesis.cls
 # sysuthesis.pdf
 # sysuthesis-example.pdf
-spine.pdf
+lyx/sysuthesis-example.tex
 *.hd
 
 ## test files:

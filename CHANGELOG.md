@@ -6,6 +6,12 @@
 
 ## [Unreleased]
 
+## [v1.2.0] - 2024-06-06
+### Update
+ - 更新lyx模板
+### Merge
+ - 合并ThuThesis v7.5.1
+
 ## [v1.1.1] - 2023-10-18
 ### Add
  - 添加封面和封底扫描版
@@ -33,7 +39,8 @@
 - 改变研究生的titlepage和copyrightpage
 
 
-[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.2.0...HEAD
+[v1.2.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.2.0
 [v1.1.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.1.1
 [v1.1.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.1.0
 [v1.0.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.0.1

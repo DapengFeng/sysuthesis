@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2023 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
+%% Copyright (C) 2024 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -21,15 +21,18 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
-\newcommand\sysuthesisversion{1.1.1}
+\newcommand\sysuthesisversion{1.2.0}
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2023/10/18 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+[2024/06/06 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
 \newcommand\sysu@warning[1]{%
   \ClassWarning{sysuthesis}{#1}%
+}
+\newcommand\sysu@debug[1]{%
+  \typeout{Package sysuthesis Info: #1}%
 }
 \newcommand\sysu@patch@error[1]{%
   \sysu@error{Failed to patch command \protect#1}%
@@ -205,6 +208,7 @@
     choices = {
       auto,
       windows,
+      windows-local,
       mac,
       mac-word,
       noto,
@@ -212,6 +216,10 @@
       none,
     },
     default = auto,
+  },
+  windows-font-dir = {
+    name = windows@font@dir,
+    default = {.},
   },
   math-font = {
     name = math@font,
@@ -660,8 +668,9 @@
       \sysusetup{system = windows}
     }
   }
+  \sysu@debug{Detected system: \sysu@system}
 \fi
-\newcommand\sysu@mac@word@font@path{%
+\newcommand\sysu@mac@word@font@dir{%
   /Applications/Microsoft Word.app/Contents/Resources/DFonts/%
 }
 \ifsysu@fontset@auto
@@ -671,21 +680,26 @@
     \IfFontExistsTF{SimSun}{
       \sysusetup{fontset = windows}
     }{
-      \IfFileExists{\sysu@mac@word@font@path/SimSun.ttf}{
-        \sysusetup{fontset = windows}
+      \IfFileExists{\sysu@windows@font@dir/Simsun.ttc}{
+        \sysusetup{fontset = windows, cjk-font = windows-local}
       }{
-        \ifsysu@system@mac
-          \sysusetup{fontset = mac}
-        \else
-          \IfFontExistsTF{Noto Serif CJK SC}{
-            \sysusetup{fontset = ubuntu}
-          }{
-            \sysusetup{fontset = fandol}
-          }
-        \fi
+        \IfFileExists{\sysu@mac@word@font@dir/Simsun.ttc}{
+          \sysusetup{fontset = windows, cjk-font = mac-word}
+        }{
+          \ifsysu@system@mac
+            \sysusetup{fontset = mac}
+          \else
+            \IfFontExistsTF{Noto Serif CJK SC}{
+              \sysusetup{fontset = ubuntu}
+            }{
+              \sysusetup{fontset = fandol}
+            }
+          \fi
+        }
       }
     }
   \fi
+  \sysu@debug{Detected fontset: \sysu@fontset}
 \fi
 \newcommand\sysu@set@font{%
   \@nameuse{sysu@set@font@\sysu@font}%
@@ -892,11 +906,6 @@
 \newcommand\sysu@set@font@newtx{%
   \RequirePackage{newtxtext}%
 }
-\ExplSyntaxOn
-\@ifpackageloaded { xeCJK }
-  { \msg_redirect_name:nnn { fontspec } { no-script } { info } }
-  { }
-\ExplSyntaxOff
 \ifsysu@cjk@font@auto
   \ifsysu@fontset@mac
     \sysusetup{cjk-font = mac}
@@ -905,10 +914,14 @@
       \IfFontExistsTF{SimSun}{
         \sysusetup{cjk-font = windows}
       }{
-        \IfFileExists{\sysu@mac@word@font@path/SimSun.ttf}{
-          \sysusetup{cjk-font = mac-word}
+        \IfFileExists{\sysu@windows@font@dir/Simsun.ttc}{
+          \sysusetup{cjk-font = windows-local}
         }{
-          \sysu@error{Cannot find "SimSun" font}
+          \IfFileExists{\sysu@mac@word@font@dir/Simsun.ttc}{
+            \sysusetup{cjk-font = mac-word}
+          }{
+            \sysu@error{Cannot find font}
+          }
         }
       }
     \else
@@ -919,6 +932,7 @@
       \fi
     \fi
   \fi
+  \sysu@debug{Detected CJK font: \sysu@cjk@font}
 \fi
 \newcommand\sysu@set@cjk@font@windows{%
   \setCJKmainfont{SimSun}[
@@ -932,29 +946,70 @@
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
-\@namedef{sysu@set@cjk@font@mac-word}{%
-  \setCJKmainfont{SimSun}[%
-    Path         = \sysu@mac@word@font@path,
-    AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
+\@namedef{sysu@set@cjk@font@windows-local}{%
+  \IfFileExists{\sysu@windows@font@dir/Kaiti.ttf}{
+    \setCJKmainfont{SimSun}[%
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Kaiti,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Fangsong}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Kaiti}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Fangsong}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }{
+    \setCJKmainfont{SimSun}[%
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Simkai,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Simfang}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Simkai}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Simfang}[
+      Path         = \sysu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }
   \setCJKsansfont{SimHei}[%
-    Path         = \sysu@mac@word@font@path,
+    Path         = \sysu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKmonofont{FangSong}[Path=\sysu@mac@word@font@path]%
   \setCJKfamilyfont{zhsong}{SimSun}[%
-    Path         = \sysu@mac@word@font@path,
+    Path         = \sysu@windows@font@dir/,
+    Extension    = .ttc,
     AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhhei}{SimHei}[%
-    Path         = \sysu@mac@word@font@path,
+    Path         = \sysu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \sysu@mac@word@font@path]%
-  \setCJKfamilyfont{zhfs}{FangSong}[Path = \sysu@mac@word@font@path]%
+}
+\@namedef{sysu@set@cjk@font@mac-word}{%
+  \let\sysu@windows@font@dir\sysu@mac@word@font@dir
+  \@nameuse{sysu@set@cjk@font@windows-local}%
 }
 \newcommand\sysu@set@cjk@font@mac{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -986,19 +1041,30 @@
   ]%
 }
 \newcommand\sysu@set@cjk@font@noto{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
     ItalicFont     = FandolKai-Regular,
     ItalicFeatures = {Extension = .otf},
+    Script         = CJK,
   ]%
-  \setCJKsansfont{Noto Sans CJK SC}[BoldFont = * Medium]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}[
+    Script         = CJK,
+  ]%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
     UprightFont    = * Light,
     UprightFont    = * Bold,
+    Script         = CJK,
   ]%
-  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[BoldFont = * Medium]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -1009,6 +1075,7 @@
   ]%
 }
 \newcommand\sysu@set@cjk@font@fandol{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
@@ -2002,7 +2069,7 @@
   \else
     \ifsysu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\sffamily}
+        [\z@]{\sffamily}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\sysu@leaders\thecontentspage}%
       \titlecontents{section}
@@ -2015,7 +2082,7 @@
         {\sysu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
+        [\z@]{\heiti}
         {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\sysu@leaders\thecontentspage}%
       \titlecontents{section}
@@ -2244,19 +2311,8 @@
   \stepcounter{sysu@csl@count}%
 }
 \newcommand\sysu@name@title@format[2]{%
-  \ifsysu@degree@type@professional
-    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
-    \sysu@stretch{67.6bp}{#1}%
-    \hspace{9.8bp}%
-    % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{9.8bp}}%
-      #2%
-    \endgroup
-  \else
-    \sysu@pad{3cm}{\sysu@stretch{4em}{#1}}%
-    \sysu@stretch{3em}{#2}%
-  \fi
+  \sysu@pad{3cm}{\sysu@stretch{4em}{#1}}%
+  \sysu@stretch{3em}{#2}%
 }
 \newcommand\sysu@name@title[1]{%
   \setcounter{sysu@csl@count}{0}%
@@ -2305,7 +2361,7 @@
   \fi
   \sysu@titlepage
   \ifsysu@include@spine@true
-    \sysu@spine
+    \spine
   \fi
   \ifsysu@degree@graduate
     \ifsysu@thesis@type@thesis
@@ -2318,30 +2374,13 @@
 \newcommand\sysu@titlepage{%
   \sysusetup{language = chinese}%
   \ifsysu@degree@graduate
+    % 研究生
     \ifsysu@thesis@type@thesis
-      \ifsysu@degree@type@academic
-        \ifsysu@degree@doctor
-          \sysu@titlepage@doctor@academic
-        \else
-          \sysu@titlepage@master@academic
-        \fi
-      \else
-        \ifsysu@degree@doctor
-          \sysu@titlepage@doctor@professional
-        \else
-          \ifx\sysu@professional@field\@empty
-            \ifx\sysu@engineering@field\@empty
-              \sysu@titlepage@master@professional@without@field
-            \else
-              \sysu@titlepage@master@professional@with@field
-            \fi
-          \else
-            \sysu@titlepage@master@professional@with@field
-          \fi
-        \fi
-      \fi
+      % 学位论文
+      \sysu@titlepage@thesis
     \else
       \ifsysu@thesis@type@proposal
+        % 选题报告
         \sysu@titlepage@proposal
       \else
         \ifsysu@thesis@type@report
@@ -2351,9 +2390,11 @@
     \fi
   \else
     \ifsysu@degree@bachelor
+      % 本科生
       \sysu@titlepage@bachelor
     \else
       \ifsysu@degree@postdoc
+        % 博后
         \sysu@cover@postdoc
         \cleardoublepage
         \sysu@titlepage@postdoc
@@ -2362,10 +2403,10 @@
   \fi
   \sysu@reset@main@language
 }
-\newcommand\sysu@titlepage@doctor@academic{%
+\newcommand\sysu@titlepage@thesis{%
   \newgeometry{
     top     = 2cm,
-    bottom  = 3.25cm,
+    bottom  = 6cm,
     hmargin = 3.5cm,
   }%
   \thispagestyle{empty}%
@@ -2381,208 +2422,30 @@
       \sffamily\fontsize{26bp}{46.8bp}\selectfont
       \sysu@title\par
     \endgroup
-    \vskip 5.4pt%
-    \begingroup
-      \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-      \sysu@title@en\par
-    \endgroup
-    \vskip -9.2pt%
+    \ifsysu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \sysu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
     \vskip 24.1pt%
-    \sysu@titlepage@degree\par
+    \sysu@title@page@degree@category\par
     \vfill
-    \parbox[t][7.25cm][t]{\textwidth}{%
-      \fangsong\fontsize{16bp}{31.2bp}\selectfont
-      \sysu@titlepage@info
-    }\par
-    \vfill
-    \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@doctor@professional{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 3.25cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 0.45cm%
-  \begingroup
-    \centering
-    \parbox[t][1.52cm][t]{\textwidth}{%
-      \hskip -0.69cm%
-      \sysu@titlepage@secret
-    }\par
-    \vskip 1.5cm%
-    \begingroup
-      % 1.21 倍行距，无网格
-      \sffamily\fontsize{26bp}{40.9bp}\selectfont
-      \sysu@title\par
-    \endgroup
-    \vskip 5.4pt%
-    \begingroup
-      \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-      \sysu@title@en\par
-    \endgroup
-    \vskip -9.2pt%
-    \vskip 25.5pt%
-    \sysu@titlepage@degree
-    \vfill
-    \parbox[b][5.24cm][b]{\textwidth}{%
-      \fangsong\fontsize{16bp}{1cm}\selectfont
-      \sysu@titlepage@info
-    }\par
-    \vskip 2.22cm%
-    \parbox[t][1.0cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@master@academic{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 10bp%
-  \begingroup
-    \centering
-    \parbox[t][55bp][t]{\textwidth}{%
-      \hskip -23bp%
-      \sysu@titlepage@secret
-    }\par
-    \vskip 34pt%
-    \begingroup
-      % 1.21 倍行距
-      \sffamily\fontsize{26bp}{40.898bp}\selectfont
-      \sysu@title\par
-    \endgroup
-    \ifsysu@main@language@english
-      \vskip 5.4pt%
-      \begingroup
-        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-        \sysu@title@en\par
-      \endgroup
-      \vskip -9.2pt%
-    \fi
-    \vskip 18pt%
-    \sysu@titlepage@degree\par
-    \vfill
-    \parbox[t][7.05cm][t]{\textwidth}{%
-      % 表格行高 1cm = 28.35bp
-      \fangsong\fontsize{16bp}{28.35bp}\selectfont
-      \sysu@titlepage@info
-    }\par
-    \parbox[t][37bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@master@professional@without@field{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 15bp%
-  \begingroup
-    \centering
-    \parbox[t][41bp][t]{\textwidth}{%
-      \hskip -23bp%
-      \sysu@titlepage@secret
-    }\par
-    \vskip 1.5cm%
-    \begingroup
-      % 1.21 倍行距，无网格
-      \sffamily\fontsize{26bp}{40.9bp}\selectfont
-      \sysu@title\par
-    \endgroup
-    \ifsysu@main@language@english
-      \vskip 5.4pt%
-      \begingroup
-        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-        \sysu@title@en\par
-      \endgroup
-      \vskip -9.2pt%
-    \fi
-    \vskip 25.5pt%
-    \sysu@titlepage@degree
-    \vfill
-    \parbox[b][5.24cm][b]{\textwidth}{%
-      \fangsong\fontsize{16bp}{1cm}\selectfont
-      \sysu@titlepage@info
-    }\par
-    \vskip 2.22cm%
-    \parbox[t][35.5bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@master@professional@with@field{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 10bp%
-  \begingroup
-    \centering
-    \parbox[t][46bp][t]{\textwidth}{%
-      \hskip -23bp%
-      \sysu@titlepage@secret
-    }\par
-    \vskip 1.5cm%
-    \begingroup
-      % 1.21 倍行距，无网格
-      \sffamily\fontsize{26bp}{40.9bp}\selectfont
-      \sysu@title\par
-    \endgroup
-    \ifsysu@main@language@english
-      \vskip 5.4pt%
-      \begingroup
-        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-        \sysu@title@en\par
-      \endgroup
-      \vskip -9.2pt%
-    \fi
-    \vskip 25.5pt%
-    \sysu@titlepage@degree
-    \vskip 119bp%
-    \parbox[b][5.24cm][b]{\textwidth}{%
-      \fangsong\fontsize{16bp}{31bp}\selectfont
-      \renewcommand\sysu@info@item@format[2]{%
-        \begingroup
-          \renewcommand\CJKglue{\hspace{##1}}%
-          ##2%
-        \endgroup
-      }%
-      \renewcommand\sysu@name@title@format[2]{%
-        % 字距 9bp，共 16bp * 3 + 9bp * 2 = 66bp
-        \sysu@stretch{66bp}{##1}%
-        \hspace{22bp}%
-        % 字距 6bp
-        \begingroup
-          \renewcommand\CJKglue{\hspace{16bp}}%
-          ##2%
-        \endgroup
-      }%
-      \sysu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
-        \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
-        \sysu@info@item{专业领域}{\sysu@info@item@format{2bp}}{\sysu@professional@field}%
-        \sysu@info@item{工程领域}{\sysu@info@item@format{2bp}}{\sysu@engineering@field}%
-        \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-        \sysu@info@item{学号}{}{\sysu@student@id}%
-        \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-        \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-        \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
+    \ifsysu@degree@type@academic
+      \parbox[t][7.25cm][t]{\textwidth}{%
+        \fangsong\fontsize{16bp}{31.2bp}\selectfont
+        \sysu@titlepage@info
       }\par
-    }\par
-    \vfill
-    \parbox[t][33.5bp][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+    \else
+      \parbox[t][5.25cm][b]{\textwidth}{%
+        \fangsong\fontsize{16bp}{31.2bp}\selectfont
+        \sysu@titlepage@info
+      }\par
+      \vskip 62pt%
+    \fi
+    \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -2605,7 +2468,7 @@
       \sysu@title\par
     }%
     \vskip 0.85cm%
-    \sysu@titlepage@degree
+    \sysu@title@page@degree@category
     \vfill
     \parbox[t][8.5cm][t]{\textwidth}{%
       \centering
@@ -2624,14 +2487,15 @@
   \restoregeometry
 }
 \newcommand\sysu@set@student@id{%
-  \ifsysu@thesis@type@proposal
-    \ifx\sysu@student@id\@empty
-      \sysusetup{student-id=2000310000}%
+    \ifsysu@thesis@type@proposal\else
+    \ifx\sysu@student@id\@empty\else
+      \sysu@warning{`student-id' in "\protect\sysusetup" would be ignored when `thesis-type' is not proposal.}%
     \fi
   \fi
 }
 \sysu@set@student@id
 \sysu@option@hook{thesis-type}{\sysu@set@student@id}
+\sysu@option@hook{student-id}{\sysu@set@student@id}
 \newcommand\sysu@titlepage@secret{%
   \sffamily\sanhao
   \ifx\sysu@secret@level\@empty
@@ -2640,9 +2504,9 @@
     \sysu@secret@level\symbol{"2605}\makebox[3em][c]{\sysu@secret@year}年%
   \fi\par
 }
-\newcommand\sysu@titlepage@degree{%
+\newcommand\sysu@title@page@degree@category{%
   \begingroup
-    \xiaoer
+    \fontsize{16bp}{22bp}\selectfont
     \ifLuaTeX
       \fontspec{\CJK@family}%
       \ltjsetparameter{kanjiskip = {1bp}}%
@@ -2678,26 +2542,27 @@
 }
 \newcommand\sysu@titlepage@info{%
   \ifsysu@degree@doctor
+    \sysu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
+    \sysu@info@item{培养单位}{}{\sysu@department}%
     \ifsysu@degree@type@academic
-      \sysu@titlepage@info@doctor@academic
+      \sysu@info@item{学科}{}{\sysu@discipline}%
+      \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
     \else
-      \sysu@titlepage@info@doctor@professional
+      \sysu@info@item{专业领域}{}{\sysu@professional@field}%
+      \sysu@info@item{工程领域}{}{\sysu@engineering@field}%
+      \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
     \fi
-  \else
-    \ifsysu@degree@type@academic
-      \sysu@titlepage@info@master@academic
-    \else
-      \ifx\sysu@professional@field\@empty
-        \ifx\sysu@engineering@field\@empty
-          \sysu@titlepage@info@master@professional@without@field
-        \else
-          \sysu@titlepage@info@master@professional@with@field
-        \fi
+    \ifsysu@thesis@type@proposal
+      \ifx\sysu@student@id\@empty
+        \sysu@warning{Missing option `student-id' in "\protect\sysusetup", ID will not appear on cover.}
       \else
-        \sysu@titlepage@info@master@professional@with@field
+        \sysu@info@item{学号}{}{\sysu@student@id}%
       \fi
     \fi
-  \fi
+      \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+      \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+      \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
+  }\par
 }
 \newcommand\sysu@titlepage@info@tabular[5]{%
   \def\sysu@info@item##1##2##3{%
@@ -2712,87 +2577,6 @@
     \renewcommand\arraystretch{1}%
     #5%
   \end{tabular}%
-}
-\newcommand\sysu@info@item@format[1]{#1}
-\newcommand\sysu@titlepage@info@doctor@academic{%
-  \sysu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@doctor@professional{%
-  \sysu@titlepage@info@tabular{2.3cm}{3.1cm}{5em}{1.42cm}{%
-    \sysu@info@item{培养单位}{}{{\sysu@department}}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@academic{%
-  \renewcommand\sysu@info@item@format[2]{%
-    \begingroup
-      \renewcommand\CJKglue{\hspace{##1}}%
-      ##2%
-    \endgroup
-  }
-  \renewcommand\sysu@name@title@format[2]{%
-    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
-    \sysu@stretch{67.6bp}{##1}%
-    \hspace{9.8bp}%
-    % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{6bp}}%
-      ##2%
-    \endgroup
-  }%
-  \sysu@titlepage@info@tabular{58bp}{3.59cm}{5.5em}{0.82cm}{%
-    \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
-    \sysu@info@item{学科}{\sysu@info@item@format{2bp}}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@professional@without@field{%
-  \renewcommand\sysu@info@item@format[2]{%
-    \begingroup
-      \renewcommand\CJKglue{\hspace{##1}}%
-      ##2%
-    \endgroup
-  }
-  \renewcommand\sysu@name@title@format[2]{%
-    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
-    \sysu@stretch{67.6bp}{##1}%
-    \hspace{9.8bp}%
-    % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{6bp}}%
-      ##2%
-    \endgroup
-  }%
-  \sysu@titlepage@info@tabular{58bp}{3.28cm}{5em}{1.52cm}{%
-    \sysu@info@item{培养单位}{\sysu@info@item@format{1bp}}{\sysu@department}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{学号}{}{\sysu@student@id}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@professional@with@field{%
 }
 \newcommand\sysu@titlepage@date{%
   \begingroup
@@ -2841,6 +2625,7 @@
     {\sffamily\bfseries\sysu@author@en\par}%
     \vskip 0.18cm%
     \parbox[t][3.0cm][t]{\textwidth}{%
+      \centering
       \xiaosan[2.1]%
       \sysu@titlepage@en@supervisor
     }\par
@@ -2869,6 +2654,7 @@
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%
+      \centering
       \xiaosan[1.82]%
       \sysu@titlepage@en@supervisor
     }\par
@@ -2902,7 +2688,6 @@
   {\sffamily\bfseries\sysu@degree@category@en\par}%
 }
 \newcommand\sysu@titlepage@en@supervisor{%
-  \hspace{1.27cm}%
   \begin{tabular}{r@{\makebox[20.5bp][l]{\hspace{2bp}:}}l}%
     \renewcommand\arraystretch{1}%
     \sysu@thesis@name@en{} Supervisor & \sysu@supervisor@en \\
@@ -2941,7 +2726,11 @@
     \centering
     \includegraphics{logo/校徽和中英文校名标准全称的上下组合.pdf}%
     \vskip 0.94cm%
-    {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \ifsysu@thesis@type@proposal
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
+    \else
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \fi
   \endgroup
   \vskip 1.8cm%
   \begingroup
@@ -3534,6 +3323,7 @@
   \sysu@option@hook{cite-style}{\@nameuse{bibstyle@\sysu@cite@style}}
   \@namedef{bibstyle@sysuthesis-numeric}{\citestyle{super}}
   \@namedef{bibstyle@sysuthesis-author-year}{\citestyle{author-year}}
+  \@namedef{bibstyle@cell}{\citestyle{author-year}}
   \@namedef{bibstyle@sysuthesis-bachelor}{\citestyle{super}}
   \renewcommand\NAT@citesuper[3]{%
     \ifNAT@swa
@@ -3908,54 +3698,116 @@
   }%
 }
 \newcommand\sysu@end@appendix@ref@section{}
+\AtBeginOfPackageFile*{bibunits}{
+  \def\bibliography#1{%
+    \if@filesw
+      \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+      \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+    \fi
+    \@input@{\jobname.bbl}%
+    \gdef\bu@bibdata{#1}%
+  }
+  \def\bibliographystyle#1{%
+    \ifx\@begindocumenthook\@undefined\else
+      \expandafter\AtBeginDocument
+    \fi
+      {\if@filesw
+        \immediate\write\@auxout{\string\bibstyle{#1}}%
+        \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+      \fi}%
+      \gdef\bu@bibstyle{#1}%
+  }
+}
 \AtEndOfPackageFile*{bibunits}{
-  \ifsysu@degree@graduate
-    \newcommand\sysu@appendix@bib@num@format[1]{[\@Alph\c@chapter.#1]\hfill}
-    \g@addto@macro\appendix{%
-      \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
-      \bibliographyunit[\chapter]%
+  \def\@startbibunit{%
+    \global\let\@startbibunitorrelax\relax
+    \global\let\@finishbibunit\@finishstartedbibunit
+    \global\advance\@bibunitauxcnt 1
+    \if@filesw
+      {\endlinechar-1
+      \makeatletter
+      \@input{\@bibunitname.aux}}%
+      \immediate\openout\@bibunitaux\@bibunitname.aux
+      \immediate\write\@bibunitaux{\string\bibstyle{\@localbibstyle}}%
+    \fi
+  }
+  \def\bu@bibliography#1{%
+    \putbib[#1]%
+  }
+  \def\bu@bibliographystyle#1{%
+    \if@filesw
+      \immediate\write\@bibunitaux{\string\gdef\string\@localbibstyle{#1}}%
+    \fi
+    \gdef\@localbibstyle{#1}%
+  }
+  \providecommand\printbibliography{\putbib\relax}%
+  \g@addto@macro\appendix{%
+    \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+    \bibliographyunit[\chapter]%
+    \renewcommand\bibsection{%
+      \ctexset{section/numbering = false}%
+      \section{\bibname}%
+      \ctexset{section/numbering = true}%
+    }%
+    \ifsysu@degree@graduate
       \renewcommand\citenumfont{\@Alph\c@chapter.}%
-      \renewcommand\bibsection{%
-        \ctexset{section/numbering = false}%
-        \section{\bibname}%
-        \ctexset{section/numbering = true}%
-      }%
       \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
       \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
-      \let\bibnumfmt\sysu@appendix@bib@num@format
-      \let\bibliographystyle\defaultbibliographystyle
-      \let\bibliography\sysu@appendix@bibliography
-    }
-    \renewcommand\sysu@end@appendix@ref@section{%
-      \bibliographyunit\relax
-    }
-    \providecommand\printbibliography{\putbib\relax}%
-    \AtEndDocument{\sysu@end@appendix@ref@section}
-    % \let\@xtestdef\@gobbletwo  % This doesn't work
-    \def\bibunits@rerun@warning{\relax}
-  \fi
+      \renewcommand\bibnumfmt[1]{[\@Alph\c@chapter.#1]\hfill}%
+    \fi
+  }
+  \renewcommand\sysu@end@appendix@ref@section{%
+    \bibliographyunit\relax
+  }
+  \AtEndDocument{\sysu@end@appendix@ref@section}
+  \renewcommand\sysu@set@survey@bibheading{%
+    \renewcommand\bibsection{%
+      \par
+      \vskip 20bp%
+      \sysu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]\bibname\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
+  % \let\@xtestdef\@gobbletwo  % This doesn't work
+  \def\bibunits@rerun@warning{\relax}
 }
 \PassOptionsToPackage{defernumbers = true}{biblatex}
 \AtEndOfPackageFile*{biblatex}{
-  \ifsysu@degree@graduate
     \DeclareRefcontext{appendix}{}
-    \g@addto@macro\appendix{%
-      \pretocmd\chapter{%
-        \newrefsection
+  \g@addto@macro\appendix{%
+    \pretocmd\chapter{%
+      \newrefsection
+      \ifsysu@degree@bachelor\else
         \@tempcnta=\c@chapter
         \advance\@tempcnta\@ne
         \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
-      }{}{\sysu@patch@error{\chapter}}%
-      \defbibheading{bibliography}[\bibname]{%
-        \ctexset{section/numbering = false}%
-        \section{#1}%
-        \ctexset{section/numbering = true}%
-      }%
-    }
-    % \renewcommand\sysu@end@appendix@ref@section{%
-    %   \endrefsection
-    % }
-  \fi
+      \fi
+    }{}{\sysu@patch@error{\chapter}}%
+    \defbibheading{bibliography}[\bibname]{%
+      \ctexset{section/numbering = false}%
+      \section{#1}%
+      \ctexset{section/numbering = true}%
+    }%
+  }
+  \renewcommand\sysu@set@survey@bibheading{%
+    \defbibheading{bibliography}[\bibname]{%
+      \par
+      \vskip 20bp%
+      \sysu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]##1\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
+  \def\bibliographystyle#1{%
+    \sysu@warning{'bibliographystyle' invalid for 'biblatex'.}%
+  }
 }
 \@ifpackagelater{titletoc}{2019/07/14}{
   \newcommand\sysu@print@contents[5]{%
@@ -3979,18 +3831,14 @@
     \vskip 20bp%
   }%
   \let\appendix\sysu@appendix@appendix
+  \sysu@set@survey@bibheading
   \renewcommand\bibname{参考文献}%
-  \let\bibsection\sysu@appendix@bibsection
-  \renewcommand\@bibunitname{\jobname-survey}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\sysu@appendix@bibliography
-  \begin{bibunit}%
   \startcontents[survey]%
 }{%
   \stopcontents[survey]%
-  \end{bibunit}%
   \sysu@reset@main@language % restore language
 }
+\newcommand\sysu@set@appendix@bib@heading{}
 \newenvironment{translation}{%
   \chapter{外文资料的书面翻译}%
   \sysusetup{language = chinese}%
@@ -4023,23 +3871,31 @@
       \section{\bibname}%
     \endgroup
   }%
-  \renewcommand\@bibunitname{\jobname-translation}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\sysu@appendix@bibliography
-  \begin{bibunit}%
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
-  \end{bibunit}%
   \sysu@reset@main@language % restore language
 }
-\newenvironment{translation-index}{%
-  \begin{bibunit}%
-    \renewcommand\@bibunitname{\jobname-index}%
-    \renewcommand\bibname{书面翻译对应的原文索引}%
-    \let\bibsection\sysu@appendix@bibsection
-}{%
-  \end{bibunit}%
+\newenvironment{translation-index}{}{}
+\AtEndOfPackageFile*{bibunits}{
+  \renewenvironment{translation-index}{%
+    \begin{bibunit}%
+      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \sysu@set@survey@bibheading
+  }{%
+    \end{bibunit}%
+  }
+}
+\AtEndOfPackageFile*{biblatex}{
+  \renewenvironment{translation-index}{%
+    \endrefsection
+    \begin{refsection}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \sysu@set@survey@bibheading
+  }{%
+    \end{refsection}%
+  }
 }
 \DeclareRobustCommand\sysu@appendix@title[1]{\gdef\sysu@appendix@@title{#1}}
 \newcommand\sysu@appendix@maketitle{%
@@ -4069,17 +3925,7 @@
   \setcounter{subsection}{0}%
   \renewcommand\thesection{\thechapter.\@Alph\c@section}%
 }%
-\newcommand\sysu@appendix@bibsection{%
-  \par
-  \vskip 20bp%
-  \sysu@pdfbookmark{1}{\bibname}%
-  \begingroup
-    \centering
-    \xiaosi[1.667]\bibname\par
-  \endgroup
-  \vskip 6bp%
-}%
-\newcommand\sysu@appendix@bibliography[1]{\putbib[#1]}
+\newcommand\sysu@set@survey@bibheading{}
 \newenvironment{resume}{%
   \@mainmatterfalse
   \sysu@end@appendix@ref@section
@@ -4232,7 +4078,7 @@
   \renewcommand\sysu@phantomsection{%
     \phantomsection
   }
-  \pdfstringdefDisableCommands{
+  \pdfstringdefDisableCommands{%
     \let\\\relax
     \let\quad\relax
     \let\qquad\relax
@@ -4472,26 +4318,6 @@
   \endgroup
   \clearpage
   \restoregeometry
-}
-\newcommand\sysu@input@spine{%
-  \IfFileExists{spine.pdf}{}{%
-    \immediate\write18{xelatex spine.tex}%
-    \IfFileExists{spine.pdf}{}{%
-      \sysu@error{Cannot find file "spine.pdf". Compile "spine.tex" first, or enable shell escape}%
-    }%
-  }%
-  \includepdf[pages=1]{spine.pdf}%
-}
-\newcommand\sysu@spine{%
-  \ifsysu@cjk@font@fandol
-    \sysu@input@spine
-  \else
-    \ifsysu@cjk@font@noto
-      \sysu@input@spine
-    \else
-      \spine
-    \fi
-  \fi
 }
 \DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
 \DeclareRobustCommand\file{\nolinkurl}

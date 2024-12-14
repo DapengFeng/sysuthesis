@@ -3,14 +3,14 @@
       {
           "name": "latexmk (xelatex)",
           "tools": [
-              "unpack-thuthesis",
+              "unpack-sysuthesis",
               "xelatexmk"
           ]
       },
       {
           "name": "latexmk (lualatex)",
           "tools": [
-              "unpack-thuthesis",
+              "unpack-thesis",
               "lualatexmk"
           ]
       },
@@ -23,13 +23,13 @@
   ],
   "latex-workshop.latex.tools": [
       {
-          "name": "unpack-thuthesis",
+          "name": "unpack-sysuthesis",
           "command": "xetex",
           "args": [
               "-file-line-error",
               "-halt-on-error",
               "-interaction=nonstopmode",
-              "thuthesis.ins"
+              "sysuthesis.ins"
           ],
           "env": {}
       },
@@ -69,7 +69,7 @@
       }
   ],
   "latex-workshop.latex.watch.files.ignore": [
-      "**/thuthesis.cls",
+      "**/sysuthesis.cls",
       "**/*.bbx",
       "**/*.bbl",
       "**/*.cbx",
@@ -100,5 +100,4 @@
       "**/Library/Application Support/MiKTeX/texmfs/**",
       "/dev/null"
   ],
-  "ros.distro": "humble",
 }

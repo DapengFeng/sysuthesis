@@ -14,8 +14,7 @@
 %
 % \iffalse
 %<*driver>
-\newcommand\sysuthesisversion{1.2.0}
-\ProvidesFile{sysuthesis.dtx}[2024/06/06 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+\ProvidesFile{sysuthesis.dtx}[2024/12/14 1.2.1 Sun Yat-sen University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -239,9 +238,9 @@
 % \begin{shell}
 %   $ xelatex sysuthesis-example.tex
 %   $ bibtex sysuthesis-example.aux              # 生成 bbl 文件
-%   $ bibtex sysuthesis-example-appendix-a.aux    # 附录 A 的的参考文献
-%   $ bibtex sysuthesis-example-appendix-b.aux    # 附录 B 的的参考文献……
-%   $ bibtex sysuthesis-example-index.aux        # 本科生的书面翻译对应的原文索引
+%   $ bibtex sysuthesis-example-appendix-a.aux   # 附录 A 的的参考文献
+%   $ bibtex sysuthesis-example-appendix-b.aux   # 附录 B 的的参考文献……
+%   $ bibtex sysuthesis-example-index-1.aux      # 本科生的书面翻译对应的原文索引
 %   $ xelatex sysuthesis-example.tex             # 解决引用
 %   $ xelatex sysuthesis-example.tex             # 生成论文 PDF
 %
@@ -815,7 +814,7 @@
 %   }
 % \end{latex}
 %
-% 用户也可以逐项修改数学样式。
+% 用户也可以逐项修改数学样式，包括：
 % \newcommand\dif{\mathop{}\!\mathrm{d}}
 % \begin{enumerate}
 %   \item \DescribeOption{uppercase-greek}
@@ -887,11 +886,15 @@
 % 模板作了处理，用户可以直接使用这些宏包的命令，如 \cs{bm}、\cs{mathscr}、
 % \cs{uppi}。
 %
-% 另外，模板还为 `math-font` 提供了传统的 Type 1 字体 \option{newtx}。
+% 另外，模板还为 |math-font| 提供了传统的 Type 1 字体 \option{newtx}。
 % 该选项会调用 \pkg{newtxmath} 宏包。
 % 但是，如果西文字体已经使用了 OpenType 的 Times New Roman，
 % 混用 Type 1 字体可能会导致问题，尤其是使用 \pkg{siunitx} 宏包时。
 % 该选项还处于测试阶段，需要谨慎使用。
+%
+% \DescribeOption{eqn-paren-style}
+% 控制中文论文中，数学公式编号两边的括号样式。可选项包括：\option{full}（全角，默认） / \option{half}（半角）。
+% 在语言为英语（|language = english|）时，此选项无效，仅使用半角括号。
 %
 % \subsubsection{定理环境}
 % \label{sec:theorem}
@@ -1269,10 +1272,9 @@
 %
 % \subsection{基本信息}
 %    \begin{macrocode}
-%<cls>\newcommand\sysuthesisversion{1.2.0}
 %<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{sysuthesis}
-%<cls>[2024/06/06 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+%<cls>[2024/12/14 1.2.1 Sun Yat-sen University Thesis Template]
 %    \end{macrocode}
 %
 % 报错
@@ -1333,7 +1335,7 @@
 %<*cls>
 \hyphenation{SYSU-Thesis}
 \def\sysuthesis{SYSUThesis}
-\def\version{\sysuthesisversion}
+\def\version{1.2.1}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -1661,6 +1663,17 @@
       electronic,
     },
     default = print,
+  },
+%    \end{macrocode}
+%
+% 数学公式编号的括号使用全角还是半角。
+%    \begin{macrocode}
+  eqn-paren-style = {
+    name = eqn@paren@style,
+    choices = {
+      full,
+      half,
+    }
   },
 }
 \newif\ifsysu@degree@graduate
@@ -3515,10 +3528,23 @@
 % 中文模板的公式编号使用中文括号。需要修改 \pkg{amsmath} 的 \cs{tagform@}。
 % 这里中文的 \cs{unskip} 是为了“|式~\eqref|”这样的写法不产生额外的空格。
 %    \begin{macrocode}
+\newcommand\sysu@eqn@left@paren{（}
+\newcommand\sysu@eqn@right@paren{）}
+\newcommand\sysu@set@eqn@paren@style{%
+  \ifsysu@eqn@paren@style@full
+    \renewcommand\sysu@eqn@left@paren{（}%
+    \renewcommand\sysu@eqn@right@paren{）}%
+  \else
+    \renewcommand\sysu@eqn@left@paren{(}%
+    \renewcommand\sysu@eqn@right@paren{)}%
+  \fi
+}
+\sysu@set@eqn@paren@style
+\sysu@option@hook{eqn-paren-style}{\sysu@set@eqn@paren@style}
 \newcommand\sysu@put@parentheses[1]{%
   \ifsysu@language@chinese
     \unskip
-    （#1）%
+    \sysu@eqn@left@paren#1\sysu@eqn@right@paren
   \else
     (#1)%
   \fi
@@ -4929,7 +4955,7 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{logo/校徽和中英文校名标准全称的上下组合.pdf}%
+    \includegraphics{logo/sysu_logo_name_0.pdf}%
     \vskip 0.94cm%
     \ifsysu@thesis@type@proposal
       {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
@@ -6414,9 +6440,11 @@
 %    \begin{macrocode}
 \newenvironment{translation-index}{}{}
 \AtEndOfPackageFile*{bibunits}{
+  \newcounter{sysu@translation@index}%
   \renewenvironment{translation-index}{%
+    \global\advance\c@sysu@translation@index\@ne
     \begin{bibunit}%
-      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\@bibunitname{\jobname-index-\arabic{sysu@translation@index}}%
       \renewcommand\bibname{书面翻译对应的原文索引}%
       \sysu@set@survey@bibheading
   }{%

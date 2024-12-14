@@ -21,10 +21,9 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
-\newcommand\sysuthesisversion{1.2.0}
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2024/06/06 {\sysuthesisversion} Sun Yat-sen University Thesis Template]
+[2024/12/14 1.2.1 Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -62,7 +61,7 @@
 }
 \hyphenation{SYSU-Thesis}
 \def\sysuthesis{SYSUThesis}
-\def\version{\sysuthesisversion}
+\def\version{1.2.1}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -297,6 +296,13 @@
       electronic,
     },
     default = print,
+  },
+  eqn-paren-style = {
+    name = eqn@paren@style,
+    choices = {
+      full,
+      half,
+    }
   },
 }
 \newif\ifsysu@degree@graduate
@@ -1658,10 +1664,23 @@
   \endgroup
 }
 \allowdisplaybreaks[4]
+\newcommand\sysu@eqn@left@paren{（}
+\newcommand\sysu@eqn@right@paren{）}
+\newcommand\sysu@set@eqn@paren@style{%
+  \ifsysu@eqn@paren@style@full
+    \renewcommand\sysu@eqn@left@paren{（}%
+    \renewcommand\sysu@eqn@right@paren{）}%
+  \else
+    \renewcommand\sysu@eqn@left@paren{(}%
+    \renewcommand\sysu@eqn@right@paren{)}%
+  \fi
+}
+\sysu@set@eqn@paren@style
+\sysu@option@hook{eqn-paren-style}{\sysu@set@eqn@paren@style}
 \newcommand\sysu@put@parentheses[1]{%
   \ifsysu@language@chinese
     \unskip
-    （#1）%
+    \sysu@eqn@left@paren#1\sysu@eqn@right@paren
   \else
     (#1)%
   \fi
@@ -2724,7 +2743,7 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{logo/校徽和中英文校名标准全称的上下组合.pdf}%
+    \includegraphics{logo/sysu_logo_name_0.pdf}%
     \vskip 0.94cm%
     \ifsysu@thesis@type@proposal
       {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
@@ -3878,9 +3897,11 @@
 }
 \newenvironment{translation-index}{}{}
 \AtEndOfPackageFile*{bibunits}{
+  \newcounter{sysu@translation@index}%
   \renewenvironment{translation-index}{%
+    \global\advance\c@sysu@translation@index\@ne
     \begin{bibunit}%
-      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\@bibunitname{\jobname-index-\arabic{sysu@translation@index}}%
       \renewcommand\bibname{书面翻译对应的原文索引}%
       \sysu@set@survey@bibheading
   }{%

@@ -1,103 +1,104 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[sysuthesis]{SYSU Thesis Lyx Template}
+#  \DeclareCategory{Thesis}
 # Author : Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 
-Format                35
-Sides                 2
+Format                66
+
 provides mathrsfs 1
 provides subfig 1
 
-Input article.layout
 Input stdclass.inc
 
-Style Cover
-Margin                Dynamic
-Category              Part
-LabelString           "封面"
-LabelType             Counter
-LabelCounter          part
-TocLevel              0
-LatexType             Paragraph
-LatexName             dummy
-KeepEmpty             1
-NeedProtect           1
-NextNoIndent          1
-Labelsep              xxx
-ParSkip               0.4
-TopSep                4
-BottomSep             4
-ParSep                0.8
-Align                 Center
-Alignpossible         Center
-Font
-  Series              Bold
-  Size                Huge
-  Color               Blue
-EndFont
-HTMLTag               h1
+Preamble
+  \newcommand{\coverpage}{%
+    \frontcoverpage[file=scan/scan-frontcover.pdf]%
+    \maketitle%
+    \copyrightpage[file=scan/scan-copyright.pdf]%
+  }
+  \newcommand{\backcover}{%
+    \backcoverpage[scan/scan-backcover.pdf]%
+  }
+EndPreamble
+
+Style CoverPage
+  CopyStyle             Part
+  LabelString           "封面"
+  TopSep                2
+	BottomSep             0.8
+  LatexName             coverpage
+  KeepEmpty             1
 End
 
 Style FrontMatter
-CopyStyle             Cover
-LatexType             Command
-LabelString           "前言"
-LatexName             frontmatter
+  CopyStyle             CoverPage
+  LatexType             Command
+  LabelString           "前言"
+  LatexName             frontmatter
 End
 
 
 Style MainMatter
-CopyStyle             FrontMatter
-LabelString           "正文"
-LatexName             mainmatter
+  CopyStyle             CoverPage
+  LabelString           "正文"
+  LatexName             mainmatter
 End
 
 Style BackMatter
-CopyStyle             FrontMatter
-LabelString           "结文"
-LatexName             backmatter
+  CopyStyle             CoverPage
+  LabelString           "结文"
+  LatexName             backmatter
 End
 
 Style Appendix
-CopyStyle             FrontMatter
-LabelString           "附录"
-LatexName             appendix
+  CopyStyle             CoverPage
+  LabelString           "附录"
+  LatexName             appendix
+End
+
+Style BackCover
+  CopyStyle             CoverPage
+  LabelString           "封底"
+  LatexName             backcover
 End
 
 Style Abstract*
-CopyStyle             Abstract 
-LatexName             abstract*
-LabelString           " Abstract"
+  CopyStyle             Abstract
+  LatexName             abstract*
+  LabelString           " Abstract"
 End
 
 Style Chapter
-CopyStyle             Chapter
-Align                 Center
-LatexName             chapter
+  CopyStyle             Chapter
+  Align                 Center
+  LatexName             chapter
+  LabelType             Static
+  LabelSep              xxx
 End 
 
 Style Acknowledgements
-CopyStyle             Abstract
-Category              Appendix
-LatexName             acknowledgements
-LabelString           "致谢"
+  CopyStyle             Abstract
+  Category              Appendix
+  LatexName             acknowledgements
+  LabelString           "致谢"
 End
 
 Style Resume
-CopyStyle             Acknowledgements
-LatexName             resume
-LabelString           "个人简历"
+  CopyStyle             Acknowledgements
+  LatexName             resume
+  LabelString           "个人简历"
 End
 
 Style Committee
-CopyStyle             Acknowledgements
-LatexName             committee
-LabelString           "答辩委员会名单"
+  CopyStyle             Acknowledgements
+  LatexName             committee
+  LabelString           "答辩委员会名单"
 End
 
 Style Resolution
-CopyStyle             Acknowledgements
-LatexName             resolution
-LabelString           "答辩委员会决议书"
+  CopyStyle             Acknowledgements
+  LatexName             resolution
+  LabelString           "答辩委员会决议书"
 End
 
 

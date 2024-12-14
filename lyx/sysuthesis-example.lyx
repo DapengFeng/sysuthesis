@@ -19,10 +19,6 @@
 \options doctor
 \use_default_options true
 \maintain_unincluded_children false
-\begin_local_layout
-Format 66
-provides mathrsfs 1
-\end_local_layout
 \language chinese-simplified
 \language_package default
 \inputencoding utf8-plain
@@ -93,104 +89,7 @@ provides mathrsfs 1
 
 \begin_body
 
-\begin_layout Cover
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-封面
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frontcoverpage[file=scan/scan-frontcover.pdf]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-扉页
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-maketitle
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-使用授权的说明
-\end_layout
-
-\begin_layout Enumerate
-将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
-\end_layout
-
-\begin_layout Enumerate
-
-\backslash
-copyrightpage[file=scan-copyright.pdf]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-copyrightpage[file=scan/scan-copyright.pdf]
-\end_layout
-
-\end_inset
-
+\begin_layout CoverPage
 
 \end_layout
 
@@ -245,16 +144,6 @@ Keywords are terms used in a dissertation for indexing, reflecting core
  information of the dissertation.
  An abstract may contain a maximum of 5 keywords, with semi-colons used
  in between to separate one another.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-使用Abstract*
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4083,32 +3972,7 @@ end{center}
 答辩委员会表决，（×票/一致）同意通过论文答辩，并建议授予×××（姓名）×××（门类）学博士/硕士学位。 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-封底
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-backcoverpage[scan/scan-backcover.pdf]
-\end_layout
-
-\end_inset
-
+\begin_layout BackCover
 
 \end_layout
 

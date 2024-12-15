@@ -13,8 +13,8 @@ docfiles = {
   "data",
   "ref"
 }
-installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "logo", "scan"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "logo", "scan"}
+installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "logo"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "logo"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md"}
 typesetdemofiles = {"sysuthesis-example.tex", "spine.tex"}

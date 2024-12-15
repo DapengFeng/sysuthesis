@@ -14,9 +14,9 @@ Scroll down for the English version of README.
 
 **由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
 
-**由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
+本项目遵循[LaTeX项目公共许可证 v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/)发布。
 
-**由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
+**位于'logo'目录下的所有'.pdf'文件的所有权归中山大学所有。**
 
 ## 下载
 
@@ -53,6 +53,10 @@ Scroll down for the English version of README.
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral dissertations, and postdoctoral reports. An English translation of this README follows the Chinese below.
 
 **This template is subject to frequent changes. Please make sure you have read the usage documentation and example code completely and carefully before using and asking questions.**
+
+This project is released under the [LaTeX Project Public License v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/).
+
+**The ownership of all files with the extension '.pdf' located within the 'logo' directory is vested in Sun Yat-sen University.**
 
 ## Downloads
 

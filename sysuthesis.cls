@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2024 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
+%% Copyright (C) 2026 by Dapeng Feng <fengdp5@mail2.sysu.edu.cn>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -23,7 +23,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2024/12/14 1.2.1 Sun Yat-sen University Thesis Template]
+[2026/03/17 1.3.0 Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -61,7 +61,7 @@
 }
 \hyphenation{SYSU-Thesis}
 \def\sysuthesis{SYSUThesis}
-\def\version{1.2.1}
+\def\version{1.3.0}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -426,24 +426,9 @@
 \newcommand\sysu@set@geometry{%
   \ifsysu@degree@bachelor
     \geometry{
-      top        = 3.8cm,
-      bottom     = 3.2cm,
-      left       = 3.2cm,
-      right      = 3cm,
-      headheight = 1.9cm,
-      headsep    = 1.9cm,
-      footskip   = 1.45cm,
+      margin     = 3cm,
+      footskip   = 1.5cm,
     }%
-    \ifsysu@output@print
-      \geometry{
-        left       = 3.2cm,
-        right      = 3cm,
-      }%
-    \else
-      \geometry{
-        hmargin    = 3cm,
-      }%
-    \fi
   \else
     \geometry{
       margin     = 3cm,
@@ -469,32 +454,32 @@
   \let\sysu@language\sysu@main@language
 }
 \newcommand\sysu@set@chapter@names{%
+  \ifsysu@degree@bachelor
+    \def\sysu@statement@name{声明}%
+  \else
+    \def\sysu@statement@name{声\hspace{1em}明}%
+  \fi
   \ifsysu@main@language@chinese
+    \def\listfigurename{插图清单}%
+    \def\listtablename{附表清单}%
+    \def\sysu@list@figure@table@name{插图和附表清单}%
+    \def\sysu@list@algorithm@name{算法清单}%
+    \def\sysu@denotation@name{符号和缩略语说明}%
     \def\sysu@comments@name{指导教师评语}%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
     \def\indexname{索引}%
     \def\sysu@resolution@name{答辩委员会决议书}%
     \ifsysu@degree@bachelor
-      \def\contentsname{目\qquad 录}%
-      \def\listfigurename{插图索引}%
-      \def\listtablename{表格索引}%
-      \def\sysu@list@figure@table@name{插图和附表索引}%
-      \def\sysu@list@algorithm@name{算法索引}%
-      \def\sysu@acknowledgements@name{致\qquad 谢}%
+      \def\contentsname{目录}%
+      \def\sysu@acknowledgements@name{致谢}%
       \def\listequationname{公式索引}%
-      \def\sysu@denotation@name{主要符号表}%
       \def\sysu@resume@name{在学期间参加课题的研究成果}%
     \else
-      \def\listfigurename{插图清单}%
-      \def\listtablename{附表清单}%
-      \def\sysu@list@figure@table@name{插图和附表清单}%
-      \def\sysu@list@algorithm@name{算法清单}%
       \def\listequationname{公式清单}%
       \def\sysu@acknowledgements@name{致\quad 谢}%
       \ifsysu@degree@graduate
         \def\contentsname{目\quad 录}%
-        \def\sysu@denotation@name{符号和缩略语说明}%
         \def\sysu@resume@name{个人简历、在学期间完成的相关学术成果}%
       \else  % degree = postdoc
         \def\contentsname{目\qquad 次}%
@@ -1502,13 +1487,8 @@
 }
 \newif\ifsysu@backmatter
 \renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \clearpage
   \@mainmatterfalse
-  \sysu@backmattertrue
   \sysusetup{toc-depth = 0}%
 }
 \pagestyle{fancy}
@@ -1519,7 +1499,7 @@
     \renewcommand\headrulewidth{0pt}%
     \fancyfoot[C]{
       \ifsysu@main@language@chinese
-        \xiaowu
+        \fontsize{10.5bp}{12.075bp}\selectfont
       \else
         \normalsize
       \fi
@@ -1827,13 +1807,8 @@
 \AtEndOfPackageFile*{threeparttable}{
   \g@addto@macro\TPT@defaults{\wuhao}
 }
-\ifsysu@degree@bachelor
-  \newcommand{\sysu@abstract@name}{中文摘要}
-  \newcommand{\sysu@abstract@name@en}{ABSTRACT}
-\else
-  \newcommand{\sysu@abstract@name}{摘\quad 要}
-  \newcommand{\sysu@abstract@name@en}{Abstract}
-\fi
+\newcommand{\sysu@abstract@name}{摘\quad 要}
+\newcommand{\sysu@abstract@name@en}{Abstract}
 \ctexset{%
   chapter = {
     nameformat   = {},
@@ -1860,25 +1835,26 @@
   \ifsysu@degree@bachelor
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        format     = \centering\sffamily\fontsize{16bp}{20.8bp}\selectfont,
+        titleformat = \sysu@stretch{3em},
         aftername  = \quad,
-        beforeskip = 30bp,
-        afterskip  = 20bp,
+        beforeskip = 27bp,
+        afterskip  = 27bp,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
         aftername  = \quad,
-        beforeskip = 25bp,
-        afterskip  = 12bp,
+        beforeskip = 24bp,
+        afterskip  = 6bp,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
@@ -1902,6 +1878,7 @@
   \else
     \ctexset{%
       chapter = {
+        titleformat = {},
         beforeskip = 27bp,
         afterskip  = 27bp,
         number     = \thechapter,
@@ -2013,9 +1990,7 @@
     \sysu@phantomsection
     \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifsysu@degree@bachelor\ctexset{chapter/beforeskip=40bp}\fi
   \chapter*{#3}%
-  \ifsysu@degree@bachelor\ctexset{chapter/beforeskip=30bp}\fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}{%
       \@mkboth{}{}%
@@ -2032,7 +2007,13 @@
   \ifsysu@degree@graduate
     \sysu@chapter*{\contentsname}%
   \else
-    \sysu@chapter*[]{\contentsname}%
+    \ifsysu@degree@bachelor
+      \ctexset{chapter/titleformat = \sysu@stretch{2.5em}}%
+      \sysu@chapter*[]{\contentsname}%
+      \ctexset{chapter/titleformat = \sysu@stretch{3em}}%
+    \else
+      \sysu@chapter*[]{\contentsname}%
+    \fi
   \fi
   \@starttoc{toc}%
 }
@@ -2046,28 +2027,34 @@
     default = arial,
   },
 }
-\newcommand\sysu@leaders{\titlerule*[4bp]{.}}
+\sysu@option@hook{toc-chapter-style}{\sysu@deprecate{"toc-chapter-style" option}{}}
+\newcommand\sysu@contents@label@delimiter{%
+  \ifsysu@degree@bachelor
+    \ifsysu@main@language@chinese
+      \space
+    \else
+      \quad
+    \fi
+  \else
+    \quad
+  \fi
+}
+\newcommand\sysu@leaders{\nobreak\titlerule*[4bp]{.}\nobreak}
 \newcommand\sysu@set@toc@format{%
   \contentsmargin{\z@}%
   \ifsysu@degree@bachelor
     \ifsysu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}
-          \ifsysu@toc@chapter@style@arial
-            \sffamily
-          \else
-            \heiti
-          \fi
-        }
-        {\contentspush{\thecontentslabel\quad}}{}
+        [0pt]{\sffamily}
+        {\contentspush{\thecontentslabel\space}\sysu@stretch{3em}}{\sysu@stretch{3em}}
         {\rmfamily\sysu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
-        {\contentspush{\thecontentslabel\quad}}{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\sysu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [1.5em]{}
-        {\contentspush{\thecontentslabel\quad}}{}
+        [2em]{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\sysu@leaders\thecontentspage}%
     \else
       \ifsysu@main@language@english
@@ -2182,19 +2169,6 @@
     default = {Doctor of Philosophy},
     name    = degree@category@en,
   },
-  % 为了向后兼容
-  degree-name = {
-    name    = degree@category,
-  },
-  degree-name* = {
-    name    = degree@category@en,
-  },
-}
-\sysu@option@hook{degree-name}{%
-  \sysu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
-}
-\sysu@option@hook{degree-name*}{%
-  \sysu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
 }
 \sysu@define@key{
   department = {
@@ -2394,19 +2368,7 @@
   \sysusetup{language = chinese}%
   \ifsysu@degree@graduate
     % 研究生
-    \ifsysu@thesis@type@thesis
-      % 学位论文
-      \sysu@titlepage@thesis
-    \else
-      \ifsysu@thesis@type@proposal
-        % 选题报告
-        \sysu@titlepage@proposal
-      \else
-        \ifsysu@thesis@type@report
-          \sysu@titlepage@proposal
-        \fi
-      \fi
-    \fi
+    \sysu@titlepage@thesis
   \else
     \ifsysu@degree@bachelor
       % 本科生
@@ -2465,42 +2427,6 @@
       \vskip 62pt%
     \fi
     \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@proposal{%
-  \newgeometry{
-    top     = 5cm,
-    bottom  = 3.25cm,
-    hmargin = 3.17cm,
-  }%
-  \thispagestyle{empty}%
-  \begingroup
-    % \vspace*{0.1cm}%
-    \centering
-    % {\sysu@titlepage@title}%
-    \parbox[t][3cm]{\textwidth}{%
-      \vskip 0.1cm%
-      \centering
-      \sffamily\fontsize{26bp}{46.8bp}\selectfont
-      \sysu@title\par
-    }%
-    \vskip 0.85cm%
-    \sysu@title@page@degree@category
-    \vfill
-    \parbox[t][8.5cm][t]{\textwidth}{%
-      \centering
-      \fangsong
-      \ifLuaTeX
-        \fontspec{\CJK@family}%
-      \else
-        \CJKfamily+{}%
-      \fi
-      \sanhao[1.95]%
-      \sysu@titlepage@info
-    }\par
-    \parbox[t][2.5cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -2573,7 +2499,7 @@
     \fi
     \ifsysu@thesis@type@proposal
       \ifx\sysu@student@id\@empty
-        \sysu@warning{Missing option `student-id' in "\protect\sysusetup", ID will not appear on cover.}
+        \sysu@warning{Missing option `student-id' in "\protect\sysusetup", ID will not appear on cover.}%
       \else
         \sysu@info@item{学号}{}{\sysu@student@id}%
       \fi
@@ -2726,8 +2652,10 @@
 }
 \newcommand\sysu@titlepage@bachelor{%
   \newgeometry{
-    vmargin = 2.54cm,
-    hmargin = 3.17cm,
+    top    = 3.8cm,
+    bottom = 3.2cm,
+    left   = 3.2cm,  % 装订线靠左 0.2 cm
+    right  = 3cm,
   }%
   \thispagestyle{empty}%
   \begingroup
@@ -2738,68 +2666,55 @@
       \ifx\sysu@secret@level\@empty\else
         \sysu@secret@level\space\sysu@secret@year 年\par
       \fi
-    }%
+    }\par
   \endgroup
-  \vfill
+  \vspace{19bp}%
   \begingroup
     \centering
+    \hspace*{-5bp}%
     \includegraphics{logo/sysu_logo_name_0.pdf}%
-    \vskip 0.94cm%
-    \ifsysu@thesis@type@proposal
-      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
-    \else
-      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
-    \fi
-  \endgroup
-  \vskip 1.8cm%
-  \begingroup
-    \heiti
-    % 21.0cm - 0.2cm - 3cm * 2 - 18bp * 4 = 347bp
-    \noindent\hspace{1em}\makebox[54bp]{\xiaoer[1.2]题目：}%
-    \parbox[t]{347bp}{%
-      \ifsysu@main@language@chinese
-        \yihao[1.56]%
-      \else
-        \fontsize{26bp}{32bp}\selectfont
+    \hspace{10bp}%
+    \par
+    \vspace{17bp}%
+    \begingroup
+      \sffamily\bfseries\xiaochu\ziju{0.3}%
+      综合论文训练%
+      \ifsysu@thesis@type@proposal
+        \\开题报告
       \fi
-      \renewcommand\ULthickness{0.05em}%
-      \renewcommand\ULdepth{0.17em}%
-      \expandafter\uline\expandafter{\sysu@title}\par
+      \par
+    \endgroup
+    \vspace{48bp}%
+    \parbox[t][136bp]{\linewidth}{%
+      \centering
+      \heiti\fontsize{26bp}{32.5bp}\selectfont
+      \sysu@title\par
       \ifsysu@main@language@english
         \sysusetup{language=english}%
-        \expandafter\uline\expandafter{\sysu@title@en}\par
+        \sysu@title@en\par
         \sysusetup{language=chinese}%
       \fi
     }\par
   \endgroup
-  \vskip 1.9cm%
   \begingroup
-    \fangsong\sanhao[2.32]%
-    \leftskip=2.5cm%
-    \parindent=\z@
-    \def\sysu@info@item##1##2##3{%
-      \ifx##3\@empty\else
-        \sysu@fixed@box{%
-          \ifx\sysu@co@supervisor\@empty
-            4em%
-          \else
-            5.5em%
-          \fi
-        }{##1}：##2{##3}\par
-      \fi
-    }%
+    \fangsong
+    \fontsize{16bp}{30.96bp}\selectfont
+    \noindent
     \def\sysu@name@title@format##1##2{%
-      \sysu@stretch{3em}{##1}\quad ##2%
+      \sysu@stretch{4em}{##1}%
+      \hspace{1.5em}%
+      \sysu@stretch{2.5em}{##2}%
     }%
-    \sysu@info@item{系别}{}{\sysu@department}%
-    \sysu@info@item{专业}{}{\sysu@discipline}%
-    \sysu@info@item{姓名}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{辅导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
-    \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
+    \sysu@titlepage@info@tabular{81bp}{2.5cm}{4em}{0.82cm}{%
+      \sysu@info@item{系别}{}{\sysu@department}%
+      \sysu@info@item{专业}{}{\sysu@discipline}%
+      \sysu@info@item{姓名}{\sysu@name@title}{\sysu@author}%
+      \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+      \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+      \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@co@supervisor}%
+    }\par
   \endgroup
-  \vskip 1.4cm%
+  \vfill
   \begingroup
     \centering
     \ifLuaTeX
@@ -2807,9 +2722,11 @@
     \else
       \CJKfamily+{}%
     \fi
-    \xiaosi\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}\par
+    \fontsize{16bp}{24bp}\selectfont
+    \ziju{0.03}%
+    \sysu@format@date{\sysu@date@zh@short}{\sysu@date}\par
   \endgroup
-  \vfill
+  \vspace*{60bp}%
   \clearpage
   \restoregeometry
 }
@@ -2930,8 +2847,8 @@
   \fi
 }
 \newcommand\copyrightpage[1][]{%
-  \cleardoublepage
   \ifsysu@degree@postdoc\relax\else
+    \cleardoublepage
     \def\sysu@@tmp{#1}
     \ifx\sysu@@tmp\@empty
       \sysusetup{language=chinese}%
@@ -2940,6 +2857,7 @@
       \else
         \sysu@copyright@page@graduate
       \fi
+      \clearpage
       \sysu@reset@main@language
     \else
       \thispagestyle{empty}%
@@ -2969,8 +2887,8 @@
       },
     }%
     \sysu@chapter*[]{关于学位论文使用授权的说明}%
-    \thispagestyle{empty}%
   \endgroup
+  \thispagestyle{empty}%
   \vskip 13bp%
   \begingroup
     \fontsize{14bp}{26bp}\selectfont
@@ -2981,7 +2899,7 @@
     （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
     或在校园网上供校内师生浏览部分内容；\allowbreak
     \ifsysu@degree@doctor
-      （3）\nobreak 根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
+      （3）\nobreak 根据《中华人民共和国学位法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
     \else
       （3）\nobreak 按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
     \fi
@@ -3004,26 +2922,28 @@
   \begingroup
     \ctexset{
       chapter = {
-        format     = {\centering\sffamily\erhao[1]},
-        beforeskip = 1bp,
-        afterskip  = 24bp,
+        format     = {\centering\sffamily\erhao},
+        beforeskip = 40bp,
+        afterskip  = 37bp,
       },
     }%
-    \sysu@chapter*[]{关于学位论文使用授权的说明}%
-    \thispagestyle{empty}%
+    \sysu@chapter*[]{关于论文使用授权的说明}%
   \endgroup
-  \vskip 4bp%
-  本人完全了解中山大学有关保留、使用学位论文的规定，即：%
-  学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
-  学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。\par
-  \textbf{(涉密的学位论文在解密后应遵守此规定)}\par
-  \null\par
+  \thispagestyle{empty}%
+  \vspace*{13bp}%
   \begingroup
-    \centering
-    签\quad 名：\sysu@underline[6em]{}%
-    导师签名：\sysu@underline[6em]{}%
-    日\quad 期：\sysu@underline[6em]{}%
-    \par
+    \fontsize{14bp}{26bp}\selectfont
+    本人完全了解中山大学有关保留、使用综合论文训练论文的规定，即：%
+    学校有权保留论文的复印件，允许论文被查阅和借阅；%
+    学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。\par
+  \endgroup
+  \vspace{71bp}%
+  \begingroup
+    \setlength{\parindent}{0pt}%
+    \fontsize{12bp}{18bp}\selectfont
+    \hspace*{42bp}作者签名：\hspace{118bp}导师签名：\par
+    \vspace{11bp}%
+    \hspace*{42bp}日\hspace{2em}期：\hspace{118bp}日\hspace{2em}期：\par
   \endgroup
 }
 \sysu@define@key{
@@ -3045,9 +2965,6 @@
   \expandafter\comma@parse\expandafter{#1}{\sysu@clist@processor}%
 }
 \newenvironment{abstract}{%
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
   \sysusetup{language = chinese}%
   \ifsysu@degree@graduate
     \begingroup
@@ -3064,57 +2981,56 @@
 }{%
   \par
   \null\par
-  \ifsysu@degree@graduate
+  \ifsysu@degree@postdoc
+    \textbf{关键词：}%
+  \else
     \noindent
     \textsf{关键词：}%
-  \else
-    \textbf{关键词：}%
   \fi
-  \sysu@clist@use{\sysu@keywords}{；}%
+  \sysu@clist@use{\sysu@keywords}{；}\par
   \gdef\sysu@keywords{}%
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
   \sysu@reset@main@language % switch back to main language
 }
 \newenvironment{abstract*}{%
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
   \sysusetup{language = english}%
-  \ifsysu@degree@graduate
-    \sysu@chapter*{\sysu@abstract@name@en}%
+  \ifsysu@degree@bachelor
+    \begingroup
+      \ctexset{chapter/afterskip = 30bp}%
+      \sysu@chapter*[]{\sysu@abstract@name@en}%
+    \endgroup
   \else
-    \sysu@chapter*[]{\sysu@abstract@name@en}%
+    \ifsysu@degree@graduate
+      \sysu@chapter*{\sysu@abstract@name@en}%
+    \else
+      \sysu@chapter*[]{\sysu@abstract@name@en}%
+    \fi
   \fi
 }{%
   \par
   \null\par
-  \ifsysu@degree@graduate
+  \ifsysu@degree@postdoc\else
     \noindent
   \fi
-  \textbf{Keywords:}\space
-  \sysu@clist@use{\sysu@keywords@en}{; }%
-  \ifsysu@degree@graduate
-    \vspace*{\stretch{1}}%
-  \fi
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
+  \textbf{Keywords:} \sysu@clist@use{\sysu@keywords@en}{; }\par
   \sysu@reset@main@language % switch back to main language
 }
 \newenvironment{denotation}[1][2.5cm]{%
   \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
-  \ifsysu@degree@graduate
-    \sysu@chapter*{\sysu@denotation@name}%
+    \ifsysu@main@language@chinese
+      \sysu@chapter*[]{\sysu@denotation@name}%
+    \else
+      \sysu@chapter*{\sysu@denotation@name}%
+    \fi
   \else
-    \sysu@chapter*[]{\sysu@denotation@name}%
+    \ifsysu@degree@graduate
+      \sysu@chapter*{\sysu@denotation@name}%
+    \else
+      \sysu@chapter*[]{\sysu@denotation@name}%
+    \fi
   \fi
-  \vskip-30bp\xiaosi[1.6]\begin{sysu@denotation}[labelwidth=#1]
+  \begin{sysu@denotation}[labelwidth=#1]%
 }{%
-  \end{sysu@denotation}
+  \end{sysu@denotation}%
 }
 \newlist{sysu@denotation}{description}{1}
 \setlist[sysu@denotation]{%
@@ -3127,23 +3043,26 @@
   labelsep*=0.5cm,
   itemindent=0pt,
 }
-\newcommand{\sysu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
-  ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
-  文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
-  其他个人和集体，均已在文中以明确方式标明。}
+\newcommand{\sysu@statement@text@bachelor}{%
+  本人郑重声明：所呈交的综合论文训练论文，是本人在导师指导下，独立进行研究工作所取得的成果。%
+  尽我所知，除文中已经注明引用的内容外，本论文的研究成果不包含任何他人享有著作权的内容。%
+  对本论文所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。%
+}
+\newcommand{\sysu@statement@text@graduate}{%
+  本人郑重声明：所呈交的学位论文，是本人在导师指导下，独立进行研究工作所取得的成果%
+  \ifx\sysu@secret@level\@empty
+    ，不包含涉及国家秘密的内容%
+  \fi%
+  。尽我所知，除文中已经注明引用的内容外，本学位论文的研究成果不包含任何他人享有著作权的内容。%
+  对本论文所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。%
+}
 \newcommand{\sysu@signature}{签\hspace{1em}名：}
 \newcommand{\sysu@backdate}{日\hspace{1em}期：}
 \newenvironment{acknowledgements}{%
   \@mainmatterfalse
   \sysu@end@appendix@ref@section
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
   \sysu@chapter*{\sysu@acknowledgements@name}%
 }{%
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
 }
 \sysu@define@key{
   statement-page-style = {
@@ -3154,38 +3073,11 @@
       plain,
     },
     default = auto,
-  },
-  statement-page-number = {
-    name = statement@page@number,
-    choices = {
-      false,
-      true,
-    },
-    default = false,
-  },
+  }
 }
-\sysu@option@hook{statement-page-number}{%
-  \ifsysu@statement@page@number@false
-    \sysusetup{statement-page-style=empty}%
-  \else
-    \sysusetup{statement-page-style=plain}%
-  \fi
-  \sysu@warning{%
-    The "statement-page-number" option is deprecated.
-    Use "page-style" option of \protect\statement command instead%
-  }%
-}
-\newif\ifsysu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
   \sysu@end@appendix@ref@section
-  \sysu@statement@existstrue
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-    \def\sysu@statement@name{声\hspace{2em}明}%
-  \else
-    \def\sysu@statement@name{声\hspace{1em}明}%
-  \fi
   \let\sysu@statement@file\@empty
   \kv@define@key{sysu@statement}{page-style}{\sysusetup{statement-page-style=##1}}%
   \kv@define@key{sysu@statement}{file}{\let\sysu@statement@file\kv@value}%
@@ -3199,17 +3091,9 @@
   \kvsetkeys{sysu@statement}{#1}%
   \ifsysu@statement@page@style@auto
     \ifx\sysu@statement@file\@empty
-      \ifsysu@degree@bachelor
-        \sysusetup{statement-page-style = empty}%
-      \else
-        \sysusetup{statement-page-style = plain}%
-      \fi
+      \sysusetup{statement-page-style = empty}%
     \else
-      \ifsysu@degree@bachelor
-        \sysusetup{statement-page-style = plain}%
-      \else
-        \sysusetup{statement-page-style = empty}%
-      \fi
+      \sysusetup{statement-page-style = plain}%
     \fi
   \fi
   \ifx\sysu@statement@file\@empty
@@ -3225,14 +3109,27 @@
       \sysu@chapter*{\sysu@statement@name}%
     \endgroup
     \thispagestyle{\sysu@statement@page@style}%
-    \sysu@statement@text\par
     \ifsysu@degree@graduate
-      \vskip 2cm%
+      \vspace{12bp}%
+      \fontsize{12bp}{21bp}\selectfont
+      \sysu@statement@text@graduate\par
+      \vspace{79bp}%
+      \begingroup
+        \noindent\hspace{5.4cm}\fontsize{13bp}{18bp}\selectfont
+        \sysu@signature\sysu@underline[2.8cm]{}\hspace{-6bp}%
+        \sysu@backdate\sysu@underline[2.3cm]{}\par
+      \endgroup
     \else
-      \null\par
+      \ifsysu@degree@bachelor
+        \begingroup
+          \renewcommand\CJKglue{\hspace{.1bp}}%
+          \sysu@statement@text@bachelor\par
+        \endgroup
+        \vspace{40bp}%
+        \hfill 签\hspace{.5em}名：\sysu@underline[2.75cm]{}\hspace{.5em}%
+        日\hspace{.5em}期：\sysu@underline[2.75cm]{}\par
+      \fi
     \fi
-    {\hfill\sysu@signature\sysu@underline[2.5cm]\relax
-      \sysu@backdate\sysu@underline[2.5cm]\relax}%
     \sysu@reset@main@language
   \else
     \includepdf[pagecommand={%
@@ -3242,64 +3139,73 @@
       \thispagestyle{\sysu@statement@page@style}%
     }]{\sysu@statement@file}%
   \fi
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-  \fi
 }
 \let\acknowledgement\acknowledgements
 \let\endacknowledgement\endacknowledgements
 \def\sysu@listof#1{% #1: float type
-  \setcounter{tocdepth}{2} % restore tocdepth in case being modified
-  \@ifstar
-    {\sysu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
-    {\sysu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
-}
-\renewcommand\listoffigures{%
+  \setcounter{tocdepth}{2}%  restore tocdepth in case being modified
+  \@ifstar{\sysu@deprecate{starred form of \protect\listof... command}{}}{}%
   \ifsysu@degree@bachelor
-    \ifsysu@backmatter\else
-      \sysu@warning{The list of figures should be placed in back matter}%
+    \ifsysu@main@language@chinese
+      \sysu@chapter*[]{\csname list#1name\endcsname}%
+    \else
+      \sysu@chapter*{\csname list#1name\endcsname}%
+    \fi
+  \else
+    \ifsysu@degree@graduate
+      \sysu@chapter*{\csname list#1name\endcsname}%
+    \else
+      \sysu@chapter*[]{\csname list#1name\endcsname}%
     \fi
   \fi
+  \@starttoc{\csname ext@#1\endcsname}%
+}
+\renewcommand\listoffigures{%
   \sysu@listof{figure}%
 }
 \titlecontents{figure}
   [\z@]{}
-  {\contentspush{\figurename~\thecontentslabel\quad}}{}
-  {\nobreak\sysu@leaders\nobreak\hfil\thecontentspage}
+  {\contentspush{\figurename~\thecontentslabel\sysu@contents@label@delimiter}}{}
+  {\sysu@leaders\thecontentspage}
 \renewcommand\listoftables{%
-  \ifsysu@degree@bachelor
-    \ifsysu@backmatter\else
-      \sysu@warning{The list of tables should be placed in back matter}%
-    \fi
-  \fi
   \sysu@listof{table}%
 }
 \titlecontents{table}
   [\z@]{}
-  {\contentspush{\tablename~\thecontentslabel\quad}}{}
+  {\contentspush{\tablename~\thecontentslabel\sysu@contents@label@delimiter}}{}
   {\sysu@leaders\thecontentspage}
 \newcommand\listoffiguresandtables{%
   \ifsysu@degree@bachelor
-    \sysu@warning{The list of figures and tables are for graduates only}%
-    \listoffigures
-    \listoftables
+    \ifsysu@main@language@chinese
+      \sysu@chapter*[]{\sysu@list@figure@table@name}%
+    \else
+      \sysu@chapter*{\sysu@list@figure@table@name}%
+    \fi
   \else
-    \sysu@chapter*{\sysu@list@figure@table@name}%
-    \@starttoc{lof}%
-    \par
-    \null\par
-    \@starttoc{lot}%
+    \ifsysu@degree@graduate
+      \sysu@chapter*{\sysu@list@figure@table@name}%
+    \else
+      \sysu@chapter*[]{\sysu@list@figure@table@name}%
+    \fi
   \fi
+  \@starttoc{lof}%
+  \par
+  \null\par
+  \@starttoc{lot}%
 }
 \def\ext@equation{loe}
 \def\equcaption#1{%
+  \sysu@deprecate{"\protect\equcaption" command}{}%
   \addcontentsline{\ext@equation}{equation}%
                   {\protect\numberline{#1}}}
-\newcommand\listofequations{\sysu@listof{equation}}
+\newcommand\listofequations{%
+  \sysu@deprecate{"\protect\listofequations" command}{}%
+  \sysu@listof{equation}%
+}
 \titlecontents{equation}
   [0pt]{\addvspace{6bp}}
-  {\sysu@equation@name~\thecontentslabel}{}
-  {\nobreak\sysu@leaders\nobreak\thecontentspage}
+  {\contentspush{\sysu@equation@name~\thecontentslabel\sysu@contents@label@delimiter}}{}
+  {\sysu@leaders\thecontentspage}
 \contentsuse{equation}{loe}
 \sysu@define@key{
   cite-style = {
@@ -3564,18 +3470,18 @@
       \fi}{#1}{#2}}
   \renewcommand\bibsection{\sysu@chapter*{\bibname}}
   \newcommand\sysu@set@bibliography@format{%
+    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+    \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
     \ifsysu@degree@bachelor
-      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifsysu@main@language@chinese
-        \setlength{\bibhang}{21bp}%
+        \setlength{\bibhang}{1cm}%
       \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+        \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
-      \setlength{\bibhang}{21bp}%
+      \setlength{\bibhang}{1cm}%
     \fi
   }
   \sysu@set@bibliography@format
@@ -3621,19 +3527,18 @@
   \DeclareRobustCommand\inlinecite{\parencite}
   \defbibheading{bibliography}[\bibname]{\sysu@chapter*{\bibname}}
   \newcommand\sysu@set@bibliography@format{%
+    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+    \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
     \ifsysu@degree@bachelor
-      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifsysu@main@language@chinese
-        \setlength{\bibhang}{21bp}%
+        \setlength{\bibhang}{1cm}%
       \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+        \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
-      \setlength{\biblabelsep}{0.1cm}%
-      \setlength{\bibhang}{21bp}%
+      \setlength{\bibhang}{1cm}%
     \fi
   }
   \sysu@set@bibliography@format
@@ -3644,10 +3549,16 @@
   \AtBeginDocument{
     \sysu@set@chapter@names
   }
-  \renewcommand\bibliographytypesize{\fontsize{10.5bp}{17bp}\selectfont}
-  \setlength{\bibitemsep}{6bp}
+  \renewcommand\bibliographytypesize{\fontsize{10.5bp}{16bp}\selectfont}
+  \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
+  \ifsysu@degree@bachelor
+    \ifsysu@main@language@english
+      \renewcommand\bibliographytypesize{\fontsize{10.5bp}{17bp}\selectfont}%
+      \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
+    \fi
+  \fi
   \ifsysu@main@language@chinese
-    \setlength{\bibleftmargin}{21bp}
+    \setlength{\bibleftmargin}{1cm}
     \setlength{\bibindent}{-\bibleftmargin}
   \else
     \setlength{\bibleftmargin}{0.5in}
@@ -3663,11 +3574,6 @@
 }
 \g@addto@macro\appendix{%
   \@mainmattertrue
-  \ifsysu@degree@bachelor
-    \ifsysu@statement@exists\else
-      \sysu@warning{The appendices should be placed after statement}%
-    \fi
-  \fi
 }
 \sysu@define@key{
   toc-depth = {
@@ -3781,15 +3687,18 @@
   \AtEndDocument{\sysu@end@appendix@ref@section}
   \renewcommand\sysu@set@survey@bibheading{%
     \renewcommand\bibsection{%
-      \par
-      \vskip 20bp%
-      \sysu@pdfbookmark{1}{\bibname}%
       \begingroup
-        \centering
-        \xiaosi[1.667]\bibname\par
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 20pt,
+            afterskip = 4pt,
+          },
+        }%
+        \section{\bibname}%
       \endgroup
-      \vskip 6bp%
-    }%
+    }
   }%
   % \let\@xtestdef\@gobbletwo  % This doesn't work
   \def\bibunits@rerun@warning{\relax}
@@ -3814,14 +3723,18 @@
   }
   \renewcommand\sysu@set@survey@bibheading{%
     \defbibheading{bibliography}[\bibname]{%
-      \par
-      \vskip 20bp%
-      \sysu@pdfbookmark{1}{\bibname}%
+      \vspace{20bp}%
       \begingroup
-        \centering
-        \xiaosi[1.667]##1\par
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 0pt,
+            afterskip = 0pt,
+          },
+        }%
+        \section{\bibname}%
       \endgroup
-      \vskip 6bp%
     }%
   }%
   \def\bibliographystyle#1{%
@@ -3884,12 +3797,7 @@
     \vskip 20bp%
   }%
   \let\appendix\sysu@appendix@appendix
-  \def\bibsection{%
-    \begingroup
-      \ctexset{section/numbering=false}%
-      \section{\bibname}%
-    \endgroup
-  }%
+  \sysu@set@survey@bibheading
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
@@ -3951,18 +3859,18 @@
   \@mainmatterfalse
   \sysu@end@appendix@ref@section
   \sysu@chapter*{\sysu@resume@name}%
-  \ctexset{
-    section = {
-      format    += \centering,
-      numbering = false,
-    },
-  }%
+  \ctexset{section/numbering = false}%
+  \ifsysu@degree@bachelor
+    \ctexset{section/aftertitle = {：\@@par}}%
+  \else
+    \ctexset{section/format += \centering}%
+  \fi
   \ifsysu@language@chinese
     \ctexset{
       subsection = {
         format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
         numbering  = false,
-        aftertitle = ：,
+        aftertitle = {：\@@par},
       },
     }%
     \setlist[achievements]{
@@ -4058,22 +3966,24 @@
   \fi
 }
 \newcommand{\record}[1]{%
-  \let\sysu@record@file\@empty
-  \kv@define@key{sysu@record}{file}{\let\sysu@record@file\kv@value}%
-  \kv@set@family@handler{sysu@record}{%
-    \ifx\kv@value\relax
-      \let\sysu@record@file\kv@key
-    \else
-      \kv@handled@false
+  \ifsysu@degree@bachelor
+    \let\sysu@record@file\@empty
+    \kv@define@key{thu@record}{file}{\let\sysu@record@file\kv@value}%
+    \kv@set@family@handler{thu@record}{%
+      \ifx\kv@value\relax
+        \let\sysu@record@file\kv@key
+      \else
+        \kv@handled@false
+      \fi
+    }%
+    \kvsetkeys{thu@record}{#1}%
+    \ifx\sysu@record@file\@empty
+      \sysu@error{File path of \protect\record\space is required}
     \fi
-  }%
-  \kvsetkeys{sysu@record}{#1}%
-  \ifx\sysu@record@file\@empty
-    \sysu@error{File path of \protect\record\space is required}
+    \clearpage
+    \sysu@pdfbookmark{0}{综合论文训练记录表}%
+    \includepdf[pages=-]{\sysu@record@file}%
   \fi
-  \cleardoublepage
-  \sysu@pdfbookmark{0}{综合论文训练记录表}%
-  \includepdf[pages=-]{\sysu@record@file}%
 }
 \PassOptionsToPackage{
   linktoc            = all,
@@ -4152,16 +4062,16 @@
   \newcommand\sysu@set@siunitx@language{%
     \ifsysu@language@chinese
       \sisetup{
-        list-final-separator = { 和 },
-        list-pair-separator  = { 和 },
-        range-phrase         = {～},
+        list-final-separator = {\TextOrMath{\space}{\ }\text{和}\TextOrMath{\space}{\ }},
+        list-pair-separator  = {\TextOrMath{\space}{\ }\text{和}\TextOrMath{\space}{\ }},
+        range-phrase         = {\text{～}},
       }%
     \else
       \ifsysu@language@english
         \sisetup{
-          list-final-separator = {, and },
-          list-pair-separator  = { and },
-          range-phrase         = { to },
+          list-final-separator = {\TextOrMath{\space}{\ }\text{and}\TextOrMath{\space}{\ }},
+          list-pair-separator  = {\TextOrMath{\space}{\ }\text{and}\TextOrMath{\space}{\ }},
+          range-phrase         = {\TextOrMath{\space}{\ }\text{to}\TextOrMath{\space}{\ }},
         }%
       \fi
     \fi
@@ -4235,7 +4145,7 @@
   \contentsuse{algorithm}{loa}
   \titlecontents{algorithm}
     [\z@]{}
-    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\sysu@contents@label@delimiter}}{}
     {\sysu@leaders\thecontentspage}
 }
 \PassOptionsToPackage{algochapter}{algorithm2e}
@@ -4253,7 +4163,7 @@
   \contentsuse{algocf}{loa}
   \titlecontents{algocf}
     [\z@]{}
-    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\sysu@contents@label@delimiter}}{}
     {\sysu@leaders\thecontentspage}
 }
 \AtEndOfPackageFile*{minted}{

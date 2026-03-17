@@ -6,6 +6,12 @@
 
 ## [Unreleased]
 
+## [v1.3.0] - 2026-03-17
+### Update
+- 更新文档和示例代码
+### Merge
+- 合并ThuThesis v7.6.0
+
 ## [v1.2.1] - 2024-12-14
 ### Merge
   - 合并ThuThesis v7.5.2

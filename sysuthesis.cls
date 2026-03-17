@@ -3968,15 +3968,15 @@
 \newcommand{\record}[1]{%
   \ifsysu@degree@bachelor
     \let\sysu@record@file\@empty
-    \kv@define@key{thu@record}{file}{\let\sysu@record@file\kv@value}%
-    \kv@set@family@handler{thu@record}{%
+    \kv@define@key{sysu@record}{file}{\let\sysu@record@file\kv@value}%
+    \kv@set@family@handler{sysu@record}{%
       \ifx\kv@value\relax
         \let\sysu@record@file\kv@key
       \else
         \kv@handled@false
       \fi
     }%
-    \kvsetkeys{thu@record}{#1}%
+    \kvsetkeys{sysu@record}{#1}%
     \ifx\sysu@record@file\@empty
       \sysu@error{File path of \protect\record\space is required}
     \fi

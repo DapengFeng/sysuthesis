@@ -5,7 +5,6 @@
 
 Format                66
 
-provides mathrsfs 1
 provides subfig 1
 
 Input stdclass.inc

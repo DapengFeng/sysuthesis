@@ -11,9 +11,8 @@ Input stdclass.inc
 
 Preamble
   \newcommand{\coverpage}{%
-    \frontcoverpage[file=scan/scan-frontcover.pdf]%
+    \frontcoverpage%
     \maketitle%
-    \copyrightpage[file=scan/scan-copyright.pdf]%
   }
   \newcommand{\backcover}{%
     \backcoverpage[scan/scan-backcover.pdf]%

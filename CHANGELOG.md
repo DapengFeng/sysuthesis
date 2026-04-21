@@ -6,6 +6,12 @@
 
 ## [Unreleased]
 
+## [v1.3.1] - 2026-04-21
+### Update
+- 更新封面扫描版插入和默认封面
+- 更新扉页信息
+- 更新算法package{algpseudocode}
+
 ## [v1.3.0] - 2026-03-17
 ### Update
 - 更新文档和示例代码
@@ -49,7 +55,8 @@
 - 改变研究生的titlepage和copyrightpage
 
 
-[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/DapengFeng/sysuthesis/compare/v1.3.1...HEAD
+[v1.3.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.3.1
 [v1.3.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.3.0
 [v1.2.1]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.2.1
 [v1.2.0]:     https://github.com/DapengFeng/sysuthesis/releases/tag/v1.2.0

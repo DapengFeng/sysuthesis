@@ -23,7 +23,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2026/03/17 1.3.0 Sun Yat-sen University Thesis Template]
+[2026/04/21 1.3.1 Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -1808,7 +1808,7 @@
   \g@addto@macro\TPT@defaults{\wuhao}
 }
 \newcommand{\sysu@abstract@name}{摘\quad 要}
-\newcommand{\sysu@abstract@name@en}{Abstract}
+\newcommand{\sysu@abstract@name@en}{ABSTRACT}
 \ctexset{%
   chapter = {
     nameformat   = {},
@@ -1864,7 +1864,7 @@
       \ctexset{
         chapter = {
           name   = {第,章},
-          number = \thechapter,
+          number = \chinese{chapter},
         },
       }%
     \else
@@ -1903,6 +1903,7 @@
           nameformat  = {},
           titleformat = {},
           name        = {第,章},
+          number      = \chinese{chapter},
           aftername   = \quad,
         },
         section = {
@@ -2161,6 +2162,9 @@
   committee* = {
     name = committee@en,
   },
+  degree = {
+    default = {博士},
+  },
   degree-category = {
     default = {工学博士},
     name    = degree@category,
@@ -2314,20 +2318,152 @@
   \expandafter\comma@parse\expandafter{#1}{\sysu@name@title@process}%
   \sysu@name@title@format{\sysu@@name}{\sysu@@title}%
 }
+\newcommand\sysu@name@title@plain[1]{%
+  \setcounter{sysu@csl@count}{0}%
+  \gdef\sysu@@name{}%
+  \gdef\sysu@@title{}%
+  \expandafter\comma@parse\expandafter{#1}{\sysu@name@title@process}%
+  \ifx\sysu@@title\@empty
+    \sysu@@name
+  \else
+    \sysu@@name\space\sysu@@title
+  \fi
+}
+\newcommand\sysu@frontcoverpage@title{%
+    \begin{figure}[htpb]
+        \centering
+        \includegraphics[width=0.7\linewidth]{logo/sysu_name_0.pdf}
+    \end{figure}
+}
+\newcommand\sysu@frontcoverpage@default{%
+  \sysusetup{language = chinese}
+  \ifsysu@degree@doctor
+    \sysu@frontcoverpage@graduate@academic
+  \else
+    \ifsysu@degree@type@professional
+      \sysu@frontcoverpage@graduate@professional
+    \else
+      \sysu@frontcoverpage@graduate@academic
+    \fi
+  \fi
+}
+
+\newcommand\sysu@frontcoverpage@secret{
+    {\kaishu\hfill 密级: \sysu@pad{4em}{\sysu@secret@level}\relax}\\
+    {\kaishu\hfill 编号: \sysu@pad{4em}{\sysu@student@id}\relax}
+}
+\newcommand\sysu@frontcoverpage@graduate@academic{%
+  \newgeometry{
+    top     = 3cm,
+    bottom  = 3cm,
+    hmargin = 3cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 0.2cm%
+  \begingroup
+    \centering
+    \sysu@frontcoverpage@secret
+    \vskip 2cm
+    {\sysu@frontcoverpage@title}%
+    \vskip 0.5cm
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \chuhao\textbf{\sysu@degree 学位论文}\par
+  \endgroup
+  \vskip 1.5cm
+  \begingroup
+  \begin{tabular}{p{13cm}}
+      {\parbox[t][1.5cm][c]{13cm}{\noindent\centering\xiaoer\textbf{\sysu@title}}}\\
+    \hline
+      {\parbox[t][2cm][c]{13cm}{\noindent\centering\xiaoer\textbf{\sysu@title@en}}}\\
+    \hline
+  \end{tabular}\par
+  \vskip 1.5cm
+  \endgroup
+
+  \begingroup
+    \noindent\sihao\kaishu
+    \begin{center}
+        学位申请人:\ \ \sysu@underline[5.3cm]{\sysu@author}
+        \vskip 0.2cm
+        导师姓名及职称:\ \ \sysu@underline[4.3cm]{\sysu@name@title@plain{\sysu@supervisor}}
+        \vskip 0.2cm
+        专业名称:\ \ \sysu@underline[5.9cm]{\sysu@discipline}
+    \end{center}
+  \endgroup
+  \vskip 2cm
+  \begingroup
+    \centering
+    {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
+  \endgroup
+  \endgroup
+  \thispagestyle{empty}
+  \clearpage
+  \restoregeometry
+}
+\newcommand\sysu@frontcoverpage@graduate@professional{%
+  \newgeometry{
+    top     = 3cm,
+    bottom  = 3cm,
+    hmargin = 3cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 0.2cm%
+  \begingroup
+    \centering
+    \sysu@frontcoverpage@secret
+    \vskip 2cm
+    {\sysu@frontcoverpage@title}%
+    \vskip 0.5cm
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \xiaochu
+    \sysu@underline[4.5cm]{工程 }\textbf{\sysu@degree\ifsysu@degree@type@professional 专业\fi 学位论文}\par
+  \endgroup
+  \vskip 2cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title}\par
+  \vskip 1.8cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title@en}\par
+  \vskip 2cm
+  \begingroup
+    \noindent\sihao\kaishu
+    \begin{center}
+        学位申请人:\ \ \sysu@underline[5.9cm]{\sysu@author}
+        \vskip 0.2cm
+        导师姓名及职称:\ \ \sysu@underline[4.9cm]{\sysu@name@title@plain{\sysu@supervisor}}
+        \vskip 0.2cm
+        专业、领域名称:\ \ \sysu@underline[5.0cm]{\sysu@discipline}
+    \end{center}
+  \endgroup
+  \vskip 2cm
+  \begingroup
+    \centering
+    {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
+  \endgroup
+  \endgroup
+  \thispagestyle{empty}
+  \clearpage
+  \restoregeometry
+}
 \newif\ifsysufrontcoverpage\sysufrontcoverpagefalse
 \newcommand\frontcoverpage[1][]{%
   \thispagestyle{empty}%
   \sysu@phantomsection
   \sysu@pdfbookmark{-1}{\sysu@title}%
-  \kv@define@key{sysu@frontcoverpage}{file}{\includepdf{\kv@value}}%
-  \kv@set@family@handler{sysu@frontcoverpage}{%
-    \ifx\kv@value\relax
-      \includepdf{\kv@key}%
-    \else
-      \kv@handled@false
-    \fi
-  }%
-  \kvsetkeys{sysu@frontcoverpage}{#1}%
+  \def\sysu@@tmp{#1}%
+  \ifx\sysu@@tmp\@empty
+    \sysu@frontcoverpage@default
+  \else
+    \kv@define@key{sysu@frontcoverpage}{file}{\includepdf{\kv@value}}%
+    \kv@set@family@handler{sysu@frontcoverpage}{%
+      \ifx\kv@value\relax
+        \includepdf{\kv@key}%
+      \else
+        \kv@handled@false
+      \fi
+    }%
+    \kvsetkeys{sysu@frontcoverpage}{#1}%
+  \fi
   \sysufrontcoverpagetrue
 }
 \newcommand\backcoverpage[1][]{%
@@ -2355,12 +2491,6 @@
   \sysu@titlepage
   \ifsysu@include@spine@true
     \spine
-  \fi
-  \ifsysu@degree@graduate
-    \ifsysu@thesis@type@thesis
-      \cleardoublepage
-      \sysu@titlepage@en
-    \fi
   \fi
   \clearpage
 }
@@ -2394,16 +2524,17 @@
   \null\vskip 8.1pt%
   \begingroup
     \centering
-    \parbox[t][2cm][t]{\textwidth}{%
-      \hskip -21.5pt%
-      \sysu@titlepage@secret
-    }\par
+    \sysu@title@page@degree@category\par
+    % \parbox[t][2cm][t]{\textwidth}{%
+    %   \hskip -21.5pt%
+    %   \sysu@titlepage@secret
+    % }\par
     \vskip 40.5pt%
     \begingroup
       \sffamily\fontsize{26bp}{46.8bp}\selectfont
       \sysu@title\par
     \endgroup
-    \ifsysu@main@language@english
+    \ifx\sysu@title@en\@empty\else
       \vskip 5.4pt%
       \begingroup
         \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
@@ -2412,24 +2543,34 @@
       \vskip -9.2pt%
     \fi
     \vskip 24.1pt%
-    \sysu@title@page@degree@category\par
     \vfill
     \ifsysu@degree@type@academic
-      \parbox[t][7.25cm][t]{\textwidth}{%
+      \parbox[t][4.25cm][t]{\textwidth}{%
         \fangsong\fontsize{16bp}{31.2bp}\selectfont
         \sysu@titlepage@info
       }\par
     \else
-      \parbox[t][5.25cm][b]{\textwidth}{%
+      \parbox[t][4.25cm][b]{\textwidth}{%
         \fangsong\fontsize{16bp}{31.2bp}\selectfont
         \sysu@titlepage@info
       }\par
       \vskip 62pt%
     \fi
+    \ifsysu@thesis@type@thesis
+      \parbox[t][5.25cm][t]{\textwidth}{\sysu@titlepage@committee@signatures}\par
+    \fi
     \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
+}
+\newcommand\sysu@titlepage@committee@signatures{%
+  \begingroup
+    \fangsong\fontsize{16bp}{31.2bp}\selectfont
+    \sysu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
+      \sysu@info@item{答辩委员会}{\sysu@name@title}{\sysu@committee}%
+    }\par
+  \endgroup
 }
 \newcommand\sysu@set@student@id{%
     \ifsysu@thesis@type@proposal\else
@@ -2490,8 +2631,8 @@
     \sysu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
     \sysu@info@item{培养单位}{}{\sysu@department}%
     \ifsysu@degree@type@academic
-      \sysu@info@item{学科}{}{\sysu@discipline}%
-      \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
+      \sysu@info@item{专业名称}{}{\sysu@discipline}%
+      \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
     \else
       \sysu@info@item{专业领域}{}{\sysu@professional@field}%
       \sysu@info@item{工程领域}{}{\sysu@engineering@field}%
